@@ -1,0 +1,13 @@
+task_id,protocol,mode,allowed_inputs,max_rounds,scyther_args
+V2-NS-PK-M0,NS-PK,direct,task_briefs/NS-PK.md;M0_shared/NS-PK.md,1,--xml-output --plain --unbounded
+V2-NS-PK-M1,NS-PK,retrieval,task_briefs/NS-PK.md;M0_shared/NS-PK.md;M1/NS-PK.md,1,--xml-output --plain --unbounded
+V2-NS-PK-M2,NS-PK,structured,task_briefs/NS-PK.md;M0_shared/NS-PK.md;M1/NS-PK.md;schema/structured_analysis.md,1,--xml-output --plain --unbounded
+V2-NS-PK-M3,NS-PK,full_loop,task_briefs/NS-PK.md;M0_shared/NS-PK.md;M1/NS-PK.md;schema/structured_analysis.md;schema/m3_loop.md,3,--xml-output --plain --unbounded
+V2-NSL-M0,NSL,direct,task_briefs/NSL.md;M0_shared/NSL.md,1,--xml-output --plain --unbounded
+V2-NSL-M1,NSL,retrieval,task_briefs/NSL.md;M0_shared/NSL.md;M1/NSL.md,1,--xml-output --plain --unbounded
+V2-NSL-M2,NSL,structured,task_briefs/NSL.md;M0_shared/NSL.md;M1/NSL.md;schema/structured_analysis.md,1,--xml-output --plain --unbounded
+V2-NSL-M3,NSL,full_loop,task_briefs/NSL.md;M0_shared/NSL.md;M1/NSL.md;schema/structured_analysis.md;schema/m3_loop.md,3,--xml-output --plain --unbounded
+V2-ISO-M0,ISO9798-2-3,direct,task_briefs/ISO9798-2-3.md;M0_shared/ISO9798-2-3.md,1,--xml-output --plain --max-runs=5
+V2-ISO-M1,ISO9798-2-3,retrieval,task_briefs/ISO9798-2-3.md;M0_shared/ISO9798-2-3.md;M1/ISO9798-2-3.md,1,--xml-output --plain --max-runs=5
+V2-ISO-M2,ISO9798-2-3,structured,task_briefs/ISO9798-2-3.md;M0_shared/ISO9798-2-3.md;M1/ISO9798-2-3.md;schema/structured_analysis.md,1,--xml-output --plain --max-runs=5
+V2-ISO-M3,ISO9798-2-3,full_loop,task_briefs/ISO9798-2-3.md;M0_shared/ISO9798-2-3.md;M1/ISO9798-2-3.md;schema/structured_analysis.md;schema/m3_loop.md,3,--xml-output --plain --max-runs=5

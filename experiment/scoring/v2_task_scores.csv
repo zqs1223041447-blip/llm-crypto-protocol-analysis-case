@@ -1,0 +1,13 @@
+task_id,protocol,mode,parse_ok,n_claims,completion,first_success,final_success,agreement_num,agreement_den,known_attack_reproduced,human_intervention,repair_rounds,notes
+V2-NS-PK-M0,NS-PK,direct,1,8,1,1,1,6,6,1,0,0,I Secret/Niagree/Nisynch verified; R all falsified; matches P01 gold. M0 prompt had no message list; model used parametric knowledge of 1978 core.
+V2-NS-PK-M1,NS-PK,retrieval,1,8,1,1,1,6,6,1,0,0,same claim pattern as gold
+V2-NS-PK-M2,NS-PK,structured,1,8,1,1,1,6,6,1,0,0,same; extra pk/sk decls accepted
+V2-NS-PK-M3,NS-PK,full_loop,1,8,1,1,1,6,6,1,0,0,round1 already parse-ok; no repair
+V2-NSL-M0,NSL,direct,0,0,0,0,0,0,0,NA,0,0,syntax error at symbol '_'; claim labels like claim_I_se_ni
+V2-NSL-M1,NSL,retrieval,1,8,1,1,1,6,6,NA,0,0,all verified; matches P02 gold
+V2-NSL-M2,NSL,structured,1,8,1,1,1,6,6,NA,0,0,all verified
+V2-NSL-M3,NSL,full_loop,1,8,1,0,1,6,6,NA,0,1,round1 '_' syntax + hashfunction pk; round2 all verified
+V2-ISO-M0,ISO9798-2-3,direct,0,0,0,0,0,0,0,NA,0,0,syntax error at symbol '_'
+V2-ISO-M1,ISO9798-2-3,retrieval,0,0,0,0,0,0,0,NA,0,0,syntax error at symbol '_'
+V2-ISO-M2,ISO9798-2-3,structured,1,8,1,1,1,0,2,NA,0,0,Alive/Weakagree verified vs gold bounded; Niagree/Nisynch falsified; gold Commit not declared. claim-set mismatch vs 2010 public model
+V2-ISO-M3,ISO9798-2-3,full_loop,1,8,1,0,1,0,2,NA,0,1,round1 '_' syntax; round2 same statuses as M2

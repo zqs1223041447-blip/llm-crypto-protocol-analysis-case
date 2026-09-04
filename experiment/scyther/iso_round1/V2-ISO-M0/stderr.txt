@@ -1,0 +1,2 @@
+error: [10] syntax error at symbol '_'.
+

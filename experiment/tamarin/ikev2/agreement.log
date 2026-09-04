@@ -1,0 +1,909 @@
+maude tool: 'maude'
+ checking version: 3.1. OK.
+ checking installation: OK.
+[Theory IKEv2] Theory loaded
+[Theory IKEv2] Theory translated
+[Theory IKEv2] Theory closed
+[Saturating Sources] Step 1 (Max 5)
+[Open Chains] Too many chain constraints, stopping precomputation. Open Chains limits (can be changed with -c=): 10
+[Saturating Sources] Step 2 (Max 5)
+[Saturating Sources] Step 3 (Max 5)
+[Saturating Sources] Done
+theory IKEv2
+
+begin
+
+// Function signature and definition of the equational theory E
+
+builtins: diffie-hellman
+functions: adec/2, aenc/2, fst/1, h/1, hmac/2, pair/2, pk/1, sdec/2,
+           senc/2, sign/2, snd/1, true/0, verify/3
+equations:
+    adec(aenc(x.1, pk(x.2)), x.2) = x.1,
+    fst(<x.1, x.2>) = x.1,
+    sdec(senc(x.1, x.2), x.2) = x.1,
+    snd(<x.1, x.2>) = x.2,
+    verify(sign(x.1, x.2), x.1, pk(x.2)) = true
+
+restriction Eq_check_succeed:
+  "∀ x y #i. (Eq( x, y ) @ #i) ⇒ (x = y)"
+  // safety formula
+
+  /*
+  expanded formula:
+  "∀ x y #i. (Eq( x, y ) @ #i) ⇒ (x = y)"
+  */
+
+rule (modulo E) generate_static:
+   [ Fr( ~ltk ) ]
+  --[ GenStatic( pk(~ltk) ) ]->
+   [ !PrivKey( $I, ~ltk ), !PubKey( $I, pk(~ltk) ), Out( pk(~ltk) ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) reveal_static:
+   [ !PrivKey( $I, ltk ) ] --[ RevLtk( $I ) ]-> [ Out( ltk ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) reveal_dh:
+   [ !DHtoReveal( $I, k ) ] --[ RevDH( $I ) ]-> [ Out( k ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) IKE_SA_INIT_I:
+   [ Fr( ~nI ), Fr( ~spiI ), Fr( ~eI ) ]
+  -->
+   [
+   Out( <~spiI, 'IKE_SA_INIT', '1', 'i', 'g'^~eI, ~nI> ),
+   StateInitI( $I, $R, ~spiI, ~eI, ~nI,
+               <~spiI, 'IKE_SA_INIT', '1', 'i', 'g'^~eI, ~nI>
+   ),
+   !DHtoReveal( $I, ~eI )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) IKE_AUTH_I:
+   [
+   In( <spiI, spiR, 'IKE_SA_INIT', '1', 'r', epR, nR> ), Fr( ~idI ),
+   StateInitI( $I, $R, spiI, eI, nI, msg1 ), !PrivKey( $I, skI ),
+   !PubKey( $I, pkI )
+   ]
+  --[
+  Agreed( <spiI, spiR>, $I, 'initiator', <nI, nR>, h(<<nI, nR>, epR^eI>) )
+  ]->
+   [
+   Out( <spiI, spiR, 'IKE_AUTH', '2', 'i', 
+         senc(<~idI, sign(<msg1, nR, h(<~idI, h(<<nI, nR>, epR^eI>)>)>, skI), pkI
+              >,
+              h(<<nI, nR>, epR^eI>)), 
+         hmac(<spiI, spiR, 'IKE_AUTH', '2', 'i', 
+               senc(<~idI, sign(<msg1, nR, h(<~idI, h(<<nI, nR>, epR^eI>)>)>, skI), pkI
+                    >,
+                    h(<<nI, nR>, epR^eI>))
+              >,
+              h(<<nI, nR>, epR^eI>))
+        >
+   ),
+   StateAuthI( $I, $R, ~idI, spiI, spiR, nI, nR, h(<<nI, nR>, epR^eI>),
+               msg1, <spiI, spiR, 'IKE_SA_INIT', '1', 'r', epR, nR>, 'g'^eI, epR
+   )
+   ]
+
+  /*
+  rule (modulo AC) IKE_AUTH_I:
+     [
+     In( <spiI, spiR, 'IKE_SA_INIT', '1', 'r', epR, nR> ), Fr( ~idI ),
+     StateInitI( $I, $R, spiI, eI, nI, msg1 ), !PrivKey( $I, skI ),
+     !PubKey( $I, pkI )
+     ]
+    --[ Agreed( <spiI, spiR>, $I, 'initiator', <nI, nR>, h(<<nI, nR>, z>) )
+    ]->
+     [
+     Out( <spiI, spiR, 'IKE_AUTH', '2', 'i', 
+           senc(<~idI, sign(<msg1, nR, h(<~idI, h(<<nI, nR>, z>)>)>, skI), pkI>,
+                h(<<nI, nR>, z>)), 
+           hmac(<spiI, spiR, 'IKE_AUTH', '2', 'i', 
+                 senc(<~idI, sign(<msg1, nR, h(<~idI, h(<<nI, nR>, z>)>)>, skI), pkI>,
+                      h(<<nI, nR>, z>))
+                >,
+                h(<<nI, nR>, z>))
+          >
+     ),
+     StateAuthI( $I, $R, ~idI, spiI, spiR, nI, nR, h(<<nI, nR>, z>), msg1,
+                 <spiI, spiR, 'IKE_SA_INIT', '1', 'r', epR, nR>, z.1, epR
+     )
+     ]
+    variants (modulo AC)
+     1. eI    = eI.22
+        epR   = DH_neutral
+        z     = DH_neutral
+        z.1   = 'g'^eI.22
+    
+     2. eI    = eI.23
+        epR   = epR.24
+        z     = epR.24^eI.23
+        z.1   = 'g'^eI.23
+    
+     3. eI    = eI.37
+        epR   = z.52^inv(eI.37)
+        z     = z.52
+        z.1   = 'g'^eI.37
+    
+     4. eI    = eI.131
+        epR   = x.256^x.257
+        z     = x.256^(eI.131*x.257)
+        z.1   = 'g'^eI.131
+    
+     5. eI    = eI.132
+        epR   = x.258^inv((eI.132*x.259))
+        z     = x.258^inv(x.259)
+        z.1   = 'g'^eI.132
+    
+     6. eI    = eI.132
+        epR   = x.258^(x.259*inv(eI.132))
+        z     = x.258^x.259
+        z.1   = 'g'^eI.132
+    
+     7. eI    = eI.133
+        epR   = x.259^(x.260*inv((eI.133*x.261)))
+        z     = x.259^(x.260*inv(x.261))
+        z.1   = 'g'^eI.133
+    
+     8. eI    = inv(x.24)
+        epR   = x.25^inv(x.26)
+        z     = x.25^inv((x.24*x.26))
+        z.1   = 'g'^inv(x.24)
+    
+     9. eI    = inv(x.24)
+        epR   = x.25^(x.24*x.26)
+        z     = x.25^x.26
+        z.1   = 'g'^inv(x.24)
+    
+    10. eI    = inv(x.25)
+        epR   = x.26^(x.27*inv(x.28))
+        z     = x.26^(x.27*inv((x.25*x.28)))
+        z.1   = 'g'^inv(x.25)
+    
+    11. eI    = inv(x.60)
+        epR   = z.40^x.60
+        z     = z.40
+        z.1   = 'g'^inv(x.60)
+    
+    12. eI    = inv((x.24*x.25))
+        epR   = x.26^x.25
+        z     = x.26^inv(x.24)
+        z.1   = 'g'^inv((x.24*x.25))
+    
+    13. eI    = inv((x.25*x.26))
+        epR   = x.27^(x.25*x.28)
+        z     = x.27^(x.28*inv(x.26))
+        z.1   = 'g'^inv((x.25*x.26))
+    
+    14. eI    = inv((x.25*x.26))
+        epR   = x.27^(x.25*inv(x.28))
+        z     = x.27^inv((x.26*x.28))
+        z.1   = 'g'^inv((x.25*x.26))
+    
+    15. eI    = inv((x.26*x.27))
+        epR   = x.28^(x.26*x.29*inv(x.30))
+        z     = x.28^(x.29*inv((x.27*x.30)))
+        z.1   = 'g'^inv((x.26*x.27))
+    
+    16. eI    = one
+        epR   = epR.22
+        z     = epR.22
+        z.1   = 'g'
+    
+    17. eI    = (x.24*x.25)
+        epR   = x.26^inv(x.24)
+        z     = x.26^x.25
+        z.1   = 'g'^(x.24*x.25)
+    
+    18. eI    = (x.24*inv(x.25))
+        epR   = x.26^x.25
+        z     = x.26^x.24
+        z.1   = 'g'^(x.24*inv(x.25))
+    
+    19. eI    = (x.25*x.26)
+        epR   = x.27^inv((x.25*x.28))
+        z     = x.27^(x.26*inv(x.28))
+        z.1   = 'g'^(x.25*x.26)
+    
+    20. eI    = (x.25*x.26)
+        epR   = x.27^(x.28*inv(x.25))
+        z     = x.27^(x.26*x.28)
+        z.1   = 'g'^(x.25*x.26)
+    
+    21. eI    = (x.25*x.26*inv(x.27))
+        epR   = x.28^(x.27*inv(x.25))
+        z     = x.28^x.26
+        z.1   = 'g'^(x.25*x.26*inv(x.27))
+    
+    22. eI    = (x.25*inv(x.26))
+        epR   = x.27^inv(x.28)
+        z     = x.27^(x.25*inv((x.26*x.28)))
+        z.1   = 'g'^(x.25*inv(x.26))
+    
+    23. eI    = (x.25*inv(x.26))
+        epR   = x.27^inv((x.25*x.28))
+        z     = x.27^inv((x.26*x.28))
+        z.1   = 'g'^(x.25*inv(x.26))
+    
+    24. eI    = (x.25*inv(x.26))
+        epR   = x.27^(x.26*x.28)
+        z     = x.27^(x.25*x.28)
+        z.1   = 'g'^(x.25*inv(x.26))
+    
+    25. eI    = (x.25*inv(x.26))
+        epR   = x.27^(x.26*x.28*inv(x.25))
+        z     = x.27^x.28
+        z.1   = 'g'^(x.25*inv(x.26))
+    
+    26. eI    = (x.25*inv(x.26))
+        epR   = x.27^(x.26*inv((x.25*x.28)))
+        z     = x.27^inv(x.28)
+        z.1   = 'g'^(x.25*inv(x.26))
+    
+    27. eI    = (x.25*inv((x.26*x.27)))
+        epR   = x.28^x.27
+        z     = x.28^(x.25*inv(x.26))
+        z.1   = 'g'^(x.25*inv((x.26*x.27)))
+    
+    28. eI    = (x.25*inv((x.26*x.27)))
+        epR   = x.28^(x.27*inv(x.25))
+        z     = x.28^inv(x.26)
+        z.1   = 'g'^(x.25*inv((x.26*x.27)))
+    
+    29. eI    = (x.26*x.27)
+        epR   = x.28^(x.29*inv((x.26*x.30)))
+        z     = x.28^(x.27*x.29*inv(x.30))
+        z.1   = 'g'^(x.26*x.27)
+    
+    30. eI    = (x.26*x.27*inv(x.28))
+        epR   = x.29^inv((x.27*x.30))
+        z     = x.29^(x.26*inv((x.28*x.30)))
+        z.1   = 'g'^(x.26*x.27*inv(x.28))
+    
+    31. eI    = (x.26*x.27*inv(x.28))
+        epR   = x.29^(x.28*x.30*inv(x.26))
+        z     = x.29^(x.27*x.30)
+        z.1   = 'g'^(x.26*x.27*inv(x.28))
+    
+    32. eI    = (x.26*x.27*inv(x.28))
+        epR   = x.29^(x.28*inv((x.26*x.30)))
+        z     = x.29^(x.27*inv(x.30))
+        z.1   = 'g'^(x.26*x.27*inv(x.28))
+    
+    33. eI    = (x.26*x.27*inv((x.28*x.29)))
+        epR   = x.30^(x.29*inv(x.27))
+        z     = x.30^(x.26*inv(x.28))
+        z.1   = 'g'^(x.26*x.27*inv((x.28*x.29)))
+    
+    34. eI    = (x.26*inv(x.27))
+        epR   = x.28^(x.27*x.29*inv((x.26*x.30)))
+        z     = x.28^(x.29*inv(x.30))
+        z.1   = 'g'^(x.26*inv(x.27))
+    
+    35. eI    = (x.26*inv(x.27))
+        epR   = x.28^(x.29*inv(x.30))
+        z     = x.28^(x.26*x.29*inv((x.27*x.30)))
+        z.1   = 'g'^(x.26*inv(x.27))
+    
+    36. eI    = (x.26*inv(x.27))
+        epR   = x.28^(x.29*inv((x.26*x.30)))
+        z     = x.28^(x.29*inv((x.27*x.30)))
+        z.1   = 'g'^(x.26*inv(x.27))
+    
+    37. eI    = (x.26*inv((x.27*x.28)))
+        epR   = x.29^(x.27*x.30)
+        z     = x.29^(x.26*x.30*inv(x.28))
+        z.1   = 'g'^(x.26*inv((x.27*x.28)))
+    
+    38. eI    = (x.26*inv((x.27*x.28)))
+        epR   = x.29^(x.27*x.30*inv(x.26))
+        z     = x.29^(x.30*inv(x.28))
+        z.1   = 'g'^(x.26*inv((x.27*x.28)))
+    
+    39. eI    = (x.26*inv((x.27*x.28)))
+        epR   = x.29^(x.27*inv(x.30))
+        z     = x.29^(x.26*inv((x.28*x.30)))
+        z.1   = 'g'^(x.26*inv((x.27*x.28)))
+    
+    40. eI    = (x.26*inv((x.27*x.28)))
+        epR   = x.29^(x.27*inv((x.26*x.30)))
+        z     = x.29^inv((x.28*x.30))
+        z.1   = 'g'^(x.26*inv((x.27*x.28)))
+    
+    41. eI    = (x.27*x.28*inv(x.29))
+        epR   = x.30^(x.29*x.31*inv((x.27*x.32)))
+        z     = x.30^(x.28*x.31*inv(x.32))
+        z.1   = 'g'^(x.27*x.28*inv(x.29))
+    
+    42. eI    = (x.27*x.28*inv(x.29))
+        epR   = x.30^(x.31*inv((x.27*x.32)))
+        z     = x.30^(x.28*x.31*inv((x.29*x.32)))
+        z.1   = 'g'^(x.27*x.28*inv(x.29))
+    
+    43. eI    = (x.27*x.28*inv((x.29*x.30)))
+        epR   = x.31^(x.29*x.32*inv(x.27))
+        z     = x.31^(x.28*x.32*inv(x.30))
+        z.1   = 'g'^(x.27*x.28*inv((x.29*x.30)))
+    
+    44. eI    = (x.27*x.28*inv((x.29*x.30)))
+        epR   = x.31^(x.29*inv((x.27*x.32)))
+        z     = x.31^(x.28*inv((x.30*x.32)))
+        z.1   = 'g'^(x.27*x.28*inv((x.29*x.30)))
+    
+    45. eI    = (x.27*inv((x.28*x.29)))
+        epR   = x.30^(x.28*x.31*inv(x.32))
+        z     = x.30^(x.27*x.31*inv((x.29*x.32)))
+        z.1   = 'g'^(x.27*inv((x.28*x.29)))
+    
+    46. eI    = (x.27*inv((x.28*x.29)))
+        epR   = x.30^(x.28*x.31*inv((x.27*x.32)))
+        z     = x.30^(x.31*inv((x.29*x.32)))
+        z.1   = 'g'^(x.27*inv((x.28*x.29)))
+    
+    47. eI    = (x.28*x.29*inv((x.30*x.31)))
+        epR   = x.32^(x.30*x.33*inv((x.28*x.34)))
+        z     = x.32^(x.29*x.33*inv((x.31*x.34)))
+        z.1   = 'g'^(x.28*x.29*inv((x.30*x.31)))
+    
+    48. eI    = (x.61*inv(x.62))
+        epR   = z.41^(x.62*inv(x.61))
+        z     = z.41
+        z.1   = 'g'^(x.61*inv(x.62))
+  */
+
+rule (modulo E) IKE_AUTH_COMPLETE:
+   [
+   In( <spiI, spiR, 'IKE_AUTH', '2', 'r', 
+        senc(<idR, spiC, auth_pl_R, pkR>, keymat), 
+        hmac(<spiI, spiR, 'IKE_AUTH', '2', 'r', 
+              senc(<idR, spiC, auth_pl_R, pkR>, keymat)>,
+             keymat)
+       >
+   ),
+   StateAuthI( $I, $R, idI, spiI, spiR, nI, nR, keymat, msg1, msg2, epI, epR
+   ),
+   !PubKey( $R, pkR )
+   ]
+  --[
+  Eq( verify(auth_pl_R, <msg2, nI, h(<idR, keymat>)>, pkR), true ),
+  IKeys( $I, $R, spiC, hmac(keymat, <nI, nR>) ),
+  Completed( <spiI, spiR>, $I, 'initiator', $R, keymat ),
+  IdentityLearnt( idI )
+  ]->
+   [
+   Out( <'0', senc('test', hmac(keymat, <nI, nR>)), 
+         hmac(<'0', senc('test', hmac(keymat, <nI, nR>))>, hmac(keymat, <nI, nR>))
+        >
+   )
+   ]
+
+  /*
+  rule (modulo AC) IKE_AUTH_COMPLETE:
+     [
+     In( <spiI, spiR, 'IKE_AUTH', '2', 'r', 
+          senc(<idR, spiC, auth_pl_R, pkR>, keymat), 
+          hmac(<spiI, spiR, 'IKE_AUTH', '2', 'r', 
+                senc(<idR, spiC, auth_pl_R, pkR>, keymat)>,
+               keymat)
+         >
+     ),
+     StateAuthI( $I, $R, idI, spiI, spiR, nI, nR, keymat, msg1, msg2, epI, epR
+     ),
+     !PubKey( $R, pkR )
+     ]
+    --[
+    Eq( z, true ), IKeys( $I, $R, spiC, hmac(keymat, <nI, nR>) ),
+    Completed( <spiI, spiR>, $I, 'initiator', $R, keymat ),
+    IdentityLearnt( idI )
+    ]->
+     [
+     Out( <'0', senc('test', hmac(keymat, <nI, nR>)), 
+           hmac(<'0', senc('test', hmac(keymat, <nI, nR>))>, hmac(keymat, <nI, nR>))
+          >
+     )
+     ]
+    variants (modulo AC)
+    1. auth_pl_R
+             = auth_pl_R.34
+       idR   = idR.38
+       keymat
+             = keymat.39
+       msg2  = msg2.41
+       nI    = nI.42
+       pkR   = pkR.44
+       z     = verify(auth_pl_R.34, <msg2.41, nI.42, h(<idR.38, keymat.39>)>,
+                      pkR.44)
+    
+    2. auth_pl_R
+             = sign(<msg2.116, nI.117, h(<idR.113, keymat.114>)>, x.218)
+       idR   = idR.113
+       keymat
+             = keymat.114
+       msg2  = msg2.116
+       nI    = nI.117
+       pkR   = pk(x.218)
+       z     = true
+  */
+
+rule (modulo E) IKE_SA_INIT_R:
+   [
+   In( <spiI, 'IKE_SA_INIT', '1', 'i', epI, nI> ), Fr( ~nR ), Fr( ~spiR ),
+   Fr( ~eR )
+   ]
+  --[
+  Agreed( <spiI, ~spiR>, $R, 'responder', <nI, ~nR>,
+          h(<<nI, ~nR>, epI^~eR>)
+  )
+  ]->
+   [
+   Out( <spiI, ~spiR, 'IKE_SA_INIT', '1', 'r', 'g'^~eR, ~nR> ),
+   StateInitR( $I, $R, spiI, ~spiR, nI, ~nR, h(<<nI, ~nR>, epI^~eR>),
+               <spiI, 'IKE_SA_INIT', '1', 'i', epI, nI>,
+               <spiI, ~spiR, 'IKE_SA_INIT', '1', 'r', 'g'^~eR, ~nR>, epI, 'g'^~eR
+   ),
+   !DHtoReveal( $R, ~eR )
+   ]
+
+  /*
+  rule (modulo AC) IKE_SA_INIT_R:
+     [
+     In( <spiI, 'IKE_SA_INIT', '1', 'i', epI, nI> ), Fr( ~nR ), Fr( ~spiR ),
+     Fr( ~eR )
+     ]
+    --[
+    Agreed( <spiI, ~spiR>, $R, 'responder', <nI, ~nR>, h(<<nI, ~nR>, z>) )
+    ]->
+     [
+     Out( <spiI, ~spiR, 'IKE_SA_INIT', '1', 'r', 'g'^~eR, ~nR> ),
+     StateInitR( $I, $R, spiI, ~spiR, nI, ~nR, h(<<nI, ~nR>, z>),
+                 <spiI, 'IKE_SA_INIT', '1', 'i', epI, nI>,
+                 <spiI, ~spiR, 'IKE_SA_INIT', '1', 'r', 'g'^~eR, ~nR>, epI, 'g'^~eR
+     ),
+     !DHtoReveal( $R, ~eR )
+     ]
+    variants (modulo AC)
+    1. ~eR   = ~eR.19
+       epI   = epI.22
+       z     = epI.22^~eR.19
+    
+    2. ~eR   = ~eR.135
+       epI   = x.265^x.266
+       z     = x.265^(~eR.135*x.266)
+    
+    3. epI   = DH_neutral
+       z     = DH_neutral
+  */
+
+rule (modulo E) IKE_AUTH_R:
+   [
+   In( <spiI, spiR, 'IKE_AUTH', '2', 'i', 
+        senc(<idI, auth_pl_I, pkI>, keymat), 
+        hmac(<spiI, spiR, 'IKE_AUTH', '2', 'i', 
+              senc(<idI, auth_pl_I, pkI>, keymat)>,
+             keymat)
+       >
+   ),
+   Fr( ~idR ), Fr( ~spiC ),
+   StateInitR( $I, $R, spiI, spiR, nI, nR, keymat, msg1, msg2, epI, epR ),
+   !PrivKey( $R, skR ), !PubKey( $R, pkR ), !PubKey( $I, pkI )
+   ]
+  --[
+  Eq( verify(auth_pl_I, <msg1, nR, h(<idI, keymat>)>, pkI), true ),
+  Completed( <spiI, spiR>, $R, 'responder', $I, keymat ),
+  IdentityLearnt( ~idR )
+  ]->
+   [
+   Out( <spiI, spiR, 'IKE_AUTH', '2', 'r', 
+         senc(<~idR, ~spiC, sign(<msg2, nI, h(<~idR, keymat>)>, skR), pkR>,
+              keymat), 
+         hmac(<spiI, spiR, 'IKE_AUTH', '2', 'r', 
+               senc(<~idR, ~spiC, sign(<msg2, nI, h(<~idR, keymat>)>, skR), pkR>,
+                    keymat)
+              >,
+              keymat)
+        >
+   ),
+   ChildSAR( $I, $R, ~spiC, hmac(keymat, <nI, nR>) )
+   ]
+
+  /*
+  rule (modulo AC) IKE_AUTH_R:
+     [
+     In( <spiI, spiR, 'IKE_AUTH', '2', 'i', 
+          senc(<idI, auth_pl_I, pkI>, keymat), 
+          hmac(<spiI, spiR, 'IKE_AUTH', '2', 'i', 
+                senc(<idI, auth_pl_I, pkI>, keymat)>,
+               keymat)
+         >
+     ),
+     Fr( ~idR ), Fr( ~spiC ),
+     StateInitR( $I, $R, spiI, spiR, nI, nR, keymat, msg1, msg2, epI, epR ),
+     !PrivKey( $R, skR ), !PubKey( $R, pkR ), !PubKey( $I, pkI )
+     ]
+    --[
+    Eq( z, true ), Completed( <spiI, spiR>, $R, 'responder', $I, keymat ),
+    IdentityLearnt( ~idR )
+    ]->
+     [
+     Out( <spiI, spiR, 'IKE_AUTH', '2', 'r', 
+           senc(<~idR, ~spiC, sign(<msg2, nI, h(<~idR, keymat>)>, skR), pkR>,
+                keymat), 
+           hmac(<spiI, spiR, 'IKE_AUTH', '2', 'r', 
+                 senc(<~idR, ~spiC, sign(<msg2, nI, h(<~idR, keymat>)>, skR), pkR>,
+                      keymat)
+                >,
+                keymat)
+          >
+     ),
+     ChildSAR( $I, $R, ~spiC, hmac(keymat, <nI, nR>) )
+     ]
+    variants (modulo AC)
+    1. auth_pl_I
+             = auth_pl_I.34
+       idI   = idI.37
+       keymat
+             = keymat.38
+       msg1  = msg1.39
+       nR    = nR.42
+       pkI   = pkI.43
+       z     = verify(auth_pl_I.34, <msg1.39, nR.42, h(<idI.37, keymat.38>)>,
+                      pkI.43)
+    
+    2. auth_pl_I
+             = sign(<msg1.99, nR.102, h(<idI.97, keymat.98>)>, x.185)
+       idI   = idI.97
+       keymat
+             = keymat.98
+       msg1  = msg1.99
+       nR    = nR.102
+       pkI   = pk(x.185)
+       z     = true
+  */
+
+rule (modulo E) ChildSA_Confirm_R:
+   [
+   In( <'0', senc('test', ck), hmac(<'0', senc('test', ck)>, ck)> ),
+   ChildSAR( $I, $R, spiC, ck )
+   ]
+  --[ RConfirm( $I, $R, spiC, ck ) ]->
+   [ ]
+
+  /* has exactly the trivial AC variant */
+
+lemma exists_session:
+  exists-trace
+  "∃ I R spi #i #j keymat.
+    ((Completed( spi, R, 'responder', I, keymat ) @ #i) ∧
+     (Completed( spi, I, 'initiator', R, keymat ) @ #j)) ∧
+    (#i < #j)"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ I R spi #i #j keymat.
+  (Completed( spi, R, 'responder', I, keymat ) @ #i) ∧
+  (Completed( spi, I, 'initiator', R, keymat ) @ #j)
+ ∧
+  #i < #j"
+*/
+by sorry
+
+lemma exists_two_sessions:
+  exists-trace
+  "∃ I R spi spi2 ck ck2 #i #j #i2 #j2.
+    ((((((IKeys( I, R, spi, ck ) @ #i) ∧ (RConfirm( I, R, spi, ck ) @ #j)) ∧
+        (#i < #j)) ∧
+       (IKeys( I, R, spi2, ck2 ) @ #i2)) ∧
+      (RConfirm( I, R, spi2, ck2 ) @ #j2)) ∧
+     (#i2 < #j2)) ∧
+    (¬(ck = ck2))"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ I R spi spi2 ck ck2 #i #j #i2 #j2.
+  (IKeys( I, R, spi, ck ) @ #i) ∧
+  (RConfirm( I, R, spi, ck ) @ #j) ∧
+  (IKeys( I, R, spi2, ck2 ) @ #i2) ∧
+  (RConfirm( I, R, spi2, ck2 ) @ #j2)
+ ∧
+  (#i < #j) ∧ (#i2 < #j2) ∧ (¬(ck = ck2))"
+*/
+by sorry
+
+lemma aliveness [use_induction]:
+  all-traces
+  "∀ spi I R keymat #i.
+    ((Completed( spi, I, 'initiator', R, keymat ) @ #i) ∧
+     (¬(∃ #k. RevLtk( R ) @ #k))) ⇒
+    (∃ spi2 peer role keymat2 #j.
+      (Completed( spi2, R, role, peer, keymat2 ) @ #j) ∧ (#j < #i))"
+/*
+guarded formula characterizing all counter-examples:
+"∃ spi I R keymat #i.
+  (Completed( spi, I, 'initiator', R, keymat ) @ #i)
+ ∧
+  (∀ #k. (RevLtk( R ) @ #k) ⇒ ⊥) ∧
+  (∀ spi2 peer role keymat2 #j.
+    (Completed( spi2, R, role, peer, keymat2 ) @ #j) ⇒ ¬(#j < #i))"
+*/
+by sorry
+
+lemma weak_agreement [use_induction]:
+  all-traces
+  "∀ spi I R keymat #i.
+    ((((Completed( spi, I, 'initiator', R, keymat ) @ #i) ∧
+       (¬(∃ #k. RevLtk( R ) @ #k))) ∧
+      (¬(∃ #k. RevDH( I ) @ #k))) ∧
+     (¬(∃ #k. RevDH( R ) @ #k))) ⇒
+    (∃ spi2 role keymat2 #j.
+      (Completed( spi2, R, role, I, keymat2 ) @ #j) ∧ (#j < #i))"
+/*
+guarded formula characterizing all counter-examples:
+"∃ spi I R keymat #i.
+  (Completed( spi, I, 'initiator', R, keymat ) @ #i)
+ ∧
+  (∀ #k. (RevLtk( R ) @ #k) ⇒ ⊥) ∧
+  (∀ #k. (RevDH( I ) @ #k) ⇒ ⊥) ∧
+  (∀ #k. (RevDH( R ) @ #k) ⇒ ⊥) ∧
+  (∀ spi2 role keymat2 #j.
+    (Completed( spi2, R, role, I, keymat2 ) @ #j) ⇒ ¬(#j < #i))"
+*/
+by sorry
+
+lemma agreement [use_induction]:
+  all-traces
+  "∀ spi I R keymat #j.
+    ((((Completed( spi, I, 'initiator', R, keymat ) @ #j) ∧
+       (¬(∃ #k. RevLtk( R ) @ #k))) ∧
+      (¬(∃ #k. RevDH( I ) @ #k))) ∧
+     (¬(∃ #k. RevDH( R ) @ #k))) ⇒
+    (∃ spi2 #k. Completed( spi2, R, 'responder', I, keymat ) @ #k)"
+/*
+guarded formula characterizing all counter-examples:
+"∃ spi I R keymat #j.
+  (Completed( spi, I, 'initiator', R, keymat ) @ #j)
+ ∧
+  (∀ #k. (RevLtk( R ) @ #k) ⇒ ⊥) ∧
+  (∀ #k. (RevDH( I ) @ #k) ⇒ ⊥) ∧
+  (∀ #k. (RevDH( R ) @ #k) ⇒ ⊥) ∧
+  (∀ spi2 #k. (Completed( spi2, R, 'responder', I, keymat ) @ #k) ⇒ ⊥)"
+*/
+induction
+  case empty_trace
+  by contradiction /* from formulas */
+next
+  case non_empty_trace
+  solve( (last(#j))  ∥ (∃ #k. (RevLtk( R ) @ #k) ∧ ¬(last(#k)))  ∥
+         (∃ #k. (RevDH( I ) @ #k) ∧ ¬(last(#k)))  ∥
+         (∃ #k. (RevDH( R ) @ #k) ∧ ¬(last(#k)))  ∥
+         (∃ spi2 #k.
+           (Completed( spi2, R, 'responder', I, keymat ) @ #k) ∧ ¬(last(#k))) )
+    case case_1
+    solve( Completed( spi, I, 'initiator', R, keymat ) @ #j )
+      case IKE_AUTH_COMPLETE
+      solve( StateAuthI( $I, $R, idI, spiI, spiR, nI, nR, keymat, msg1, msg2,
+                         epI, epR
+             ) ▶₁ #j )
+        case IKE_AUTH_I
+        solve( !PubKey( $R, pk(x) ) ▶₂ #j )
+          case generate_static
+          solve( !KU( senc(<idR, spiC, 
+                            sign(<<~spiI, spiR, 'IKE_SA_INIT', '1', 'r', epR, nR>, ~nI, 
+                                  h(<idR, h(<<~nI, nR>, z>)>)>,
+                                 ~ltk), 
+                            pk(~ltk)>,
+                           h(<<~nI, nR>, z>))
+                 ) @ #vk.15 )
+            case IKE_AUTH_R
+            solve( !KU( senc(<idI.1, 
+                              sign(<<~spiI, 'IKE_SA_INIT', '1', 'i', 'g'^~eI, ~nI>, ~nR, 
+                                    h(<idI.1, h(<<~nI, ~nR>, 'g'^(~eI*~eR)>)>)>,
+                                   ~ltk.3), 
+                              pk(~ltk.3)>,
+                             h(<<~nI, ~nR>, 'g'^(~eI*~eR)>))
+                   ) @ #vk.34 )
+              case IKE_AUTH_I
+              by contradiction /* from formulas */
+            next
+              case c_senc
+              solve( !KU( h(<<~nI, ~nR>, 'g'^(~eI*~eR)>) ) @ #vk.40 )
+                case c_h
+                solve( !KU( sign(<<~spiI, 'IKE_SA_INIT', '1', 'i', 'g'^~eI, ~nI>, ~nR, 
+                                  h(<idI.1, h(<<~nI, ~nR>, 'g'^(~eI*~eR)>)>)>,
+                                 ~ltk.3)
+                       ) @ #vk.44 )
+                  case IKE_AUTH_I
+                  by contradiction /* from formulas */
+                next
+                  case c_sign
+                  solve( !KU( ~ltk.3 ) @ #vk.50 )
+                    case reveal_static
+                    solve( !KU( h(<idI.1, h(<<~nI, ~nR>, 'g'^(~eI*~eR)>)>) ) @ #vk.51 )
+                      case c_h
+                      solve( !KU( 'g'^(~eI*~eR) ) @ #vk.52 )
+                        case IKE_SA_INIT_I
+                        solve( !KU( ~eR ) @ #vk.53 )
+                          case reveal_dh
+                          by contradiction /* from formulas */
+                        qed
+                      next
+                        case IKE_SA_INIT_R
+                        solve( !KU( ~eI ) @ #vk.53 )
+                          case reveal_dh
+                          by contradiction /* from formulas */
+                        qed
+                      next
+                        case c_exp
+                        solve( !KU( ~eI ) @ #vk.55 )
+                          case reveal_dh
+                          by contradiction /* from formulas */
+                        qed
+                      qed
+                    qed
+                  qed
+                qed
+              qed
+            qed
+          next
+            case c_senc
+            solve( !KU( h(<<~nI, nR>, z>) ) @ #vk.24 )
+              case c_h
+              solve( !KU( sign(<<~spiI, spiR, 'IKE_SA_INIT', '1', 'r', epR, nR>, ~nI, 
+                                h(<idR, h(<<~nI, nR>, z>)>)>,
+                               ~ltk)
+                     ) @ #vk.30 )
+                case IKE_AUTH_R
+                solve( !KU( 'g'^(~eI*~eR) ) @ #vk.42 )
+                  case IKE_SA_INIT_I
+                  solve( !KU( ~eR ) @ #vk.50 )
+                    case reveal_dh
+                    by contradiction /* from formulas */
+                  qed
+                next
+                  case IKE_SA_INIT_R
+                  solve( !KU( ~eI ) @ #vk.50 )
+                    case reveal_dh
+                    by contradiction /* from formulas */
+                  qed
+                next
+                  case c_exp
+                  solve( !KU( ~eI ) @ #vk.52 )
+                    case reveal_dh
+                    by contradiction /* from formulas */
+                  qed
+                qed
+              next
+                case c_sign
+                solve( !KU( ~ltk ) @ #vk.37 )
+                  case reveal_static
+                  by contradiction /* from formulas */
+                qed
+              qed
+            qed
+          qed
+        qed
+      qed
+    qed
+  next
+    case case_2
+    by contradiction /* from formulas */
+  next
+    case case_3
+    by contradiction /* from formulas */
+  next
+    case case_4
+    by contradiction /* from formulas */
+  next
+    case case_5
+    by contradiction /* from formulas */
+  qed
+qed
+
+lemma session_uniqueness:
+  all-traces
+  "∀ I R spi spi2 keymat role #j #l.
+    ((Completed( spi, I, role, R, keymat ) @ #j) ∧
+     (Completed( spi2, I, role, R, keymat ) @ #l)) ⇒
+    (#j = #l)"
+/*
+guarded formula characterizing all counter-examples:
+"∃ I R spi spi2 keymat role #j #l.
+  (Completed( spi, I, role, R, keymat ) @ #j) ∧
+  (Completed( spi2, I, role, R, keymat ) @ #l)
+ ∧
+  ¬(#j = #l)"
+*/
+by sorry
+
+lemma consistency:
+  all-traces
+  "∀ spi I R keymat keymat2 #i #j.
+    (((Completed( spi, I, 'initiator', R, keymat ) @ #i) ∧
+      (Completed( spi, R, 'responder', I, keymat2 ) @ #j)) ∧
+     (¬(∃ #k. RevLtk( R ) @ #k))) ⇒
+    (keymat = keymat2)"
+/*
+guarded formula characterizing all counter-examples:
+"∃ spi I R keymat keymat2 #i #j.
+  (Completed( spi, I, 'initiator', R, keymat ) @ #i) ∧
+  (Completed( spi, R, 'responder', I, keymat2 ) @ #j)
+ ∧
+  (∀ #k. (RevLtk( R ) @ #k) ⇒ ⊥) ∧ (¬(keymat = keymat2))"
+*/
+by sorry
+
+lemma key_secrecy [reuse]:
+  all-traces
+  "∀ spi I R role keymat #j.
+    ((((Completed( spi, I, role, R, keymat ) @ #j) ∧
+       (¬(∃ #m. RevLtk( R ) @ #m))) ∧
+      (¬(∃ #m. RevDH( I ) @ #m))) ∧
+     (¬(∃ #m. RevDH( R ) @ #m))) ⇒
+    (¬(∃ #m. K( keymat ) @ #m))"
+/*
+guarded formula characterizing all counter-examples:
+"∃ spi I R role keymat #j.
+  (Completed( spi, I, role, R, keymat ) @ #j)
+ ∧
+  (∀ #m. (RevLtk( R ) @ #m) ⇒ ⊥) ∧
+  (∀ #m. (RevDH( I ) @ #m) ⇒ ⊥) ∧
+  (∀ #m. (RevDH( R ) @ #m) ⇒ ⊥) ∧
+  (∃ #m. (K( keymat ) @ #m))"
+*/
+by sorry
+
+lemma identity_hiding_R:
+  all-traces
+  "∀ spi I R keymat id #i.
+    (((((Completed( spi, R, 'responder', I, keymat ) @ #i) ∧
+        (IdentityLearnt( id ) @ #i)) ∧
+       (¬(∃ #k. RevLtk( I ) @ #k))) ∧
+      (¬(∃ #k. RevDH( I ) @ #k))) ∧
+     (¬(∃ #k. RevDH( R ) @ #k))) ⇒
+    (¬(∃ #j. K( id ) @ #j))"
+/*
+guarded formula characterizing all counter-examples:
+"∃ spi I R keymat id #i.
+  (Completed( spi, R, 'responder', I, keymat ) @ #i) ∧
+  (IdentityLearnt( id ) @ #i)
+ ∧
+  (∀ #k. (RevLtk( I ) @ #k) ⇒ ⊥) ∧
+  (∀ #k. (RevDH( I ) @ #k) ⇒ ⊥) ∧
+  (∀ #k. (RevDH( R ) @ #k) ⇒ ⊥) ∧
+  (∃ #j. (K( id ) @ #j))"
+*/
+by sorry
+
+/* All wellformedness checks were successful. */
+
+/*
+Generated from:
+Tamarin version 1.12.0
+Maude version 3.1
+Git revision: 82780bbaf3328a45f624ddb41e51bf75425f851c (with uncommited changes), branch: master
+Compiled at: 2026-03-07 14:22:39.174278293 UTC
+*/
+
+end
+
+==============================================================================
+summary of summaries:
+
+analyzed: /mnt/d/grokSpace/downloads/ikev2-run/ikev2.spthy
+
+  processing time: 6.16s
+  
+  exists_session (exists-trace): analysis incomplete (1 steps)
+  exists_two_sessions (exists-trace): analysis incomplete (1 steps)
+  aliveness (all-traces): analysis incomplete (1 steps)
+  weak_agreement (all-traces): analysis incomplete (1 steps)
+  agreement (all-traces): verified (36 steps)
+  session_uniqueness (all-traces): analysis incomplete (1 steps)
+  consistency (all-traces): analysis incomplete (1 steps)
+  key_secrecy (all-traces): analysis incomplete (1 steps)
+  identity_hiding_R (all-traces): analysis incomplete (1 steps)
+
+==============================================================================

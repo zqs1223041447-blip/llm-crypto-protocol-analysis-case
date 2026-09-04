@@ -1,0 +1,2399 @@
+<scyther>
+  <claimstatus>
+    <claimtype><const>Secret</const></claimtype>
+    <label><tuple><op1><const>ns3</const></op1><op2><const>A1</const></op2></tuple></label>
+    <protocol><const>ns3</const></protocol>
+    <role><var name="A" free="true" /></role>
+    <parameter><var name="Na" free="true" /></parameter>
+    <failed>0</failed>
+    <count>1</count>
+    <states>27</states>
+    <complete />
+  </claimstatus>
+  <claimstatus>
+    <claimtype><const>Secret</const></claimtype>
+    <label><tuple><op1><const>ns3</const></op1><op2><const>A2</const></op2></tuple></label>
+    <protocol><const>ns3</const></protocol>
+    <role><var name="A" free="true" /></role>
+    <parameter><var name="Nb" free="true" /></parameter>
+    <failed>0</failed>
+    <count>1</count>
+    <states>25</states>
+    <complete />
+  </claimstatus>
+  <claimstatus>
+    <claimtype><const>Niagree</const></claimtype>
+    <label><tuple><op1><const>ns3</const></op1><op2><const>A3</const></op2></tuple></label>
+    <protocol><const>ns3</const></protocol>
+    <role><var name="A" free="true" /></role>
+    <failed>0</failed>
+    <count>1</count>
+    <states>18</states>
+    <complete />
+  </claimstatus>
+  <claimstatus>
+    <claimtype><const>Nisynch</const></claimtype>
+    <label><tuple><op1><const>ns3</const></op1><op2><const>A4</const></op2></tuple></label>
+    <protocol><const>ns3</const></protocol>
+    <role><var name="A" free="true" /></role>
+    <failed>0</failed>
+    <count>1</count>
+    <states>18</states>
+    <complete />
+  </claimstatus>
+  <state tracelength="7" id="1">
+    <broken>
+      <claim><const>Secret</const></claim>
+      <label><tuple><op1><const>ns3</const></op1><op2><const>B1</const></op2></tuple></label>
+    </broken>
+    <system>
+      <commandline>
+        <arg>D:\scyther-w32-v1.3.0\Scyther\scyther-w32.exe</arg>
+        <arg>--xml-output</arg>
+        <arg>--plain</arg>
+        <arg>--unbounded</arg>
+        <arg>D:\grokSpace\workspace\AIÓÅÐã°¸ÀýÏîÄ¿\experiment_v2\runs\_ns\V2-NS-PK-M3.spdl</arg>
+      </commandline>
+      <match>0</match>
+      <initialknowledge>
+        <termlist>
+          <const>pk</const>
+          <const>Alice</const>
+          <const>Bob</const>
+          <const>Charlie</const>
+          <const>Dave</const>
+          <const>Eve</const>
+          <const>Simon</const>
+          <const>Pete</const>
+          <apply><function><const>sk</const></function><arg><const>Eve</const></arg></apply>
+          <apply><function><const>k</const></function><arg><tuple><op1><const>Alice</const></op1><op2><const>Eve</const></op2></tuple></arg></apply>
+          <apply><function><const>k</const></function><arg><tuple><op1><const>Bob</const></op1><op2><const>Eve</const></op2></tuple></arg></apply>
+          <apply><function><const>k</const></function><arg><tuple><op1><const>Charlie</const></op1><op2><const>Eve</const></op2></tuple></arg></apply>
+          <apply><function><const>k</const></function><arg><tuple><op1><const>Eve</const></op1><op2><const>Alice</const></op2></tuple></arg></apply>
+        </termlist>
+      </initialknowledge>
+      <inversekeys>
+      </inversekeys>
+      <inversekeyfunctions>
+        <keypair>
+          <const>sk</const>
+          <const>pk</const>
+        </keypair>
+      </inversekeyfunctions>
+      <protocol>
+        <name><const>ns3</const></name>
+        <role>
+          <rolename>B</rolename>
+          <eventlist>
+            <event type="recv" index="0">
+              <label><tuple><op1><const>ns3</const></op1><op2><const>1</const></op2></tuple></label>
+              <from><var name="A" free="true" /></from>
+              <to><var name="B" free="true" /></to>
+              <message><encrypt><op><tuple><op1><var name="Na" free="true" /></op1><op2><var name="A" free="true" /></op2></tuple></op><key><apply><function><const>pk</const></function><arg><var name="B" free="true" /></arg></apply></key></encrypt></message>
+            </event>
+            <event type="send" index="1">
+              <label><tuple><op1><const>ns3</const></op1><op2><const>2</const></op2></tuple></label>
+              <from><var name="B" free="true" /></from>
+              <to><var name="A" free="true" /></to>
+              <message><encrypt><op><tuple><op1><var name="Na" free="true" /></op1><op2><var name="Nb" free="true" /></op2></tuple></op><key><apply><function><const>pk</const></function><arg><var name="A" free="true" /></arg></apply></key></encrypt></message>
+            </event>
+            <event type="recv" index="2">
+              <label><tuple><op1><const>ns3</const></op1><op2><const>3</const></op2></tuple></label>
+              <from><var name="A" free="true" /></from>
+              <to><var name="B" free="true" /></to>
+              <message><encrypt><op><var name="Nb" free="true" /></op><key><apply><function><const>pk</const></function><arg><var name="B" free="true" /></arg></apply></key></encrypt></message>
+            </event>
+            <event type="claim" index="3">
+              <label><tuple><op1><const>ns3</const></op1><op2><const>B1</const></op2></tuple></label>
+              <role><var name="B" free="true" /></role>
+              <type><const>Secret</const></type>
+              <argument><var name="Na" free="true" /></argument>
+            </event>
+            <event type="claim" index="4">
+              <label><tuple><op1><const>ns3</const></op1><op2><const>B2</const></op2></tuple></label>
+              <role><var name="B" free="true" /></role>
+              <type><const>Secret</const></type>
+              <argument><var name="Nb" free="true" /></argument>
+            </event>
+            <event type="claim" index="5">
+              <label><tuple><op1><const>ns3</const></op1><op2><const>B3</const></op2></tuple></label>
+              <role><var name="B" free="true" /></role>
+              <type><const>Niagree</const></type>
+            </event>
+            <event type="claim" index="6">
+              <label><tuple><op1><const>ns3</const></op1><op2><const>B4</const></op2></tuple></label>
+              <role><var name="B" free="true" /></role>
+              <type><const>Nisynch</const></type>
+            </event>
+          </eventlist>
+        </role>
+        <role>
+          <rolename>A</rolename>
+          <eventlist>
+            <event type="send" index="0">
+              <label><tuple><op1><const>ns3</const></op1><op2><const>1</const></op2></tuple></label>
+              <from><var name="A" free="true" /></from>
+              <to><var name="B" free="true" /></to>
+              <message><encrypt><op><tuple><op1><var name="Na" free="true" /></op1><op2><var name="A" free="true" /></op2></tuple></op><key><apply><function><const>pk</const></function><arg><var name="B" free="true" /></arg></apply></key></encrypt></message>
+            </event>
+            <event type="recv" index="1">
+              <label><tuple><op1><const>ns3</const></op1><op2><const>2</const></op2></tuple></label>
+              <from><var name="B" free="true" /></from>
+              <to><var name="A" free="true" /></to>
+              <message><encrypt><op><tuple><op1><var name="Na" free="true" /></op1><op2><var name="Nb" free="true" /></op2></tuple></op><key><apply><function><const>pk</const></function><arg><var name="A" free="true" /></arg></apply></key></encrypt></message>
+            </event>
+            <event type="send" index="2">
+              <label><tuple><op1><const>ns3</const></op1><op2><const>3</const></op2></tuple></label>
+              <from><var name="A" free="true" /></from>
+              <to><var name="B" free="true" /></to>
+              <message><encrypt><op><var name="Nb" free="true" /></op><key><apply><function><const>pk</const></function><arg><var name="B" free="true" /></arg></apply></key></encrypt></message>
+            </event>
+            <event type="claim" index="3">
+              <label><tuple><op1><const>ns3</const></op1><op2><const>A1</const></op2></tuple></label>
+              <role><var name="A" free="true" /></role>
+              <type><const>Secret</const></type>
+              <argument><var name="Na" free="true" /></argument>
+            </event>
+            <event type="claim" index="4">
+              <label><tuple><op1><const>ns3</const></op1><op2><const>A2</const></op2></tuple></label>
+              <role><var name="A" free="true" /></role>
+              <type><const>Secret</const></type>
+              <argument><var name="Nb" free="true" /></argument>
+            </event>
+            <event type="claim" index="5">
+              <label><tuple><op1><const>ns3</const></op1><op2><const>A3</const></op2></tuple></label>
+              <role><var name="A" free="true" /></role>
+              <type><const>Niagree</const></type>
+            </event>
+            <event type="claim" index="6">
+              <label><tuple><op1><const>ns3</const></op1><op2><const>A4</const></op2></tuple></label>
+              <role><var name="A" free="true" /></role>
+              <type><const>Nisynch</const></type>
+            </event>
+          </eventlist>
+        </role>
+      </protocol>
+      <untrusted>
+        <termlist>
+          <const>Eve</const>
+        </termlist>
+      </untrusted>
+    </system>
+    <variables>
+      <variable typeflaw="false" run="0">
+        <name>
+          <term>
+            <var name="NaV#0" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Nonce</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Na#5</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Nonce</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="0">
+        <name>
+          <term>
+            <var name="BV#0" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Bob</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="0">
+        <name>
+          <term>
+            <var name="AV#0" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Alice</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="5">
+        <name>
+          <term>
+            <var name="NbV#5" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Nonce</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Nb#0</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Nonce</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="5">
+        <name>
+          <term>
+            <var name="BV#5" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Eve</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="5">
+        <name>
+          <term>
+            <var name="AV#5" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Alice</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+    </variables>
+    <semitrace>
+      <run>
+        <runid>0</runid>
+        <protocol><const>ns3</const></protocol>
+        <rolename>B</rolename>
+        <roleagents>
+          <role>
+            <rolename>A</rolename>
+            <agent><const>Alice</const></agent>
+          </role>
+          <role>
+            <rolename>B</rolename>
+            <agent><const>Bob</const></agent>
+          </role>
+        </roleagents>
+        <variables>
+          <variable typeflaw="false" run="0">
+            <name>
+              <term>
+                <var name="NaV#0" free="true" />
+              </term>
+              <type>
+                <termlist>
+                  <const>Nonce</const>
+                </termlist>
+              </type>
+            </name>
+            <substitution>
+              <term>
+                <const>Na#5</const>
+              </term>
+              <type>
+                <termlist>
+                  <const>Nonce</const>
+                </termlist>
+              </type>
+            </substitution>
+          </variable>
+        </variables>
+        <eventlist>
+          <event type="recv" index="0">
+            <label><tuple><op1><const>ns3</const></op1><op2><const>1</const></op2></tuple></label>
+            <from><const>Alice</const></from>
+            <to><const>Bob</const></to>
+            <message><encrypt><op><tuple><op1><const>Na#5</const></op1><op2><const>Alice</const></op2></tuple></op><key><apply><function><const>pk</const></function><arg><const>Bob</const></arg></apply></key></encrypt></message>
+              <follows>
+                <after run="3" index="2" />
+                <encrypt><op><tuple><op1><const>Na#5</const></op1><op2><const>Alice</const></op2></tuple></op><key><apply><function><const>pk</const></function><arg><const>Bob</const></arg></apply></key></encrypt>
+              </follows>
+          </event>
+          <event type="send" index="1">
+            <label><tuple><op1><const>ns3</const></op1><op2><const>2</const></op2></tuple></label>
+            <from><const>Bob</const></from>
+            <to><const>Alice</const></to>
+            <message><encrypt><op><tuple><op1><const>Na#5</const></op1><op2><const>Nb#0</const></op2></tuple></op><key><apply><function><const>pk</const></function><arg><const>Alice</const></arg></apply></key></encrypt></message>
+          </event>
+          <event type="recv" index="2">
+            <label><tuple><op1><const>ns3</const></op1><op2><const>3</const></op2></tuple></label>
+            <from><const>Alice</const></from>
+            <to><const>Bob</const></to>
+            <message><encrypt><op><const>Nb#0</const></op><key><apply><function><const>pk</const></function><arg><const>Bob</const></arg></apply></key></encrypt></message>
+              <follows>
+                <after run="2" index="2" />
+                <encrypt><op><const>Nb#0</const></op><key><apply><function><const>pk</const></function><arg><const>Bob</const></arg></apply></key></encrypt>
+              </follows>
+          </event>
+          <event type="claim" index="3">
+            <label><tuple><op1><const>ns3</const></op1><op2><const>B1</const></op2></tuple></label>
+            <role><const>Bob</const></role>
+            <type><const>Secret</const></type>
+            <argument><const>Na#5</const></argument>
+              <follows>
+                <after run="7" index="2" />
+                <const>Na#5</const>
+              </follows>
+          </event>
+        </eventlist>
+      </run>
+      <run>
+        <runid>1</runid>
+        <protocol intruder="true"><const> INTRUDER </const></protocol>
+        <rolename>I_M: Atomic message</rolename>
+        <roleagents>
+        </roleagents>
+        <variables>
+        </variables>
+        <eventlist>
+          <event type="send" index="0">
+            <message><tuple><op1><tuple><op1><tuple><op1><const>Charlie</const></op1><op2><tuple><op1><const>Eve</const></op1><op2><const>Dave</const></op2></tuple></op2></tuple></op1><op2><tuple><op1><const>pk</const></op1><op2><tuple><op1><const>Bob</const></op1><op2><const>Alice</const></op2></tuple></op2></tuple></op2></tuple></op1><op2><tuple><op1><tuple><op1><apply><function><const>k</const></function><arg><tuple><op1><const>Bob</const></op1><op2><const>Eve</const></op2></tuple></arg></apply></op1><op2><tuple><op1><apply><function><const>k</const></function><arg><tuple><op1><const>Eve</const></op1><op2><const>Alice</const></op2></tuple></arg></apply></op1><op2><apply><function><const>k</const></function><arg><tuple><op1><const>Charlie</const></op1><op2><const>Eve</const></op2></tuple></arg></apply></op2></tuple></op2></tuple></op1><op2><tuple><op1><tuple><op1><const>Pete</const></op1><op2><const>Simon</const></op2></tuple></op1><op2><tuple><op1><apply><function><const>k</const></function><arg><tuple><op1><const>Alice</const></op1><op2><const>Eve</const></op2></tuple></arg></apply></op1><op2><apply><function><const>sk</const></function><arg><const>Eve</const></arg></apply></op2></tuple></op2></tuple></op2></tuple></op2></tuple></message>
+          </event>
+        </eventlist>
+      </run>
+      <run>
+        <runid>2</runid>
+        <protocol intruder="true"><const> INTRUDER </const></protocol>
+        <rolename>I_E: Encrypt</rolename>
+        <roleagents>
+        </roleagents>
+        <variables>
+        </variables>
+        <eventlist>
+          <event type="recv" index="0">
+            <message><const>Nb#0</const></message>
+              <follows>
+                <after run="6" index="2" />
+                <const>Nb#0</const>
+              </follows>
+          </event>
+          <event type="recv" index="1">
+            <message><apply><function><const>pk</const></function><arg><const>Bob</const></arg></apply></message>
+              <follows>
+                <after run="4" index="2" />
+                <apply><function><const>pk</const></function><arg><const>Bob</const></arg></apply>
+              </follows>
+          </event>
+          <event type="send" index="2">
+            <message><encrypt><op><const>Nb#0</const></op><key><apply><function><const>pk</const></function><arg><const>Bob</const></arg></apply></key></encrypt></message>
+          </event>
+        </eventlist>
+      </run>
+      <run>
+        <runid>3</runid>
+        <protocol intruder="true"><const> INTRUDER </const></protocol>
+        <rolename>I_E: Encrypt</rolename>
+        <roleagents>
+        </roleagents>
+        <variables>
+        </variables>
+        <eventlist>
+          <event type="recv" index="0">
+            <message><tuple><op1><const>Na#5</const></op1><op2><const>Alice</const></op2></tuple></message>
+              <follows>
+                <unbound />
+                <const>Alice</const>
+              </follows>
+              <follows>
+                <after run="7" index="2" />
+                <const>Na#5</const>
+              </follows>
+          </event>
+          <event type="recv" index="1">
+            <message><apply><function><const>pk</const></function><arg><const>Bob</const></arg></apply></message>
+              <follows>
+                <after run="4" index="2" />
+                <apply><function><const>pk</const></function><arg><const>Bob</const></arg></apply>
+              </follows>
+          </event>
+          <event type="send" index="2">
+            <message><encrypt><op><tuple><op1><const>Na#5</const></op1><op2><const>Alice</const></op2></tuple></op><key><apply><function><const>pk</const></function><arg><const>Bob</const></arg></apply></key></encrypt></message>
+          </event>
+        </eventlist>
+      </run>
+      <run>
+        <runid>4</runid>
+        <protocol intruder="true"><const> INTRUDER </const></protocol>
+        <rolename>I_E: Encrypt</rolename>
+        <roleagents>
+        </roleagents>
+        <variables>
+        </variables>
+        <eventlist>
+          <event type="recv" index="0">
+            <message><const>Bob</const></message>
+              <follows>
+                <unbound />
+                <const>Bob</const>
+              </follows>
+          </event>
+          <event type="recv" index="1">
+            <message><const>pk</const></message>
+              <follows>
+                <after run="1" index="0" />
+                <const>pk</const>
+              </follows>
+          </event>
+          <event type="send" index="2">
+            <message><apply><function><const>pk</const></function><arg><const>Bob</const></arg></apply></message>
+          </event>
+        </eventlist>
+      </run>
+      <run>
+        <runid>5</runid>
+        <protocol untrustedrun="true"><const>ns3</const></protocol>
+        <rolename>A</rolename>
+        <roleagents>
+          <role>
+            <rolename>A</rolename>
+            <agent><const>Alice</const></agent>
+          </role>
+          <role>
+            <rolename>B</rolename>
+            <agent><const>Eve</const></agent>
+          </role>
+        </roleagents>
+        <variables>
+          <variable typeflaw="false" run="5">
+            <name>
+              <term>
+                <var name="NbV#5" free="true" />
+              </term>
+              <type>
+                <termlist>
+                  <const>Nonce</const>
+                </termlist>
+              </type>
+            </name>
+            <substitution>
+              <term>
+                <const>Nb#0</const>
+              </term>
+              <type>
+                <termlist>
+                  <const>Nonce</const>
+                </termlist>
+              </type>
+            </substitution>
+          </variable>
+        </variables>
+        <eventlist>
+          <event type="send" index="0">
+            <label><tuple><op1><const>ns3</const></op1><op2><const>1</const></op2></tuple></label>
+            <from><const>Alice</const></from>
+            <to><const>Eve</const></to>
+            <message><encrypt><op><tuple><op1><const>Na#5</const></op1><op2><const>Alice</const></op2></tuple></op><key><apply><function><const>pk</const></function><arg><const>Eve</const></arg></apply></key></encrypt></message>
+          </event>
+          <event type="recv" index="1">
+            <label><tuple><op1><const>ns3</const></op1><op2><const>2</const></op2></tuple></label>
+            <from><const>Eve</const></from>
+            <to><const>Alice</const></to>
+            <message><encrypt><op><tuple><op1><const>Na#5</const></op1><op2><const>Nb#0</const></op2></tuple></op><key><apply><function><const>pk</const></function><arg><const>Alice</const></arg></apply></key></encrypt></message>
+              <follows>
+                <after run="0" index="1" />
+                <encrypt><op><tuple><op1><const>Na#5</const></op1><op2><const>Nb#0</const></op2></tuple></op><key><apply><function><const>pk</const></function><arg><const>Alice</const></arg></apply></key></encrypt>
+              </follows>
+          </event>
+          <event type="send" index="2">
+            <label><tuple><op1><const>ns3</const></op1><op2><const>3</const></op2></tuple></label>
+            <from><const>Alice</const></from>
+            <to><const>Eve</const></to>
+            <message><encrypt><op><const>Nb#0</const></op><key><apply><function><const>pk</const></function><arg><const>Eve</const></arg></apply></key></encrypt></message>
+          </event>
+        </eventlist>
+      </run>
+      <run>
+        <runid>6</runid>
+        <protocol intruder="true"><const> INTRUDER </const></protocol>
+        <rolename>I_D: Decrypt</rolename>
+        <roleagents>
+        </roleagents>
+        <variables>
+        </variables>
+        <eventlist>
+          <event type="recv" index="0">
+            <message><encrypt><op><const>Nb#0</const></op><key><apply><function><const>pk</const></function><arg><const>Eve</const></arg></apply></key></encrypt></message>
+              <follows>
+                <after run="5" index="2" />
+                <encrypt><op><const>Nb#0</const></op><key><apply><function><const>pk</const></function><arg><const>Eve</const></arg></apply></key></encrypt>
+              </follows>
+          </event>
+          <event type="recv" index="1">
+            <message><apply><function><const>sk</const></function><arg><const>Eve</const></arg></apply></message>
+              <follows>
+                <after run="1" index="0" />
+                <apply><function><const>sk</const></function><arg><const>Eve</const></arg></apply>
+              </follows>
+          </event>
+          <event type="send" index="2">
+            <message><const>Nb#0</const></message>
+          </event>
+        </eventlist>
+      </run>
+      <run>
+        <runid>7</runid>
+        <protocol intruder="true"><const> INTRUDER </const></protocol>
+        <rolename>I_D: Decrypt</rolename>
+        <roleagents>
+        </roleagents>
+        <variables>
+        </variables>
+        <eventlist>
+          <event type="recv" index="0">
+            <message><encrypt><op><tuple><op1><const>Na#5</const></op1><op2><const>Alice</const></op2></tuple></op><key><apply><function><const>pk</const></function><arg><const>Eve</const></arg></apply></key></encrypt></message>
+              <follows>
+                <after run="5" index="0" />
+                <encrypt><op><tuple><op1><const>Na#5</const></op1><op2><const>Alice</const></op2></tuple></op><key><apply><function><const>pk</const></function><arg><const>Eve</const></arg></apply></key></encrypt>
+              </follows>
+          </event>
+          <event type="recv" index="1">
+            <message><apply><function><const>sk</const></function><arg><const>Eve</const></arg></apply></message>
+              <follows>
+                <after run="1" index="0" />
+                <apply><function><const>sk</const></function><arg><const>Eve</const></arg></apply>
+              </follows>
+          </event>
+          <event type="send" index="2">
+            <message><tuple><op1><const>Na#5</const></op1><op2><const>Alice</const></op2></tuple></message>
+          </event>
+        </eventlist>
+      </run>
+    </semitrace>
+  </state>
+  <claimstatus>
+    <claimtype><const>Secret</const></claimtype>
+    <label><tuple><op1><const>ns3</const></op1><op2><const>B1</const></op2></tuple></label>
+    <protocol><const>ns3</const></protocol>
+    <role><var name="B" free="true" /></role>
+    <parameter><var name="Na" free="true" /></parameter>
+    <failed>1</failed>
+    <count>2</count>
+    <states>79</states>
+  </claimstatus>
+  <state tracelength="8" id="2">
+    <broken>
+      <claim><const>Secret</const></claim>
+      <label><tuple><op1><const>ns3</const></op1><op2><const>B2</const></op2></tuple></label>
+    </broken>
+    <system>
+      <commandline>
+        <arg>D:\scyther-w32-v1.3.0\Scyther\scyther-w32.exe</arg>
+        <arg>--xml-output</arg>
+        <arg>--plain</arg>
+        <arg>--unbounded</arg>
+        <arg>D:\grokSpace\workspace\AIÓÅÐã°¸ÀýÏîÄ¿\experiment_v2\runs\_ns\V2-NS-PK-M3.spdl</arg>
+      </commandline>
+      <match>0</match>
+      <initialknowledge>
+        <termlist>
+          <const>pk</const>
+          <const>Alice</const>
+          <const>Bob</const>
+          <const>Charlie</const>
+          <const>Dave</const>
+          <const>Eve</const>
+          <const>Simon</const>
+          <const>Pete</const>
+          <apply><function><const>sk</const></function><arg><const>Eve</const></arg></apply>
+          <apply><function><const>k</const></function><arg><tuple><op1><const>Alice</const></op1><op2><const>Eve</const></op2></tuple></arg></apply>
+          <apply><function><const>k</const></function><arg><tuple><op1><const>Bob</const></op1><op2><const>Eve</const></op2></tuple></arg></apply>
+          <apply><function><const>k</const></function><arg><tuple><op1><const>Charlie</const></op1><op2><const>Eve</const></op2></tuple></arg></apply>
+          <apply><function><const>k</const></function><arg><tuple><op1><const>Eve</const></op1><op2><const>Alice</const></op2></tuple></arg></apply>
+        </termlist>
+      </initialknowledge>
+      <inversekeys>
+      </inversekeys>
+      <inversekeyfunctions>
+        <keypair>
+          <const>sk</const>
+          <const>pk</const>
+        </keypair>
+      </inversekeyfunctions>
+      <protocol>
+        <name><const>ns3</const></name>
+        <role>
+          <rolename>B</rolename>
+          <eventlist>
+            <event type="recv" index="0">
+              <label><tuple><op1><const>ns3</const></op1><op2><const>1</const></op2></tuple></label>
+              <from><var name="A" free="true" /></from>
+              <to><var name="B" free="true" /></to>
+              <message><encrypt><op><tuple><op1><var name="Na" free="true" /></op1><op2><var name="A" free="true" /></op2></tuple></op><key><apply><function><const>pk</const></function><arg><var name="B" free="true" /></arg></apply></key></encrypt></message>
+            </event>
+            <event type="send" index="1">
+              <label><tuple><op1><const>ns3</const></op1><op2><const>2</const></op2></tuple></label>
+              <from><var name="B" free="true" /></from>
+              <to><var name="A" free="true" /></to>
+              <message><encrypt><op><tuple><op1><var name="Na" free="true" /></op1><op2><var name="Nb" free="true" /></op2></tuple></op><key><apply><function><const>pk</const></function><arg><var name="A" free="true" /></arg></apply></key></encrypt></message>
+            </event>
+            <event type="recv" index="2">
+              <label><tuple><op1><const>ns3</const></op1><op2><const>3</const></op2></tuple></label>
+              <from><var name="A" free="true" /></from>
+              <to><var name="B" free="true" /></to>
+              <message><encrypt><op><var name="Nb" free="true" /></op><key><apply><function><const>pk</const></function><arg><var name="B" free="true" /></arg></apply></key></encrypt></message>
+            </event>
+            <event type="claim" index="3">
+              <label><tuple><op1><const>ns3</const></op1><op2><const>B1</const></op2></tuple></label>
+              <role><var name="B" free="true" /></role>
+              <type><const>Secret</const></type>
+              <argument><var name="Na" free="true" /></argument>
+            </event>
+            <event type="claim" index="4">
+              <label><tuple><op1><const>ns3</const></op1><op2><const>B2</const></op2></tuple></label>
+              <role><var name="B" free="true" /></role>
+              <type><const>Secret</const></type>
+              <argument><var name="Nb" free="true" /></argument>
+            </event>
+            <event type="claim" index="5">
+              <label><tuple><op1><const>ns3</const></op1><op2><const>B3</const></op2></tuple></label>
+              <role><var name="B" free="true" /></role>
+              <type><const>Niagree</const></type>
+            </event>
+            <event type="claim" index="6">
+              <label><tuple><op1><const>ns3</const></op1><op2><const>B4</const></op2></tuple></label>
+              <role><var name="B" free="true" /></role>
+              <type><const>Nisynch</const></type>
+            </event>
+          </eventlist>
+        </role>
+        <role>
+          <rolename>A</rolename>
+          <eventlist>
+            <event type="send" index="0">
+              <label><tuple><op1><const>ns3</const></op1><op2><const>1</const></op2></tuple></label>
+              <from><var name="A" free="true" /></from>
+              <to><var name="B" free="true" /></to>
+              <message><encrypt><op><tuple><op1><var name="Na" free="true" /></op1><op2><var name="A" free="true" /></op2></tuple></op><key><apply><function><const>pk</const></function><arg><var name="B" free="true" /></arg></apply></key></encrypt></message>
+            </event>
+            <event type="recv" index="1">
+              <label><tuple><op1><const>ns3</const></op1><op2><const>2</const></op2></tuple></label>
+              <from><var name="B" free="true" /></from>
+              <to><var name="A" free="true" /></to>
+              <message><encrypt><op><tuple><op1><var name="Na" free="true" /></op1><op2><var name="Nb" free="true" /></op2></tuple></op><key><apply><function><const>pk</const></function><arg><var name="A" free="true" /></arg></apply></key></encrypt></message>
+            </event>
+            <event type="send" index="2">
+              <label><tuple><op1><const>ns3</const></op1><op2><const>3</const></op2></tuple></label>
+              <from><var name="A" free="true" /></from>
+              <to><var name="B" free="true" /></to>
+              <message><encrypt><op><var name="Nb" free="true" /></op><key><apply><function><const>pk</const></function><arg><var name="B" free="true" /></arg></apply></key></encrypt></message>
+            </event>
+            <event type="claim" index="3">
+              <label><tuple><op1><const>ns3</const></op1><op2><const>A1</const></op2></tuple></label>
+              <role><var name="A" free="true" /></role>
+              <type><const>Secret</const></type>
+              <argument><var name="Na" free="true" /></argument>
+            </event>
+            <event type="claim" index="4">
+              <label><tuple><op1><const>ns3</const></op1><op2><const>A2</const></op2></tuple></label>
+              <role><var name="A" free="true" /></role>
+              <type><const>Secret</const></type>
+              <argument><var name="Nb" free="true" /></argument>
+            </event>
+            <event type="claim" index="5">
+              <label><tuple><op1><const>ns3</const></op1><op2><const>A3</const></op2></tuple></label>
+              <role><var name="A" free="true" /></role>
+              <type><const>Niagree</const></type>
+            </event>
+            <event type="claim" index="6">
+              <label><tuple><op1><const>ns3</const></op1><op2><const>A4</const></op2></tuple></label>
+              <role><var name="A" free="true" /></role>
+              <type><const>Nisynch</const></type>
+            </event>
+          </eventlist>
+        </role>
+      </protocol>
+      <untrusted>
+        <termlist>
+          <const>Eve</const>
+        </termlist>
+      </untrusted>
+    </system>
+    <variables>
+      <variable typeflaw="false" run="0">
+        <name>
+          <term>
+            <var name="NaV#0" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Nonce</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Na#5</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Nonce</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="0">
+        <name>
+          <term>
+            <var name="BV#0" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Bob</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="0">
+        <name>
+          <term>
+            <var name="AV#0" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Alice</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="5">
+        <name>
+          <term>
+            <var name="NbV#5" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Nonce</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Nb#0</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Nonce</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="5">
+        <name>
+          <term>
+            <var name="BV#5" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Eve</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="5">
+        <name>
+          <term>
+            <var name="AV#5" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Alice</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+    </variables>
+    <semitrace>
+      <run>
+        <runid>0</runid>
+        <protocol><const>ns3</const></protocol>
+        <rolename>B</rolename>
+        <roleagents>
+          <role>
+            <rolename>A</rolename>
+            <agent><const>Alice</const></agent>
+          </role>
+          <role>
+            <rolename>B</rolename>
+            <agent><const>Bob</const></agent>
+          </role>
+        </roleagents>
+        <variables>
+          <variable typeflaw="false" run="0">
+            <name>
+              <term>
+                <var name="NaV#0" free="true" />
+              </term>
+              <type>
+                <termlist>
+                  <const>Nonce</const>
+                </termlist>
+              </type>
+            </name>
+            <substitution>
+              <term>
+                <const>Na#5</const>
+              </term>
+              <type>
+                <termlist>
+                  <const>Nonce</const>
+                </termlist>
+              </type>
+            </substitution>
+          </variable>
+        </variables>
+        <eventlist>
+          <event type="recv" index="0">
+            <label><tuple><op1><const>ns3</const></op1><op2><const>1</const></op2></tuple></label>
+            <from><const>Alice</const></from>
+            <to><const>Bob</const></to>
+            <message><encrypt><op><tuple><op1><const>Na#5</const></op1><op2><const>Alice</const></op2></tuple></op><key><apply><function><const>pk</const></function><arg><const>Bob</const></arg></apply></key></encrypt></message>
+              <follows>
+                <after run="3" index="2" />
+                <encrypt><op><tuple><op1><const>Na#5</const></op1><op2><const>Alice</const></op2></tuple></op><key><apply><function><const>pk</const></function><arg><const>Bob</const></arg></apply></key></encrypt>
+              </follows>
+          </event>
+          <event type="send" index="1">
+            <label><tuple><op1><const>ns3</const></op1><op2><const>2</const></op2></tuple></label>
+            <from><const>Bob</const></from>
+            <to><const>Alice</const></to>
+            <message><encrypt><op><tuple><op1><const>Na#5</const></op1><op2><const>Nb#0</const></op2></tuple></op><key><apply><function><const>pk</const></function><arg><const>Alice</const></arg></apply></key></encrypt></message>
+          </event>
+          <event type="recv" index="2">
+            <label><tuple><op1><const>ns3</const></op1><op2><const>3</const></op2></tuple></label>
+            <from><const>Alice</const></from>
+            <to><const>Bob</const></to>
+            <message><encrypt><op><const>Nb#0</const></op><key><apply><function><const>pk</const></function><arg><const>Bob</const></arg></apply></key></encrypt></message>
+              <follows>
+                <after run="2" index="2" />
+                <encrypt><op><const>Nb#0</const></op><key><apply><function><const>pk</const></function><arg><const>Bob</const></arg></apply></key></encrypt>
+              </follows>
+          </event>
+          <event type="claim" index="3">
+            <label><tuple><op1><const>ns3</const></op1><op2><const>B1</const></op2></tuple></label>
+            <role><const>Bob</const></role>
+            <type><const>Secret</const></type>
+            <argument><const>Na#5</const></argument>
+          </event>
+          <event type="claim" index="4">
+            <label><tuple><op1><const>ns3</const></op1><op2><const>B2</const></op2></tuple></label>
+            <role><const>Bob</const></role>
+            <type><const>Secret</const></type>
+            <argument><const>Nb#0</const></argument>
+              <follows>
+                <after run="6" index="2" />
+                <const>Nb#0</const>
+              </follows>
+          </event>
+        </eventlist>
+      </run>
+      <run>
+        <runid>1</runid>
+        <protocol intruder="true"><const> INTRUDER </const></protocol>
+        <rolename>I_M: Atomic message</rolename>
+        <roleagents>
+        </roleagents>
+        <variables>
+        </variables>
+        <eventlist>
+          <event type="send" index="0">
+            <message><tuple><op1><tuple><op1><tuple><op1><const>Charlie</const></op1><op2><tuple><op1><const>Eve</const></op1><op2><const>Dave</const></op2></tuple></op2></tuple></op1><op2><tuple><op1><const>pk</const></op1><op2><tuple><op1><const>Bob</const></op1><op2><const>Alice</const></op2></tuple></op2></tuple></op2></tuple></op1><op2><tuple><op1><tuple><op1><apply><function><const>k</const></function><arg><tuple><op1><const>Bob</const></op1><op2><const>Eve</const></op2></tuple></arg></apply></op1><op2><tuple><op1><apply><function><const>k</const></function><arg><tuple><op1><const>Eve</const></op1><op2><const>Alice</const></op2></tuple></arg></apply></op1><op2><apply><function><const>k</const></function><arg><tuple><op1><const>Charlie</const></op1><op2><const>Eve</const></op2></tuple></arg></apply></op2></tuple></op2></tuple></op1><op2><tuple><op1><tuple><op1><const>Pete</const></op1><op2><const>Simon</const></op2></tuple></op1><op2><tuple><op1><apply><function><const>k</const></function><arg><tuple><op1><const>Alice</const></op1><op2><const>Eve</const></op2></tuple></arg></apply></op1><op2><apply><function><const>sk</const></function><arg><const>Eve</const></arg></apply></op2></tuple></op2></tuple></op2></tuple></op2></tuple></message>
+          </event>
+        </eventlist>
+      </run>
+      <run>
+        <runid>2</runid>
+        <protocol intruder="true"><const> INTRUDER </const></protocol>
+        <rolename>I_E: Encrypt</rolename>
+        <roleagents>
+        </roleagents>
+        <variables>
+        </variables>
+        <eventlist>
+          <event type="recv" index="0">
+            <message><const>Nb#0</const></message>
+              <follows>
+                <after run="6" index="2" />
+                <const>Nb#0</const>
+              </follows>
+          </event>
+          <event type="recv" index="1">
+            <message><apply><function><const>pk</const></function><arg><const>Bob</const></arg></apply></message>
+              <follows>
+                <after run="4" index="2" />
+                <apply><function><const>pk</const></function><arg><const>Bob</const></arg></apply>
+              </follows>
+          </event>
+          <event type="send" index="2">
+            <message><encrypt><op><const>Nb#0</const></op><key><apply><function><const>pk</const></function><arg><const>Bob</const></arg></apply></key></encrypt></message>
+          </event>
+        </eventlist>
+      </run>
+      <run>
+        <runid>3</runid>
+        <protocol intruder="true"><const> INTRUDER </const></protocol>
+        <rolename>I_E: Encrypt</rolename>
+        <roleagents>
+        </roleagents>
+        <variables>
+        </variables>
+        <eventlist>
+          <event type="recv" index="0">
+            <message><tuple><op1><const>Na#5</const></op1><op2><const>Alice</const></op2></tuple></message>
+              <follows>
+                <unbound />
+                <const>Alice</const>
+              </follows>
+              <follows>
+                <after run="7" index="2" />
+                <const>Na#5</const>
+              </follows>
+          </event>
+          <event type="recv" index="1">
+            <message><apply><function><const>pk</const></function><arg><const>Bob</const></arg></apply></message>
+              <follows>
+                <after run="4" index="2" />
+                <apply><function><const>pk</const></function><arg><const>Bob</const></arg></apply>
+              </follows>
+          </event>
+          <event type="send" index="2">
+            <message><encrypt><op><tuple><op1><const>Na#5</const></op1><op2><const>Alice</const></op2></tuple></op><key><apply><function><const>pk</const></function><arg><const>Bob</const></arg></apply></key></encrypt></message>
+          </event>
+        </eventlist>
+      </run>
+      <run>
+        <runid>4</runid>
+        <protocol intruder="true"><const> INTRUDER </const></protocol>
+        <rolename>I_E: Encrypt</rolename>
+        <roleagents>
+        </roleagents>
+        <variables>
+        </variables>
+        <eventlist>
+          <event type="recv" index="0">
+            <message><const>Bob</const></message>
+              <follows>
+                <unbound />
+                <const>Bob</const>
+              </follows>
+          </event>
+          <event type="recv" index="1">
+            <message><const>pk</const></message>
+              <follows>
+                <after run="1" index="0" />
+                <const>pk</const>
+              </follows>
+          </event>
+          <event type="send" index="2">
+            <message><apply><function><const>pk</const></function><arg><const>Bob</const></arg></apply></message>
+          </event>
+        </eventlist>
+      </run>
+      <run>
+        <runid>5</runid>
+        <protocol untrustedrun="true"><const>ns3</const></protocol>
+        <rolename>A</rolename>
+        <roleagents>
+          <role>
+            <rolename>A</rolename>
+            <agent><const>Alice</const></agent>
+          </role>
+          <role>
+            <rolename>B</rolename>
+            <agent><const>Eve</const></agent>
+          </role>
+        </roleagents>
+        <variables>
+          <variable typeflaw="false" run="5">
+            <name>
+              <term>
+                <var name="NbV#5" free="true" />
+              </term>
+              <type>
+                <termlist>
+                  <const>Nonce</const>
+                </termlist>
+              </type>
+            </name>
+            <substitution>
+              <term>
+                <const>Nb#0</const>
+              </term>
+              <type>
+                <termlist>
+                  <const>Nonce</const>
+                </termlist>
+              </type>
+            </substitution>
+          </variable>
+        </variables>
+        <eventlist>
+          <event type="send" index="0">
+            <label><tuple><op1><const>ns3</const></op1><op2><const>1</const></op2></tuple></label>
+            <from><const>Alice</const></from>
+            <to><const>Eve</const></to>
+            <message><encrypt><op><tuple><op1><const>Na#5</const></op1><op2><const>Alice</const></op2></tuple></op><key><apply><function><const>pk</const></function><arg><const>Eve</const></arg></apply></key></encrypt></message>
+          </event>
+          <event type="recv" index="1">
+            <label><tuple><op1><const>ns3</const></op1><op2><const>2</const></op2></tuple></label>
+            <from><const>Eve</const></from>
+            <to><const>Alice</const></to>
+            <message><encrypt><op><tuple><op1><const>Na#5</const></op1><op2><const>Nb#0</const></op2></tuple></op><key><apply><function><const>pk</const></function><arg><const>Alice</const></arg></apply></key></encrypt></message>
+              <follows>
+                <after run="0" index="1" />
+                <encrypt><op><tuple><op1><const>Na#5</const></op1><op2><const>Nb#0</const></op2></tuple></op><key><apply><function><const>pk</const></function><arg><const>Alice</const></arg></apply></key></encrypt>
+              </follows>
+          </event>
+          <event type="send" index="2">
+            <label><tuple><op1><const>ns3</const></op1><op2><const>3</const></op2></tuple></label>
+            <from><const>Alice</const></from>
+            <to><const>Eve</const></to>
+            <message><encrypt><op><const>Nb#0</const></op><key><apply><function><const>pk</const></function><arg><const>Eve</const></arg></apply></key></encrypt></message>
+          </event>
+        </eventlist>
+      </run>
+      <run>
+        <runid>6</runid>
+        <protocol intruder="true"><const> INTRUDER </const></protocol>
+        <rolename>I_D: Decrypt</rolename>
+        <roleagents>
+        </roleagents>
+        <variables>
+        </variables>
+        <eventlist>
+          <event type="recv" index="0">
+            <message><encrypt><op><const>Nb#0</const></op><key><apply><function><const>pk</const></function><arg><const>Eve</const></arg></apply></key></encrypt></message>
+              <follows>
+                <after run="5" index="2" />
+                <encrypt><op><const>Nb#0</const></op><key><apply><function><const>pk</const></function><arg><const>Eve</const></arg></apply></key></encrypt>
+              </follows>
+          </event>
+          <event type="recv" index="1">
+            <message><apply><function><const>sk</const></function><arg><const>Eve</const></arg></apply></message>
+              <follows>
+                <after run="1" index="0" />
+                <apply><function><const>sk</const></function><arg><const>Eve</const></arg></apply>
+              </follows>
+          </event>
+          <event type="send" index="2">
+            <message><const>Nb#0</const></message>
+          </event>
+        </eventlist>
+      </run>
+      <run>
+        <runid>7</runid>
+        <protocol intruder="true"><const> INTRUDER </const></protocol>
+        <rolename>I_D: Decrypt</rolename>
+        <roleagents>
+        </roleagents>
+        <variables>
+        </variables>
+        <eventlist>
+          <event type="recv" index="0">
+            <message><encrypt><op><tuple><op1><const>Na#5</const></op1><op2><const>Alice</const></op2></tuple></op><key><apply><function><const>pk</const></function><arg><const>Eve</const></arg></apply></key></encrypt></message>
+              <follows>
+                <after run="5" index="0" />
+                <encrypt><op><tuple><op1><const>Na#5</const></op1><op2><const>Alice</const></op2></tuple></op><key><apply><function><const>pk</const></function><arg><const>Eve</const></arg></apply></key></encrypt>
+              </follows>
+          </event>
+          <event type="recv" index="1">
+            <message><apply><function><const>sk</const></function><arg><const>Eve</const></arg></apply></message>
+              <follows>
+                <after run="1" index="0" />
+                <apply><function><const>sk</const></function><arg><const>Eve</const></arg></apply>
+              </follows>
+          </event>
+          <event type="send" index="2">
+            <message><tuple><op1><const>Na#5</const></op1><op2><const>Alice</const></op2></tuple></message>
+          </event>
+        </eventlist>
+      </run>
+    </semitrace>
+  </state>
+  <claimstatus>
+    <claimtype><const>Secret</const></claimtype>
+    <label><tuple><op1><const>ns3</const></op1><op2><const>B2</const></op2></tuple></label>
+    <protocol><const>ns3</const></protocol>
+    <role><var name="B" free="true" /></role>
+    <parameter><var name="Nb" free="true" /></parameter>
+    <failed>1</failed>
+    <count>2</count>
+    <states>81</states>
+  </claimstatus>
+  <state tracelength="9" id="3">
+    <broken>
+      <claim><const>Niagree</const></claim>
+      <label><tuple><op1><const>ns3</const></op1><op2><const>B3</const></op2></tuple></label>
+    </broken>
+    <system>
+      <commandline>
+        <arg>D:\scyther-w32-v1.3.0\Scyther\scyther-w32.exe</arg>
+        <arg>--xml-output</arg>
+        <arg>--plain</arg>
+        <arg>--unbounded</arg>
+        <arg>D:\grokSpace\workspace\AIÓÅÐã°¸ÀýÏîÄ¿\experiment_v2\runs\_ns\V2-NS-PK-M3.spdl</arg>
+      </commandline>
+      <match>0</match>
+      <initialknowledge>
+        <termlist>
+          <const>pk</const>
+          <const>Alice</const>
+          <const>Bob</const>
+          <const>Charlie</const>
+          <const>Dave</const>
+          <const>Eve</const>
+          <const>Simon</const>
+          <const>Pete</const>
+          <apply><function><const>sk</const></function><arg><const>Eve</const></arg></apply>
+          <apply><function><const>k</const></function><arg><tuple><op1><const>Alice</const></op1><op2><const>Eve</const></op2></tuple></arg></apply>
+          <apply><function><const>k</const></function><arg><tuple><op1><const>Bob</const></op1><op2><const>Eve</const></op2></tuple></arg></apply>
+          <apply><function><const>k</const></function><arg><tuple><op1><const>Charlie</const></op1><op2><const>Eve</const></op2></tuple></arg></apply>
+          <apply><function><const>k</const></function><arg><tuple><op1><const>Eve</const></op1><op2><const>Alice</const></op2></tuple></arg></apply>
+        </termlist>
+      </initialknowledge>
+      <inversekeys>
+      </inversekeys>
+      <inversekeyfunctions>
+        <keypair>
+          <const>sk</const>
+          <const>pk</const>
+        </keypair>
+      </inversekeyfunctions>
+      <protocol>
+        <name><const>ns3</const></name>
+        <role>
+          <rolename>B</rolename>
+          <eventlist>
+            <event type="recv" index="0">
+              <label><tuple><op1><const>ns3</const></op1><op2><const>1</const></op2></tuple></label>
+              <from><var name="A" free="true" /></from>
+              <to><var name="B" free="true" /></to>
+              <message><encrypt><op><tuple><op1><var name="Na" free="true" /></op1><op2><var name="A" free="true" /></op2></tuple></op><key><apply><function><const>pk</const></function><arg><var name="B" free="true" /></arg></apply></key></encrypt></message>
+            </event>
+            <event type="send" index="1">
+              <label><tuple><op1><const>ns3</const></op1><op2><const>2</const></op2></tuple></label>
+              <from><var name="B" free="true" /></from>
+              <to><var name="A" free="true" /></to>
+              <message><encrypt><op><tuple><op1><var name="Na" free="true" /></op1><op2><var name="Nb" free="true" /></op2></tuple></op><key><apply><function><const>pk</const></function><arg><var name="A" free="true" /></arg></apply></key></encrypt></message>
+            </event>
+            <event type="recv" index="2">
+              <label><tuple><op1><const>ns3</const></op1><op2><const>3</const></op2></tuple></label>
+              <from><var name="A" free="true" /></from>
+              <to><var name="B" free="true" /></to>
+              <message><encrypt><op><var name="Nb" free="true" /></op><key><apply><function><const>pk</const></function><arg><var name="B" free="true" /></arg></apply></key></encrypt></message>
+            </event>
+            <event type="claim" index="3">
+              <label><tuple><op1><const>ns3</const></op1><op2><const>B1</const></op2></tuple></label>
+              <role><var name="B" free="true" /></role>
+              <type><const>Secret</const></type>
+              <argument><var name="Na" free="true" /></argument>
+            </event>
+            <event type="claim" index="4">
+              <label><tuple><op1><const>ns3</const></op1><op2><const>B2</const></op2></tuple></label>
+              <role><var name="B" free="true" /></role>
+              <type><const>Secret</const></type>
+              <argument><var name="Nb" free="true" /></argument>
+            </event>
+            <event type="claim" index="5">
+              <label><tuple><op1><const>ns3</const></op1><op2><const>B3</const></op2></tuple></label>
+              <role><var name="B" free="true" /></role>
+              <type><const>Niagree</const></type>
+            </event>
+            <event type="claim" index="6">
+              <label><tuple><op1><const>ns3</const></op1><op2><const>B4</const></op2></tuple></label>
+              <role><var name="B" free="true" /></role>
+              <type><const>Nisynch</const></type>
+            </event>
+          </eventlist>
+        </role>
+        <role>
+          <rolename>A</rolename>
+          <eventlist>
+            <event type="send" index="0">
+              <label><tuple><op1><const>ns3</const></op1><op2><const>1</const></op2></tuple></label>
+              <from><var name="A" free="true" /></from>
+              <to><var name="B" free="true" /></to>
+              <message><encrypt><op><tuple><op1><var name="Na" free="true" /></op1><op2><var name="A" free="true" /></op2></tuple></op><key><apply><function><const>pk</const></function><arg><var name="B" free="true" /></arg></apply></key></encrypt></message>
+            </event>
+            <event type="recv" index="1">
+              <label><tuple><op1><const>ns3</const></op1><op2><const>2</const></op2></tuple></label>
+              <from><var name="B" free="true" /></from>
+              <to><var name="A" free="true" /></to>
+              <message><encrypt><op><tuple><op1><var name="Na" free="true" /></op1><op2><var name="Nb" free="true" /></op2></tuple></op><key><apply><function><const>pk</const></function><arg><var name="A" free="true" /></arg></apply></key></encrypt></message>
+            </event>
+            <event type="send" index="2">
+              <label><tuple><op1><const>ns3</const></op1><op2><const>3</const></op2></tuple></label>
+              <from><var name="A" free="true" /></from>
+              <to><var name="B" free="true" /></to>
+              <message><encrypt><op><var name="Nb" free="true" /></op><key><apply><function><const>pk</const></function><arg><var name="B" free="true" /></arg></apply></key></encrypt></message>
+            </event>
+            <event type="claim" index="3">
+              <label><tuple><op1><const>ns3</const></op1><op2><const>A1</const></op2></tuple></label>
+              <role><var name="A" free="true" /></role>
+              <type><const>Secret</const></type>
+              <argument><var name="Na" free="true" /></argument>
+            </event>
+            <event type="claim" index="4">
+              <label><tuple><op1><const>ns3</const></op1><op2><const>A2</const></op2></tuple></label>
+              <role><var name="A" free="true" /></role>
+              <type><const>Secret</const></type>
+              <argument><var name="Nb" free="true" /></argument>
+            </event>
+            <event type="claim" index="5">
+              <label><tuple><op1><const>ns3</const></op1><op2><const>A3</const></op2></tuple></label>
+              <role><var name="A" free="true" /></role>
+              <type><const>Niagree</const></type>
+            </event>
+            <event type="claim" index="6">
+              <label><tuple><op1><const>ns3</const></op1><op2><const>A4</const></op2></tuple></label>
+              <role><var name="A" free="true" /></role>
+              <type><const>Nisynch</const></type>
+            </event>
+          </eventlist>
+        </role>
+      </protocol>
+      <untrusted>
+        <termlist>
+          <const>Eve</const>
+        </termlist>
+      </untrusted>
+    </system>
+    <variables>
+      <variable typeflaw="false" run="0">
+        <name>
+          <term>
+            <var name="NaV#0" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Nonce</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Na#5</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Nonce</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="0">
+        <name>
+          <term>
+            <var name="BV#0" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Bob</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="0">
+        <name>
+          <term>
+            <var name="AV#0" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Alice</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="5">
+        <name>
+          <term>
+            <var name="NbV#5" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Nonce</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Nb#0</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Nonce</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="5">
+        <name>
+          <term>
+            <var name="BV#5" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Eve</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="5">
+        <name>
+          <term>
+            <var name="AV#5" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Alice</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+    </variables>
+    <semitrace>
+      <run>
+        <runid>0</runid>
+        <protocol><const>ns3</const></protocol>
+        <rolename>B</rolename>
+        <roleagents>
+          <role>
+            <rolename>A</rolename>
+            <agent><const>Alice</const></agent>
+          </role>
+          <role>
+            <rolename>B</rolename>
+            <agent><const>Bob</const></agent>
+          </role>
+        </roleagents>
+        <variables>
+          <variable typeflaw="false" run="0">
+            <name>
+              <term>
+                <var name="NaV#0" free="true" />
+              </term>
+              <type>
+                <termlist>
+                  <const>Nonce</const>
+                </termlist>
+              </type>
+            </name>
+            <substitution>
+              <term>
+                <const>Na#5</const>
+              </term>
+              <type>
+                <termlist>
+                  <const>Nonce</const>
+                </termlist>
+              </type>
+            </substitution>
+          </variable>
+        </variables>
+        <eventlist>
+          <event type="recv" index="0">
+            <label><tuple><op1><const>ns3</const></op1><op2><const>1</const></op2></tuple></label>
+            <from><const>Alice</const></from>
+            <to><const>Bob</const></to>
+            <message><encrypt><op><tuple><op1><const>Na#5</const></op1><op2><const>Alice</const></op2></tuple></op><key><apply><function><const>pk</const></function><arg><const>Bob</const></arg></apply></key></encrypt></message>
+              <follows>
+                <after run="3" index="2" />
+                <encrypt><op><tuple><op1><const>Na#5</const></op1><op2><const>Alice</const></op2></tuple></op><key><apply><function><const>pk</const></function><arg><const>Bob</const></arg></apply></key></encrypt>
+              </follows>
+          </event>
+          <event type="send" index="1">
+            <label><tuple><op1><const>ns3</const></op1><op2><const>2</const></op2></tuple></label>
+            <from><const>Bob</const></from>
+            <to><const>Alice</const></to>
+            <message><encrypt><op><tuple><op1><const>Na#5</const></op1><op2><const>Nb#0</const></op2></tuple></op><key><apply><function><const>pk</const></function><arg><const>Alice</const></arg></apply></key></encrypt></message>
+          </event>
+          <event type="recv" index="2">
+            <label><tuple><op1><const>ns3</const></op1><op2><const>3</const></op2></tuple></label>
+            <from><const>Alice</const></from>
+            <to><const>Bob</const></to>
+            <message><encrypt><op><const>Nb#0</const></op><key><apply><function><const>pk</const></function><arg><const>Bob</const></arg></apply></key></encrypt></message>
+              <follows>
+                <after run="2" index="2" />
+                <encrypt><op><const>Nb#0</const></op><key><apply><function><const>pk</const></function><arg><const>Bob</const></arg></apply></key></encrypt>
+              </follows>
+          </event>
+          <event type="claim" index="3">
+            <label><tuple><op1><const>ns3</const></op1><op2><const>B1</const></op2></tuple></label>
+            <role><const>Bob</const></role>
+            <type><const>Secret</const></type>
+            <argument><const>Na#5</const></argument>
+          </event>
+          <event type="claim" index="4">
+            <label><tuple><op1><const>ns3</const></op1><op2><const>B2</const></op2></tuple></label>
+            <role><const>Bob</const></role>
+            <type><const>Secret</const></type>
+            <argument><const>Nb#0</const></argument>
+          </event>
+          <event type="claim" index="5">
+            <label><tuple><op1><const>ns3</const></op1><op2><const>B3</const></op2></tuple></label>
+            <role><const>Bob</const></role>
+            <type><const>Niagree</const></type>
+          </event>
+        </eventlist>
+      </run>
+      <run>
+        <runid>1</runid>
+        <protocol intruder="true"><const> INTRUDER </const></protocol>
+        <rolename>I_M: Atomic message</rolename>
+        <roleagents>
+        </roleagents>
+        <variables>
+        </variables>
+        <eventlist>
+          <event type="send" index="0">
+            <message><tuple><op1><tuple><op1><tuple><op1><const>Charlie</const></op1><op2><tuple><op1><const>Eve</const></op1><op2><const>Dave</const></op2></tuple></op2></tuple></op1><op2><tuple><op1><const>pk</const></op1><op2><tuple><op1><const>Bob</const></op1><op2><const>Alice</const></op2></tuple></op2></tuple></op2></tuple></op1><op2><tuple><op1><tuple><op1><apply><function><const>k</const></function><arg><tuple><op1><const>Bob</const></op1><op2><const>Eve</const></op2></tuple></arg></apply></op1><op2><tuple><op1><apply><function><const>k</const></function><arg><tuple><op1><const>Eve</const></op1><op2><const>Alice</const></op2></tuple></arg></apply></op1><op2><apply><function><const>k</const></function><arg><tuple><op1><const>Charlie</const></op1><op2><const>Eve</const></op2></tuple></arg></apply></op2></tuple></op2></tuple></op1><op2><tuple><op1><tuple><op1><const>Pete</const></op1><op2><const>Simon</const></op2></tuple></op1><op2><tuple><op1><apply><function><const>k</const></function><arg><tuple><op1><const>Alice</const></op1><op2><const>Eve</const></op2></tuple></arg></apply></op1><op2><apply><function><const>sk</const></function><arg><const>Eve</const></arg></apply></op2></tuple></op2></tuple></op2></tuple></op2></tuple></message>
+          </event>
+        </eventlist>
+      </run>
+      <run>
+        <runid>2</runid>
+        <protocol intruder="true"><const> INTRUDER </const></protocol>
+        <rolename>I_E: Encrypt</rolename>
+        <roleagents>
+        </roleagents>
+        <variables>
+        </variables>
+        <eventlist>
+          <event type="recv" index="0">
+            <message><const>Nb#0</const></message>
+              <follows>
+                <after run="6" index="2" />
+                <const>Nb#0</const>
+              </follows>
+          </event>
+          <event type="recv" index="1">
+            <message><apply><function><const>pk</const></function><arg><const>Bob</const></arg></apply></message>
+              <follows>
+                <after run="4" index="2" />
+                <apply><function><const>pk</const></function><arg><const>Bob</const></arg></apply>
+              </follows>
+          </event>
+          <event type="send" index="2">
+            <message><encrypt><op><const>Nb#0</const></op><key><apply><function><const>pk</const></function><arg><const>Bob</const></arg></apply></key></encrypt></message>
+          </event>
+        </eventlist>
+      </run>
+      <run>
+        <runid>3</runid>
+        <protocol intruder="true"><const> INTRUDER </const></protocol>
+        <rolename>I_E: Encrypt</rolename>
+        <roleagents>
+        </roleagents>
+        <variables>
+        </variables>
+        <eventlist>
+          <event type="recv" index="0">
+            <message><tuple><op1><const>Na#5</const></op1><op2><const>Alice</const></op2></tuple></message>
+              <follows>
+                <unbound />
+                <const>Alice</const>
+              </follows>
+              <follows>
+                <after run="7" index="2" />
+                <const>Na#5</const>
+              </follows>
+          </event>
+          <event type="recv" index="1">
+            <message><apply><function><const>pk</const></function><arg><const>Bob</const></arg></apply></message>
+              <follows>
+                <after run="4" index="2" />
+                <apply><function><const>pk</const></function><arg><const>Bob</const></arg></apply>
+              </follows>
+          </event>
+          <event type="send" index="2">
+            <message><encrypt><op><tuple><op1><const>Na#5</const></op1><op2><const>Alice</const></op2></tuple></op><key><apply><function><const>pk</const></function><arg><const>Bob</const></arg></apply></key></encrypt></message>
+          </event>
+        </eventlist>
+      </run>
+      <run>
+        <runid>4</runid>
+        <protocol intruder="true"><const> INTRUDER </const></protocol>
+        <rolename>I_E: Encrypt</rolename>
+        <roleagents>
+        </roleagents>
+        <variables>
+        </variables>
+        <eventlist>
+          <event type="recv" index="0">
+            <message><const>Bob</const></message>
+              <follows>
+                <unbound />
+                <const>Bob</const>
+              </follows>
+          </event>
+          <event type="recv" index="1">
+            <message><const>pk</const></message>
+              <follows>
+                <after run="1" index="0" />
+                <const>pk</const>
+              </follows>
+          </event>
+          <event type="send" index="2">
+            <message><apply><function><const>pk</const></function><arg><const>Bob</const></arg></apply></message>
+          </event>
+        </eventlist>
+      </run>
+      <run>
+        <runid>5</runid>
+        <protocol untrustedrun="true"><const>ns3</const></protocol>
+        <rolename>A</rolename>
+        <roleagents>
+          <role>
+            <rolename>A</rolename>
+            <agent><const>Alice</const></agent>
+          </role>
+          <role>
+            <rolename>B</rolename>
+            <agent><const>Eve</const></agent>
+          </role>
+        </roleagents>
+        <variables>
+          <variable typeflaw="false" run="5">
+            <name>
+              <term>
+                <var name="NbV#5" free="true" />
+              </term>
+              <type>
+                <termlist>
+                  <const>Nonce</const>
+                </termlist>
+              </type>
+            </name>
+            <substitution>
+              <term>
+                <const>Nb#0</const>
+              </term>
+              <type>
+                <termlist>
+                  <const>Nonce</const>
+                </termlist>
+              </type>
+            </substitution>
+          </variable>
+        </variables>
+        <eventlist>
+          <event type="send" index="0">
+            <label><tuple><op1><const>ns3</const></op1><op2><const>1</const></op2></tuple></label>
+            <from><const>Alice</const></from>
+            <to><const>Eve</const></to>
+            <message><encrypt><op><tuple><op1><const>Na#5</const></op1><op2><const>Alice</const></op2></tuple></op><key><apply><function><const>pk</const></function><arg><const>Eve</const></arg></apply></key></encrypt></message>
+          </event>
+          <event type="recv" index="1">
+            <label><tuple><op1><const>ns3</const></op1><op2><const>2</const></op2></tuple></label>
+            <from><const>Eve</const></from>
+            <to><const>Alice</const></to>
+            <message><encrypt><op><tuple><op1><const>Na#5</const></op1><op2><const>Nb#0</const></op2></tuple></op><key><apply><function><const>pk</const></function><arg><const>Alice</const></arg></apply></key></encrypt></message>
+              <follows>
+                <after run="0" index="1" />
+                <encrypt><op><tuple><op1><const>Na#5</const></op1><op2><const>Nb#0</const></op2></tuple></op><key><apply><function><const>pk</const></function><arg><const>Alice</const></arg></apply></key></encrypt>
+              </follows>
+          </event>
+          <event type="send" index="2">
+            <label><tuple><op1><const>ns3</const></op1><op2><const>3</const></op2></tuple></label>
+            <from><const>Alice</const></from>
+            <to><const>Eve</const></to>
+            <message><encrypt><op><const>Nb#0</const></op><key><apply><function><const>pk</const></function><arg><const>Eve</const></arg></apply></key></encrypt></message>
+          </event>
+        </eventlist>
+      </run>
+      <run>
+        <runid>6</runid>
+        <protocol intruder="true"><const> INTRUDER </const></protocol>
+        <rolename>I_D: Decrypt</rolename>
+        <roleagents>
+        </roleagents>
+        <variables>
+        </variables>
+        <eventlist>
+          <event type="recv" index="0">
+            <message><encrypt><op><const>Nb#0</const></op><key><apply><function><const>pk</const></function><arg><const>Eve</const></arg></apply></key></encrypt></message>
+              <follows>
+                <after run="5" index="2" />
+                <encrypt><op><const>Nb#0</const></op><key><apply><function><const>pk</const></function><arg><const>Eve</const></arg></apply></key></encrypt>
+              </follows>
+          </event>
+          <event type="recv" index="1">
+            <message><apply><function><const>sk</const></function><arg><const>Eve</const></arg></apply></message>
+              <follows>
+                <after run="1" index="0" />
+                <apply><function><const>sk</const></function><arg><const>Eve</const></arg></apply>
+              </follows>
+          </event>
+          <event type="send" index="2">
+            <message><const>Nb#0</const></message>
+          </event>
+        </eventlist>
+      </run>
+      <run>
+        <runid>7</runid>
+        <protocol intruder="true"><const> INTRUDER </const></protocol>
+        <rolename>I_D: Decrypt</rolename>
+        <roleagents>
+        </roleagents>
+        <variables>
+        </variables>
+        <eventlist>
+          <event type="recv" index="0">
+            <message><encrypt><op><tuple><op1><const>Na#5</const></op1><op2><const>Alice</const></op2></tuple></op><key><apply><function><const>pk</const></function><arg><const>Eve</const></arg></apply></key></encrypt></message>
+              <follows>
+                <after run="5" index="0" />
+                <encrypt><op><tuple><op1><const>Na#5</const></op1><op2><const>Alice</const></op2></tuple></op><key><apply><function><const>pk</const></function><arg><const>Eve</const></arg></apply></key></encrypt>
+              </follows>
+          </event>
+          <event type="recv" index="1">
+            <message><apply><function><const>sk</const></function><arg><const>Eve</const></arg></apply></message>
+              <follows>
+                <after run="1" index="0" />
+                <apply><function><const>sk</const></function><arg><const>Eve</const></arg></apply>
+              </follows>
+          </event>
+          <event type="send" index="2">
+            <message><tuple><op1><const>Na#5</const></op1><op2><const>Alice</const></op2></tuple></message>
+          </event>
+        </eventlist>
+      </run>
+    </semitrace>
+  </state>
+  <claimstatus>
+    <claimtype><const>Niagree</const></claimtype>
+    <label><tuple><op1><const>ns3</const></op1><op2><const>B3</const></op2></tuple></label>
+    <protocol><const>ns3</const></protocol>
+    <role><var name="B" free="true" /></role>
+    <failed>1</failed>
+    <count>3</count>
+    <states>49</states>
+  </claimstatus>
+  <state tracelength="10" id="4">
+    <broken>
+      <claim><const>Nisynch</const></claim>
+      <label><tuple><op1><const>ns3</const></op1><op2><const>B4</const></op2></tuple></label>
+    </broken>
+    <system>
+      <commandline>
+        <arg>D:\scyther-w32-v1.3.0\Scyther\scyther-w32.exe</arg>
+        <arg>--xml-output</arg>
+        <arg>--plain</arg>
+        <arg>--unbounded</arg>
+        <arg>D:\grokSpace\workspace\AIÓÅÐã°¸ÀýÏîÄ¿\experiment_v2\runs\_ns\V2-NS-PK-M3.spdl</arg>
+      </commandline>
+      <match>0</match>
+      <initialknowledge>
+        <termlist>
+          <const>pk</const>
+          <const>Alice</const>
+          <const>Bob</const>
+          <const>Charlie</const>
+          <const>Dave</const>
+          <const>Eve</const>
+          <const>Simon</const>
+          <const>Pete</const>
+          <apply><function><const>sk</const></function><arg><const>Eve</const></arg></apply>
+          <apply><function><const>k</const></function><arg><tuple><op1><const>Alice</const></op1><op2><const>Eve</const></op2></tuple></arg></apply>
+          <apply><function><const>k</const></function><arg><tuple><op1><const>Bob</const></op1><op2><const>Eve</const></op2></tuple></arg></apply>
+          <apply><function><const>k</const></function><arg><tuple><op1><const>Charlie</const></op1><op2><const>Eve</const></op2></tuple></arg></apply>
+          <apply><function><const>k</const></function><arg><tuple><op1><const>Eve</const></op1><op2><const>Alice</const></op2></tuple></arg></apply>
+        </termlist>
+      </initialknowledge>
+      <inversekeys>
+      </inversekeys>
+      <inversekeyfunctions>
+        <keypair>
+          <const>sk</const>
+          <const>pk</const>
+        </keypair>
+      </inversekeyfunctions>
+      <protocol>
+        <name><const>ns3</const></name>
+        <role>
+          <rolename>B</rolename>
+          <eventlist>
+            <event type="recv" index="0">
+              <label><tuple><op1><const>ns3</const></op1><op2><const>1</const></op2></tuple></label>
+              <from><var name="A" free="true" /></from>
+              <to><var name="B" free="true" /></to>
+              <message><encrypt><op><tuple><op1><var name="Na" free="true" /></op1><op2><var name="A" free="true" /></op2></tuple></op><key><apply><function><const>pk</const></function><arg><var name="B" free="true" /></arg></apply></key></encrypt></message>
+            </event>
+            <event type="send" index="1">
+              <label><tuple><op1><const>ns3</const></op1><op2><const>2</const></op2></tuple></label>
+              <from><var name="B" free="true" /></from>
+              <to><var name="A" free="true" /></to>
+              <message><encrypt><op><tuple><op1><var name="Na" free="true" /></op1><op2><var name="Nb" free="true" /></op2></tuple></op><key><apply><function><const>pk</const></function><arg><var name="A" free="true" /></arg></apply></key></encrypt></message>
+            </event>
+            <event type="recv" index="2">
+              <label><tuple><op1><const>ns3</const></op1><op2><const>3</const></op2></tuple></label>
+              <from><var name="A" free="true" /></from>
+              <to><var name="B" free="true" /></to>
+              <message><encrypt><op><var name="Nb" free="true" /></op><key><apply><function><const>pk</const></function><arg><var name="B" free="true" /></arg></apply></key></encrypt></message>
+            </event>
+            <event type="claim" index="3">
+              <label><tuple><op1><const>ns3</const></op1><op2><const>B1</const></op2></tuple></label>
+              <role><var name="B" free="true" /></role>
+              <type><const>Secret</const></type>
+              <argument><var name="Na" free="true" /></argument>
+            </event>
+            <event type="claim" index="4">
+              <label><tuple><op1><const>ns3</const></op1><op2><const>B2</const></op2></tuple></label>
+              <role><var name="B" free="true" /></role>
+              <type><const>Secret</const></type>
+              <argument><var name="Nb" free="true" /></argument>
+            </event>
+            <event type="claim" index="5">
+              <label><tuple><op1><const>ns3</const></op1><op2><const>B3</const></op2></tuple></label>
+              <role><var name="B" free="true" /></role>
+              <type><const>Niagree</const></type>
+            </event>
+            <event type="claim" index="6">
+              <label><tuple><op1><const>ns3</const></op1><op2><const>B4</const></op2></tuple></label>
+              <role><var name="B" free="true" /></role>
+              <type><const>Nisynch</const></type>
+            </event>
+          </eventlist>
+        </role>
+        <role>
+          <rolename>A</rolename>
+          <eventlist>
+            <event type="send" index="0">
+              <label><tuple><op1><const>ns3</const></op1><op2><const>1</const></op2></tuple></label>
+              <from><var name="A" free="true" /></from>
+              <to><var name="B" free="true" /></to>
+              <message><encrypt><op><tuple><op1><var name="Na" free="true" /></op1><op2><var name="A" free="true" /></op2></tuple></op><key><apply><function><const>pk</const></function><arg><var name="B" free="true" /></arg></apply></key></encrypt></message>
+            </event>
+            <event type="recv" index="1">
+              <label><tuple><op1><const>ns3</const></op1><op2><const>2</const></op2></tuple></label>
+              <from><var name="B" free="true" /></from>
+              <to><var name="A" free="true" /></to>
+              <message><encrypt><op><tuple><op1><var name="Na" free="true" /></op1><op2><var name="Nb" free="true" /></op2></tuple></op><key><apply><function><const>pk</const></function><arg><var name="A" free="true" /></arg></apply></key></encrypt></message>
+            </event>
+            <event type="send" index="2">
+              <label><tuple><op1><const>ns3</const></op1><op2><const>3</const></op2></tuple></label>
+              <from><var name="A" free="true" /></from>
+              <to><var name="B" free="true" /></to>
+              <message><encrypt><op><var name="Nb" free="true" /></op><key><apply><function><const>pk</const></function><arg><var name="B" free="true" /></arg></apply></key></encrypt></message>
+            </event>
+            <event type="claim" index="3">
+              <label><tuple><op1><const>ns3</const></op1><op2><const>A1</const></op2></tuple></label>
+              <role><var name="A" free="true" /></role>
+              <type><const>Secret</const></type>
+              <argument><var name="Na" free="true" /></argument>
+            </event>
+            <event type="claim" index="4">
+              <label><tuple><op1><const>ns3</const></op1><op2><const>A2</const></op2></tuple></label>
+              <role><var name="A" free="true" /></role>
+              <type><const>Secret</const></type>
+              <argument><var name="Nb" free="true" /></argument>
+            </event>
+            <event type="claim" index="5">
+              <label><tuple><op1><const>ns3</const></op1><op2><const>A3</const></op2></tuple></label>
+              <role><var name="A" free="true" /></role>
+              <type><const>Niagree</const></type>
+            </event>
+            <event type="claim" index="6">
+              <label><tuple><op1><const>ns3</const></op1><op2><const>A4</const></op2></tuple></label>
+              <role><var name="A" free="true" /></role>
+              <type><const>Nisynch</const></type>
+            </event>
+          </eventlist>
+        </role>
+      </protocol>
+      <untrusted>
+        <termlist>
+          <const>Eve</const>
+        </termlist>
+      </untrusted>
+    </system>
+    <variables>
+      <variable typeflaw="false" run="0">
+        <name>
+          <term>
+            <var name="NaV#0" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Nonce</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Na#5</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Nonce</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="0">
+        <name>
+          <term>
+            <var name="BV#0" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Bob</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="0">
+        <name>
+          <term>
+            <var name="AV#0" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Alice</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="5">
+        <name>
+          <term>
+            <var name="NbV#5" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Nonce</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Nb#0</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Nonce</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="5">
+        <name>
+          <term>
+            <var name="BV#5" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Eve</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="5">
+        <name>
+          <term>
+            <var name="AV#5" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Alice</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+    </variables>
+    <semitrace>
+      <run>
+        <runid>0</runid>
+        <protocol><const>ns3</const></protocol>
+        <rolename>B</rolename>
+        <roleagents>
+          <role>
+            <rolename>A</rolename>
+            <agent><const>Alice</const></agent>
+          </role>
+          <role>
+            <rolename>B</rolename>
+            <agent><const>Bob</const></agent>
+          </role>
+        </roleagents>
+        <variables>
+          <variable typeflaw="false" run="0">
+            <name>
+              <term>
+                <var name="NaV#0" free="true" />
+              </term>
+              <type>
+                <termlist>
+                  <const>Nonce</const>
+                </termlist>
+              </type>
+            </name>
+            <substitution>
+              <term>
+                <const>Na#5</const>
+              </term>
+              <type>
+                <termlist>
+                  <const>Nonce</const>
+                </termlist>
+              </type>
+            </substitution>
+          </variable>
+        </variables>
+        <eventlist>
+          <event type="recv" index="0">
+            <label><tuple><op1><const>ns3</const></op1><op2><const>1</const></op2></tuple></label>
+            <from><const>Alice</const></from>
+            <to><const>Bob</const></to>
+            <message><encrypt><op><tuple><op1><const>Na#5</const></op1><op2><const>Alice</const></op2></tuple></op><key><apply><function><const>pk</const></function><arg><const>Bob</const></arg></apply></key></encrypt></message>
+              <follows>
+                <after run="3" index="2" />
+                <encrypt><op><tuple><op1><const>Na#5</const></op1><op2><const>Alice</const></op2></tuple></op><key><apply><function><const>pk</const></function><arg><const>Bob</const></arg></apply></key></encrypt>
+              </follows>
+          </event>
+          <event type="send" index="1">
+            <label><tuple><op1><const>ns3</const></op1><op2><const>2</const></op2></tuple></label>
+            <from><const>Bob</const></from>
+            <to><const>Alice</const></to>
+            <message><encrypt><op><tuple><op1><const>Na#5</const></op1><op2><const>Nb#0</const></op2></tuple></op><key><apply><function><const>pk</const></function><arg><const>Alice</const></arg></apply></key></encrypt></message>
+          </event>
+          <event type="recv" index="2">
+            <label><tuple><op1><const>ns3</const></op1><op2><const>3</const></op2></tuple></label>
+            <from><const>Alice</const></from>
+            <to><const>Bob</const></to>
+            <message><encrypt><op><const>Nb#0</const></op><key><apply><function><const>pk</const></function><arg><const>Bob</const></arg></apply></key></encrypt></message>
+              <follows>
+                <after run="2" index="2" />
+                <encrypt><op><const>Nb#0</const></op><key><apply><function><const>pk</const></function><arg><const>Bob</const></arg></apply></key></encrypt>
+              </follows>
+          </event>
+          <event type="claim" index="3">
+            <label><tuple><op1><const>ns3</const></op1><op2><const>B1</const></op2></tuple></label>
+            <role><const>Bob</const></role>
+            <type><const>Secret</const></type>
+            <argument><const>Na#5</const></argument>
+          </event>
+          <event type="claim" index="4">
+            <label><tuple><op1><const>ns3</const></op1><op2><const>B2</const></op2></tuple></label>
+            <role><const>Bob</const></role>
+            <type><const>Secret</const></type>
+            <argument><const>Nb#0</const></argument>
+          </event>
+          <event type="claim" index="5">
+            <label><tuple><op1><const>ns3</const></op1><op2><const>B3</const></op2></tuple></label>
+            <role><const>Bob</const></role>
+            <type><const>Niagree</const></type>
+          </event>
+          <event type="claim" index="6">
+            <label><tuple><op1><const>ns3</const></op1><op2><const>B4</const></op2></tuple></label>
+            <role><const>Bob</const></role>
+            <type><const>Nisynch</const></type>
+          </event>
+        </eventlist>
+      </run>
+      <run>
+        <runid>1</runid>
+        <protocol intruder="true"><const> INTRUDER </const></protocol>
+        <rolename>I_M: Atomic message</rolename>
+        <roleagents>
+        </roleagents>
+        <variables>
+        </variables>
+        <eventlist>
+          <event type="send" index="0">
+            <message><tuple><op1><tuple><op1><tuple><op1><const>Charlie</const></op1><op2><tuple><op1><const>Eve</const></op1><op2><const>Dave</const></op2></tuple></op2></tuple></op1><op2><tuple><op1><const>pk</const></op1><op2><tuple><op1><const>Bob</const></op1><op2><const>Alice</const></op2></tuple></op2></tuple></op2></tuple></op1><op2><tuple><op1><tuple><op1><apply><function><const>k</const></function><arg><tuple><op1><const>Bob</const></op1><op2><const>Eve</const></op2></tuple></arg></apply></op1><op2><tuple><op1><apply><function><const>k</const></function><arg><tuple><op1><const>Eve</const></op1><op2><const>Alice</const></op2></tuple></arg></apply></op1><op2><apply><function><const>k</const></function><arg><tuple><op1><const>Charlie</const></op1><op2><const>Eve</const></op2></tuple></arg></apply></op2></tuple></op2></tuple></op1><op2><tuple><op1><tuple><op1><const>Pete</const></op1><op2><const>Simon</const></op2></tuple></op1><op2><tuple><op1><apply><function><const>k</const></function><arg><tuple><op1><const>Alice</const></op1><op2><const>Eve</const></op2></tuple></arg></apply></op1><op2><apply><function><const>sk</const></function><arg><const>Eve</const></arg></apply></op2></tuple></op2></tuple></op2></tuple></op2></tuple></message>
+          </event>
+        </eventlist>
+      </run>
+      <run>
+        <runid>2</runid>
+        <protocol intruder="true"><const> INTRUDER </const></protocol>
+        <rolename>I_E: Encrypt</rolename>
+        <roleagents>
+        </roleagents>
+        <variables>
+        </variables>
+        <eventlist>
+          <event type="recv" index="0">
+            <message><const>Nb#0</const></message>
+              <follows>
+                <after run="6" index="2" />
+                <const>Nb#0</const>
+              </follows>
+          </event>
+          <event type="recv" index="1">
+            <message><apply><function><const>pk</const></function><arg><const>Bob</const></arg></apply></message>
+              <follows>
+                <after run="4" index="2" />
+                <apply><function><const>pk</const></function><arg><const>Bob</const></arg></apply>
+              </follows>
+          </event>
+          <event type="send" index="2">
+            <message><encrypt><op><const>Nb#0</const></op><key><apply><function><const>pk</const></function><arg><const>Bob</const></arg></apply></key></encrypt></message>
+          </event>
+        </eventlist>
+      </run>
+      <run>
+        <runid>3</runid>
+        <protocol intruder="true"><const> INTRUDER </const></protocol>
+        <rolename>I_E: Encrypt</rolename>
+        <roleagents>
+        </roleagents>
+        <variables>
+        </variables>
+        <eventlist>
+          <event type="recv" index="0">
+            <message><tuple><op1><const>Na#5</const></op1><op2><const>Alice</const></op2></tuple></message>
+              <follows>
+                <unbound />
+                <const>Alice</const>
+              </follows>
+              <follows>
+                <after run="7" index="2" />
+                <const>Na#5</const>
+              </follows>
+          </event>
+          <event type="recv" index="1">
+            <message><apply><function><const>pk</const></function><arg><const>Bob</const></arg></apply></message>
+              <follows>
+                <after run="4" index="2" />
+                <apply><function><const>pk</const></function><arg><const>Bob</const></arg></apply>
+              </follows>
+          </event>
+          <event type="send" index="2">
+            <message><encrypt><op><tuple><op1><const>Na#5</const></op1><op2><const>Alice</const></op2></tuple></op><key><apply><function><const>pk</const></function><arg><const>Bob</const></arg></apply></key></encrypt></message>
+          </event>
+        </eventlist>
+      </run>
+      <run>
+        <runid>4</runid>
+        <protocol intruder="true"><const> INTRUDER </const></protocol>
+        <rolename>I_E: Encrypt</rolename>
+        <roleagents>
+        </roleagents>
+        <variables>
+        </variables>
+        <eventlist>
+          <event type="recv" index="0">
+            <message><const>Bob</const></message>
+              <follows>
+                <unbound />
+                <const>Bob</const>
+              </follows>
+          </event>
+          <event type="recv" index="1">
+            <message><const>pk</const></message>
+              <follows>
+                <after run="1" index="0" />
+                <const>pk</const>
+              </follows>
+          </event>
+          <event type="send" index="2">
+            <message><apply><function><const>pk</const></function><arg><const>Bob</const></arg></apply></message>
+          </event>
+        </eventlist>
+      </run>
+      <run>
+        <runid>5</runid>
+        <protocol untrustedrun="true"><const>ns3</const></protocol>
+        <rolename>A</rolename>
+        <roleagents>
+          <role>
+            <rolename>A</rolename>
+            <agent><const>Alice</const></agent>
+          </role>
+          <role>
+            <rolename>B</rolename>
+            <agent><const>Eve</const></agent>
+          </role>
+        </roleagents>
+        <variables>
+          <variable typeflaw="false" run="5">
+            <name>
+              <term>
+                <var name="NbV#5" free="true" />
+              </term>
+              <type>
+                <termlist>
+                  <const>Nonce</const>
+                </termlist>
+              </type>
+            </name>
+            <substitution>
+              <term>
+                <const>Nb#0</const>
+              </term>
+              <type>
+                <termlist>
+                  <const>Nonce</const>
+                </termlist>
+              </type>
+            </substitution>
+          </variable>
+        </variables>
+        <eventlist>
+          <event type="send" index="0">
+            <label><tuple><op1><const>ns3</const></op1><op2><const>1</const></op2></tuple></label>
+            <from><const>Alice</const></from>
+            <to><const>Eve</const></to>
+            <message><encrypt><op><tuple><op1><const>Na#5</const></op1><op2><const>Alice</const></op2></tuple></op><key><apply><function><const>pk</const></function><arg><const>Eve</const></arg></apply></key></encrypt></message>
+          </event>
+          <event type="recv" index="1">
+            <label><tuple><op1><const>ns3</const></op1><op2><const>2</const></op2></tuple></label>
+            <from><const>Eve</const></from>
+            <to><const>Alice</const></to>
+            <message><encrypt><op><tuple><op1><const>Na#5</const></op1><op2><const>Nb#0</const></op2></tuple></op><key><apply><function><const>pk</const></function><arg><const>Alice</const></arg></apply></key></encrypt></message>
+              <follows>
+                <after run="0" index="1" />
+                <encrypt><op><tuple><op1><const>Na#5</const></op1><op2><const>Nb#0</const></op2></tuple></op><key><apply><function><const>pk</const></function><arg><const>Alice</const></arg></apply></key></encrypt>
+              </follows>
+          </event>
+          <event type="send" index="2">
+            <label><tuple><op1><const>ns3</const></op1><op2><const>3</const></op2></tuple></label>
+            <from><const>Alice</const></from>
+            <to><const>Eve</const></to>
+            <message><encrypt><op><const>Nb#0</const></op><key><apply><function><const>pk</const></function><arg><const>Eve</const></arg></apply></key></encrypt></message>
+          </event>
+        </eventlist>
+      </run>
+      <run>
+        <runid>6</runid>
+        <protocol intruder="true"><const> INTRUDER </const></protocol>
+        <rolename>I_D: Decrypt</rolename>
+        <roleagents>
+        </roleagents>
+        <variables>
+        </variables>
+        <eventlist>
+          <event type="recv" index="0">
+            <message><encrypt><op><const>Nb#0</const></op><key><apply><function><const>pk</const></function><arg><const>Eve</const></arg></apply></key></encrypt></message>
+              <follows>
+                <after run="5" index="2" />
+                <encrypt><op><const>Nb#0</const></op><key><apply><function><const>pk</const></function><arg><const>Eve</const></arg></apply></key></encrypt>
+              </follows>
+          </event>
+          <event type="recv" index="1">
+            <message><apply><function><const>sk</const></function><arg><const>Eve</const></arg></apply></message>
+              <follows>
+                <after run="1" index="0" />
+                <apply><function><const>sk</const></function><arg><const>Eve</const></arg></apply>
+              </follows>
+          </event>
+          <event type="send" index="2">
+            <message><const>Nb#0</const></message>
+          </event>
+        </eventlist>
+      </run>
+      <run>
+        <runid>7</runid>
+        <protocol intruder="true"><const> INTRUDER </const></protocol>
+        <rolename>I_D: Decrypt</rolename>
+        <roleagents>
+        </roleagents>
+        <variables>
+        </variables>
+        <eventlist>
+          <event type="recv" index="0">
+            <message><encrypt><op><tuple><op1><const>Na#5</const></op1><op2><const>Alice</const></op2></tuple></op><key><apply><function><const>pk</const></function><arg><const>Eve</const></arg></apply></key></encrypt></message>
+              <follows>
+                <after run="5" index="0" />
+                <encrypt><op><tuple><op1><const>Na#5</const></op1><op2><const>Alice</const></op2></tuple></op><key><apply><function><const>pk</const></function><arg><const>Eve</const></arg></apply></key></encrypt>
+              </follows>
+          </event>
+          <event type="recv" index="1">
+            <message><apply><function><const>sk</const></function><arg><const>Eve</const></arg></apply></message>
+              <follows>
+                <after run="1" index="0" />
+                <apply><function><const>sk</const></function><arg><const>Eve</const></arg></apply>
+              </follows>
+          </event>
+          <event type="send" index="2">
+            <message><tuple><op1><const>Na#5</const></op1><op2><const>Alice</const></op2></tuple></message>
+          </event>
+        </eventlist>
+      </run>
+    </semitrace>
+  </state>
+  <claimstatus>
+    <claimtype><const>Nisynch</const></claimtype>
+    <label><tuple><op1><const>ns3</const></op1><op2><const>B4</const></op2></tuple></label>
+    <protocol><const>ns3</const></protocol>
+    <role><var name="B" free="true" /></role>
+    <failed>1</failed>
+    <count>2</count>
+    <states>57</states>
+  </claimstatus>
+</scyther>

@@ -1,0 +1,8 @@
+claim	NSPK1978,I	Secret_I1	Ni	Ok	[proof of correctness]
+claim	NSPK1978,I	Secret_I2	Nr	Ok	[proof of correctness]
+claim	NSPK1978,I	Niagree_I3	-	Ok	[proof of correctness]
+claim	NSPK1978,I	Nisynch_I4	-	Ok	[proof of correctness]
+claim	NSPK1978,R	Secret_R1	Ni	Fail	[at least 1 attack]
+claim	NSPK1978,R	Secret_R2	Nr	Fail	[at least 1 attack]
+claim	NSPK1978,R	Niagree_R3	-	Fail	[at least 1 attack]
+claim	NSPK1978,R	Nisynch_R4	-	Fail	[at least 1 attack]

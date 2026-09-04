@@ -1,0 +1,6 @@
+lemma,quantifier,status,steps,scope
+exists_session,exists-trace,verified,32,Minimal IKEv2 / RFC 7815; not RFC 7296 full
+aliveness,all-traces,verified,15,initiator-oriented model ikev2.spthy
+weak_agreement,all-traces,verified,36,same
+agreement,all-traces,verified,36,same
+key_secrecy,all-traces,verified,58,same

@@ -1,0 +1,32 @@
+protocol NSPK1978(A, B)
+{
+    role A
+    {
+        fresh NA: Nonce;
+        var   NB: Nonce;
+
+        send_1(A, B, {NA, A}pk(B));
+        recv_2(B, A, {NA, NB}pk(A));
+        send_3(A, B, {NB}pk(B));
+
+        claim_A1(A, Secret, NA);
+        claim_A2(A, Secret, NB);
+        claim_A3(A, Niagree);
+        claim_A4(A, Nisynch);
+    }
+
+    role B
+    {
+        fresh NB: Nonce;
+        var   NA: Nonce;
+
+        recv_1(A, B, {NA, A}pk(B));
+        send_2(B, A, {NA, NB}pk(A));
+        recv_3(A, B, {NB}pk(B));
+
+        claim_B1(B, Secret, NA);
+        claim_B2(B, Secret, NB);
+        claim_B3(B, Niagree);
+        claim_B4(B, Nisynch);
+    }
+}

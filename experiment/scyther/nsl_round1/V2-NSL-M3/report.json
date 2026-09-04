@@ -1,0 +1,22 @@
+{
+  "model": "D:\\grokSpace\\workspace\\AI优秀案例项目\\experiment_v2\\runs\\_nsl\\V2-NSL-M3.spdl",
+  "model_sha256": "5504e1981d00c26d8c39cf225125fb85974117959a6272b45cc96802c8ca72f0",
+  "executable": "D:\\scyther-w32-v1.3.0\\Scyther\\scyther-w32.exe",
+  "executable_sha256": "6ab49729c73d3f0691ac2c58f893149fd739af17908ab0be8774751662f019ad",
+  "exit_code": 1,
+  "timed_out": false,
+  "command": [
+    "D:\\scyther-w32-v1.3.0\\Scyther\\scyther-w32.exe",
+    "--xml-output",
+    "--plain",
+    "--unbounded",
+    "D:\\grokSpace\\workspace\\AI优秀案例项目\\experiment_v2\\runs\\_nsl\\V2-NSL-M3.spdl"
+  ],
+  "runtime_seconds": 0.024,
+  "parse_success": false,
+  "parse_error": null,
+  "n_claims": 0,
+  "claims": [],
+  "stderr_head": "error: [16] syntax error at symbol '_'.\r\n\r\n",
+  "timestamp": "2026-09-04T03:05:38.282961+00:00"
+}

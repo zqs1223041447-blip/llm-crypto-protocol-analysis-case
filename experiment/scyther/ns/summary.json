@@ -1,0 +1,47 @@
+{
+  "n_models": 4,
+  "n_parse_ok": 4,
+  "n_exit0": 0,
+  "reports": [
+    {
+      "model": "D:\\grokSpace\\workspace\\AI优秀案例项目\\experiment_v2\\runs\\_ns\\V2-NS-PK-M0.spdl",
+      "exit_code": 3,
+      "parse_success": true,
+      "n_claims": 8,
+      "statuses": [
+        "falsified",
+        "verified"
+      ]
+    },
+    {
+      "model": "D:\\grokSpace\\workspace\\AI优秀案例项目\\experiment_v2\\runs\\_ns\\V2-NS-PK-M1.spdl",
+      "exit_code": 3,
+      "parse_success": true,
+      "n_claims": 8,
+      "statuses": [
+        "falsified",
+        "verified"
+      ]
+    },
+    {
+      "model": "D:\\grokSpace\\workspace\\AI优秀案例项目\\experiment_v2\\runs\\_ns\\V2-NS-PK-M2.spdl",
+      "exit_code": 3,
+      "parse_success": true,
+      "n_claims": 8,
+      "statuses": [
+        "falsified",
+        "verified"
+      ]
+    },
+    {
+      "model": "D:\\grokSpace\\workspace\\AI优秀案例项目\\experiment_v2\\runs\\_ns\\V2-NS-PK-M3.spdl",
+      "exit_code": 3,
+      "parse_success": true,
+      "n_claims": 8,
+      "statuses": [
+        "falsified",
+        "verified"
+      ]
+    }
+  ]
+}

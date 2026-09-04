@@ -1,0 +1,36 @@
+usertype Timestamp;
+
+protocol iso9798-2-3(A, B)
+{
+    role A
+    {
+        fresh Ta: Timestamp;
+        var Tb: Timestamp;
+
+        claim_A_running(A, Running, B, Ta);
+        send_1(A, B, {Ta, B}k(A,B));
+        recv_2(B, A, {Tb, A}k(A,B));
+
+        claim_A_alive(A, Alive);
+        claim_A_weakagree(A, Weakagree);
+        claim_A_niagree(A, Niagree);
+        claim_A_nisynch(A, Nisynch);
+        claim_A_commit(A, Commit, B, Ta, Tb);
+    }
+
+    role B
+    {
+        fresh Tb: Timestamp;
+        var Ta: Timestamp;
+
+        recv_1(A, B, {Ta, B}k(A,B));
+        claim_B_commit_ta(B, Commit, A, Ta);
+        claim_B_running(B, Running, A, Ta, Tb);
+        send_2(B, A, {Tb, A}k(A,B));
+
+        claim_B_alive(B, Alive);
+        claim_B_weakagree(B, Weakagree);
+        claim_B_niagree(B, Niagree);
+        claim_B_nisynch(B, Nisynch);
+    }
+}

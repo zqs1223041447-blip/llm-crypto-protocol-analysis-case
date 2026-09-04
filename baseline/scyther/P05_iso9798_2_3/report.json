@@ -1,0 +1,89 @@
+{
+  "model": "D:\\grokSpace\\workspace\\AI优秀案例项目\\models_track_r_rest\\P05_iso9798_2_3.spdl",
+  "model_sha256": "08167f7c27ba4d195b77a9d6a8df4cfaf5e9cb525f0b8f246828080bbee1ddd0",
+  "executable": "D:\\scyther-w32-v1.3.0\\Scyther\\scyther-w32.exe",
+  "executable_sha256": "6ab49729c73d3f0691ac2c58f893149fd739af17908ab0be8774751662f019ad",
+  "exit_code": 3,
+  "timed_out": false,
+  "command": [
+    "D:\\scyther-w32-v1.3.0\\Scyther\\scyther-w32.exe",
+    "--xml-output",
+    "--plain",
+    "--max-runs=5",
+    "D:\\grokSpace\\workspace\\AI优秀案例项目\\models_track_r_rest\\P05_iso9798_2_3.spdl"
+  ],
+  "runtime_seconds": 0.033,
+  "parse_success": true,
+  "parse_error": null,
+  "n_claims": 6,
+  "claims": [
+    {
+      "protocol": "isoiec-9798-2-3",
+      "role": "A",
+      "label": "A2",
+      "claim_type": "Commit",
+      "status": "falsified",
+      "failed": 1,
+      "count": 2,
+      "states": 3,
+      "complete": false
+    },
+    {
+      "protocol": "isoiec-9798-2-3",
+      "role": "A",
+      "label": "A3",
+      "claim_type": "Alive",
+      "status": "bounded",
+      "failed": 0,
+      "count": 4,
+      "states": 22,
+      "complete": false
+    },
+    {
+      "protocol": "isoiec-9798-2-3",
+      "role": "A",
+      "label": "A4",
+      "claim_type": "Weakagree",
+      "status": "bounded",
+      "failed": 0,
+      "count": 4,
+      "states": 22,
+      "complete": false
+    },
+    {
+      "protocol": "isoiec-9798-2-3",
+      "role": "B",
+      "label": "B2",
+      "claim_type": "Commit",
+      "status": "falsified",
+      "failed": 4,
+      "count": 5,
+      "states": 34,
+      "complete": false
+    },
+    {
+      "protocol": "isoiec-9798-2-3",
+      "role": "B",
+      "label": "B3",
+      "claim_type": "Alive",
+      "status": "bounded",
+      "failed": 0,
+      "count": 3,
+      "states": 22,
+      "complete": false
+    },
+    {
+      "protocol": "isoiec-9798-2-3",
+      "role": "B",
+      "label": "B4",
+      "claim_type": "Weakagree",
+      "status": "bounded",
+      "failed": 0,
+      "count": 3,
+      "states": 22,
+      "complete": false
+    }
+  ],
+  "stderr_head": "claim\tisoiec-9798-2-3,A\tCommit_A2\t(B,TNB,Text3)\tFail\t[at least 1 attack]\r\nclaim\tisoiec-9798-2-3,A\tAlive_A3\t-\tOk\t[no attack within bounds]\r\nclaim\tisoiec-9798-2-3,A\tWeakagree_A4\t-\tOk\t[no attack within bounds]\r\nclaim\tisoiec-9798-2-3,B\tCommit_B2\t(A,TNA,Text1)\tFail\t[at least 4 attacks]\r\nclaim\tisoiec-9798-2-3,B\tAlive_B3\t-\tOk\t[no attack within bounds]\r\nclaim\tisoiec-9798-2-3,B\tWeakagree_B4\t-\tOk\t[no attack within bounds]\r\n",
+  "timestamp": "2026-09-03T04:11:29.981949+00:00"
+}

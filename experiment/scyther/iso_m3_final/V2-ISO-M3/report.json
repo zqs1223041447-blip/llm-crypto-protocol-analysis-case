@@ -1,0 +1,111 @@
+{
+  "model": "D:\\grokSpace\\workspace\\AI优秀案例项目\\experiment_v2\\runs\\_iso_m3r2\\V2-ISO-M3.spdl",
+  "model_sha256": "79403fc955cdccfd72510e45f887a7635e4256e02a174bb5360b0acff1f4a730",
+  "executable": "D:\\scyther-w32-v1.3.0\\Scyther\\scyther-w32.exe",
+  "executable_sha256": "6ab49729c73d3f0691ac2c58f893149fd739af17908ab0be8774751662f019ad",
+  "exit_code": 3,
+  "timed_out": false,
+  "command": [
+    "D:\\scyther-w32-v1.3.0\\Scyther\\scyther-w32.exe",
+    "--xml-output",
+    "--plain",
+    "--max-runs=5",
+    "D:\\grokSpace\\workspace\\AI优秀案例项目\\experiment_v2\\runs\\_iso_m3r2\\V2-ISO-M3.spdl"
+  ],
+  "runtime_seconds": 0.027,
+  "parse_success": true,
+  "parse_error": null,
+  "n_claims": 8,
+  "claims": [
+    {
+      "protocol": "iso9798-2-3",
+      "role": "A",
+      "label": "A1",
+      "claim_type": "Alive",
+      "status": "verified",
+      "failed": 0,
+      "count": 3,
+      "states": 3,
+      "complete": true
+    },
+    {
+      "protocol": "iso9798-2-3",
+      "role": "A",
+      "label": "A2",
+      "claim_type": "Weakagree",
+      "status": "verified",
+      "failed": 0,
+      "count": 3,
+      "states": 3,
+      "complete": true
+    },
+    {
+      "protocol": "iso9798-2-3",
+      "role": "A",
+      "label": "A3",
+      "claim_type": "Niagree",
+      "status": "falsified",
+      "failed": 5,
+      "count": 6,
+      "states": 13,
+      "complete": false
+    },
+    {
+      "protocol": "iso9798-2-3",
+      "role": "A",
+      "label": "A4",
+      "claim_type": "Nisynch",
+      "status": "falsified",
+      "failed": 5,
+      "count": 6,
+      "states": 13,
+      "complete": false
+    },
+    {
+      "protocol": "iso9798-2-3",
+      "role": "B",
+      "label": "B1",
+      "claim_type": "Alive",
+      "status": "verified",
+      "failed": 0,
+      "count": 2,
+      "states": 3,
+      "complete": true
+    },
+    {
+      "protocol": "iso9798-2-3",
+      "role": "B",
+      "label": "B2",
+      "claim_type": "Weakagree",
+      "status": "verified",
+      "failed": 0,
+      "count": 2,
+      "states": 3,
+      "complete": true
+    },
+    {
+      "protocol": "iso9798-2-3",
+      "role": "B",
+      "label": "B3",
+      "claim_type": "Niagree",
+      "status": "falsified",
+      "failed": 3,
+      "count": 4,
+      "states": 18,
+      "complete": false
+    },
+    {
+      "protocol": "iso9798-2-3",
+      "role": "B",
+      "label": "B4",
+      "claim_type": "Nisynch",
+      "status": "falsified",
+      "failed": 3,
+      "count": 4,
+      "states": 18,
+      "complete": false
+    }
+  ],
+  "stderr_head": "claim\tiso9798-2-3,A\tAlive_A1\t-\tOk\t[proof of correctness]\r\nclaim\tiso9798-2-3,A\tWeakagree_A2\t-\tOk\t[proof of correctness]\r\nclaim\tiso9798-2-3,A\tNiagree_A3\t-\tFail\t[at least 5 attacks]\r\nclaim\tiso9798-2-3,A\tNisynch_A4\t-\tFail\t[at least 5 attacks]\r\nclaim\tiso9798-2-3,B\tAlive_B1\t-\tOk\t[proof of correctness]\r\nclaim\tiso9798-2-3,B\tWeakagree_B2\t-\tOk\t[proof of correctness]\r\nclaim\tiso9798-2-3,B\tNiagree_B3\t-\tFail\t[at least 3 attacks]\r\nclaim\tiso9798-2-3,B\tNisynch_B4\t-\tFail\t[at least 3 attacks]\r\n",
+  "timestamp": "2026-09-04T03:07:37.959896+00:00"
+}

@@ -1,0 +1,5 @@
+mode,n_tasks,first_success,final_success,reference_agreement_completed,known_attack_reproduced,auto_repair_success,mean_repair_rounds,human_intervention_count,notes
+direct,3,1/3,1/3,6/6 (1 completed),1/1,NA,0,0,NS-PK only; NSL/ISO syntax fail
+retrieval,3,2/3,2/3,12/12 (2 completed),1/1,NA,0,0,ISO syntax fail
+structured,3,3/3,3/3,12/14,1/1,NA,0,0,ISO overlap Alive/Weakagree disagree with bounded gold
+full_loop,3,1/3,3/3,12/14,1/1,2/2,0.67,0,repairs were Scyther identifier syntax not protocol semantics

@@ -1,0 +1,32 @@
+usertype Timestamp;
+
+protocol iso9798-2-3(A, B)
+{
+    role A
+    {
+        fresh TNA: Timestamp;
+        var   TNB: Timestamp;
+
+        send_1(A, B, {TNA, B}k(A,B));
+        recv_2(B, A, {TNB, A}k(A,B));
+
+        claim_A1(A, Alive);
+        claim_A2(A, Weakagree);
+        claim_A3(A, Niagree);
+        claim_A4(A, Nisynch);
+    }
+
+    role B
+    {
+        fresh TNB: Timestamp;
+        var   TNA: Timestamp;
+
+        recv_1(A, B, {TNA, B}k(A,B));
+        send_2(B, A, {TNB, A}k(A,B));
+
+        claim_B1(B, Alive);
+        claim_B2(B, Weakagree);
+        claim_B3(B, Niagree);
+        claim_B4(B, Nisynch);
+    }
+}

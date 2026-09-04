@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="220" viewBox="0 0 920 220">
+  <rect width="920" height="220" fill="#f7f8fa"/>
+  <g font-family="Microsoft YaHei, SimHei, sans-serif" font-size="13" text-anchor="middle">
+    <rect x="12" y="70" width="130" height="80" rx="8" fill="#e8eef7" stroke="#3d5a80"/>
+    <text x="77" y="115">协议资料层</text>
+    <rect x="162" y="70" width="140" height="80" rx="8" fill="#e8eef7" stroke="#3d5a80"/>
+    <text x="232" y="108">结构化分析层</text>
+    <text x="232" y="128" font-size="11">角色/消息/目标</text>
+    <rect x="322" y="50" width="180" height="120" rx="8" fill="#d7eae2" stroke="#2a9d8f"/>
+    <text x="412" y="88">大模型智能分析层</text>
+    <text x="412" y="110" font-size="11">理解 · 任务生成</text>
+    <text x="412" y="128" font-size="11">错误识别 · 解释</text>
+    <text x="412" y="148" font-size="11">（逻辑步骤，同一模型）</text>
+    <rect x="522" y="70" width="140" height="80" rx="8" fill="#fdebd0" stroke="#e76f51"/>
+    <text x="592" y="108">专业工具层</text>
+    <text x="592" y="128" font-size="11">Scyther / Tamarin</text>
+    <rect x="682" y="70" width="110" height="80" rx="8" fill="#e8eef7" stroke="#3d5a80"/>
+    <text x="737" y="108">结果解释层</text>
+    <rect x="812" y="70" width="96" height="80" rx="8" fill="#e8eef7" stroke="#3d5a80"/>
+    <text x="860" y="108">证据/报告</text>
+    <polygon points="142,110 162,110 154,104 162,110 154,116" fill="#3d5a80"/>
+    <polygon points="302,110 322,110 314,104 322,110 314,116" fill="#3d5a80"/>
+    <polygon points="502,110 522,110 514,104 522,110 514,116" fill="#3d5a80"/>
+    <polygon points="662,110 682,110 674,104 682,110 674,116" fill="#3d5a80"/>
+    <polygon points="792,110 812,110 804,104 812,110 804,116" fill="#3d5a80"/>
+  </g>
+</svg>

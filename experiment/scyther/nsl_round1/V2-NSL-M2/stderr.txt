@@ -1,0 +1,8 @@
+claim	NSL,A	Secret_A1	Na	Ok	[proof of correctness]
+claim	NSL,A	Secret_A2	Nb	Ok	[proof of correctness]
+claim	NSL,A	Niagree_A3	-	Ok	[proof of correctness]
+claim	NSL,A	Nisynch_A4	-	Ok	[proof of correctness]
+claim	NSL,B	Secret_B1	Na	Ok	[proof of correctness]
+claim	NSL,B	Secret_B2	Nb	Ok	[proof of correctness]
+claim	NSL,B	Niagree_B3	-	Ok	[proof of correctness]
+claim	NSL,B	Nisynch_B4	-	Ok	[proof of correctness]

@@ -1,0 +1,32 @@
+protocol nsl(I, R)
+{
+    role I
+    {
+        fresh Na: Nonce;
+        var Nb: Nonce;
+
+        send_1(I, R, {Na, I}pk(R));
+        recv_2(R, I, {Na, Nb, R}pk(I));
+        send_3(I, R, {Nb}pk(R));
+
+        claim_I1(I, Secret, Na);
+        claim_I2(I, Secret, Nb);
+        claim_I3(I, Niagree);
+        claim_I4(I, Nisynch);
+    }
+
+    role R
+    {
+        var Na: Nonce;
+        fresh Nb: Nonce;
+
+        recv_1(I, R, {Na, I}pk(R));
+        send_2(R, I, {Na, Nb, R}pk(I));
+        recv_3(I, R, {Nb}pk(R));
+
+        claim_R1(R, Secret, Na);
+        claim_R2(R, Secret, Nb);
+        claim_R3(R, Niagree);
+        claim_R4(R, Nisynch);
+    }
+}

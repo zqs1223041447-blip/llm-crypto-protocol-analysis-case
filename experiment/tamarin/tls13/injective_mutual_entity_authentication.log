@@ -1,0 +1,15 @@
+maude tool: 'maude'
+ checking version: 3.1. OK.
+ checking installation: OK.
+Deprecation Warning: using 'axiom' is retired notation, replace all uses of 'axiom' by 'restriction'.
+Deprecation Warning: using 'typing' is retired notation, replace all uses of 'typing' by 'sources'.
+
+[Theory TLS_13_lemmas] Theory loaded
+[Theory TLS_13_lemmas] Theory translated
+[Theory TLS_13_lemmas] Theory closed
+[Open Chains] Too many chain constraints, stopping precomputation. Open Chains limits (can be changed with -c=): 10
+[Saturating Sources] Step 1 (Max 5)
+tamarin-prover: shapeTerm: the term (t.9) does not have enough pairs.
+Occured in fact: (ProtoFact Linear "F_State_C1" 29) with behavior [[=],[=],[=],[<],[.],[=],[.],[=,=],[.],[.],[=],[.],[=],[=],[.],[.],[.],[.],[=],[=],[=],[=],[=],[=],[.],[=],[=],[=]]
+CallStack (from HasCallStack):
+  error, called at src/Theory/Constraint/Solver/Simplify.hs:613:33 in tamarin-prover-theory-1.12.0-FbCxjv2pbRW9B4EGkShrKZ:Theory.Constraint.Solver.Simplify

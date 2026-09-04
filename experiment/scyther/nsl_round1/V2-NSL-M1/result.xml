@@ -1,0 +1,86 @@
+<scyther>
+  <claimstatus>
+    <claimtype><const>Secret</const></claimtype>
+    <label><tuple><op1><const>nsl</const></op1><op2><const>I1</const></op2></tuple></label>
+    <protocol><const>nsl</const></protocol>
+    <role><var name="I" free="true" /></role>
+    <parameter><var name="Ni" free="true" /></parameter>
+    <failed>0</failed>
+    <count>1</count>
+    <states>23</states>
+    <complete />
+  </claimstatus>
+  <claimstatus>
+    <claimtype><const>Secret</const></claimtype>
+    <label><tuple><op1><const>nsl</const></op1><op2><const>I2</const></op2></tuple></label>
+    <protocol><const>nsl</const></protocol>
+    <role><var name="I" free="true" /></role>
+    <parameter><var name="Nr" free="true" /></parameter>
+    <failed>0</failed>
+    <count>1</count>
+    <states>25</states>
+    <complete />
+  </claimstatus>
+  <claimstatus>
+    <claimtype><const>Niagree</const></claimtype>
+    <label><tuple><op1><const>nsl</const></op1><op2><const>I3</const></op2></tuple></label>
+    <protocol><const>nsl</const></protocol>
+    <role><var name="I" free="true" /></role>
+    <failed>0</failed>
+    <count>1</count>
+    <states>9</states>
+    <complete />
+  </claimstatus>
+  <claimstatus>
+    <claimtype><const>Nisynch</const></claimtype>
+    <label><tuple><op1><const>nsl</const></op1><op2><const>I4</const></op2></tuple></label>
+    <protocol><const>nsl</const></protocol>
+    <role><var name="I" free="true" /></role>
+    <failed>0</failed>
+    <count>1</count>
+    <states>9</states>
+    <complete />
+  </claimstatus>
+  <claimstatus>
+    <claimtype><const>Secret</const></claimtype>
+    <label><tuple><op1><const>nsl</const></op1><op2><const>R1</const></op2></tuple></label>
+    <protocol><const>nsl</const></protocol>
+    <role><var name="R" free="true" /></role>
+    <parameter><var name="Ni" free="true" /></parameter>
+    <failed>0</failed>
+    <count>1</count>
+    <states>71</states>
+    <complete />
+  </claimstatus>
+  <claimstatus>
+    <claimtype><const>Secret</const></claimtype>
+    <label><tuple><op1><const>nsl</const></op1><op2><const>R2</const></op2></tuple></label>
+    <protocol><const>nsl</const></protocol>
+    <role><var name="R" free="true" /></role>
+    <parameter><var name="Nr" free="true" /></parameter>
+    <failed>0</failed>
+    <count>1</count>
+    <states>55</states>
+    <complete />
+  </claimstatus>
+  <claimstatus>
+    <claimtype><const>Niagree</const></claimtype>
+    <label><tuple><op1><const>nsl</const></op1><op2><const>R3</const></op2></tuple></label>
+    <protocol><const>nsl</const></protocol>
+    <role><var name="R" free="true" /></role>
+    <failed>0</failed>
+    <count>2</count>
+    <states>42</states>
+    <complete />
+  </claimstatus>
+  <claimstatus>
+    <claimtype><const>Nisynch</const></claimtype>
+    <label><tuple><op1><const>nsl</const></op1><op2><const>R4</const></op2></tuple></label>
+    <protocol><const>nsl</const></protocol>
+    <role><var name="R" free="true" /></role>
+    <failed>0</failed>
+    <count>1</count>
+    <states>50</states>
+    <complete />
+  </claimstatus>
+</scyther>

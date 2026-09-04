@@ -1,0 +1,111 @@
+{
+  "model": "D:\\grokSpace\\workspace\\AI优秀案例项目\\experiment_v2\\runs\\_ns\\V2-NS-PK-M1.spdl",
+  "model_sha256": "d2e835ef70066afb3c01c0f170cf6f44d43bf2f60a7235f160155ce5ce770685",
+  "executable": "D:\\scyther-w32-v1.3.0\\Scyther\\scyther-w32.exe",
+  "executable_sha256": "6ab49729c73d3f0691ac2c58f893149fd739af17908ab0be8774751662f019ad",
+  "exit_code": 3,
+  "timed_out": false,
+  "command": [
+    "D:\\scyther-w32-v1.3.0\\Scyther\\scyther-w32.exe",
+    "--xml-output",
+    "--plain",
+    "--unbounded",
+    "D:\\grokSpace\\workspace\\AI优秀案例项目\\experiment_v2\\runs\\_ns\\V2-NS-PK-M1.spdl"
+  ],
+  "runtime_seconds": 0.038,
+  "parse_success": true,
+  "parse_error": null,
+  "n_claims": 8,
+  "claims": [
+    {
+      "protocol": "NSPK1978",
+      "role": "A",
+      "label": "A1",
+      "claim_type": "Secret",
+      "status": "verified",
+      "failed": 0,
+      "count": 1,
+      "states": 27,
+      "complete": true
+    },
+    {
+      "protocol": "NSPK1978",
+      "role": "A",
+      "label": "A2",
+      "claim_type": "Secret",
+      "status": "verified",
+      "failed": 0,
+      "count": 1,
+      "states": 25,
+      "complete": true
+    },
+    {
+      "protocol": "NSPK1978",
+      "role": "A",
+      "label": "A3",
+      "claim_type": "Niagree",
+      "status": "verified",
+      "failed": 0,
+      "count": 1,
+      "states": 18,
+      "complete": true
+    },
+    {
+      "protocol": "NSPK1978",
+      "role": "A",
+      "label": "A4",
+      "claim_type": "Nisynch",
+      "status": "verified",
+      "failed": 0,
+      "count": 1,
+      "states": 18,
+      "complete": true
+    },
+    {
+      "protocol": "NSPK1978",
+      "role": "B",
+      "label": "B1",
+      "claim_type": "Secret",
+      "status": "falsified",
+      "failed": 1,
+      "count": 2,
+      "states": 79,
+      "complete": false
+    },
+    {
+      "protocol": "NSPK1978",
+      "role": "B",
+      "label": "B2",
+      "claim_type": "Secret",
+      "status": "falsified",
+      "failed": 1,
+      "count": 2,
+      "states": 81,
+      "complete": false
+    },
+    {
+      "protocol": "NSPK1978",
+      "role": "B",
+      "label": "B3",
+      "claim_type": "Niagree",
+      "status": "falsified",
+      "failed": 1,
+      "count": 3,
+      "states": 49,
+      "complete": false
+    },
+    {
+      "protocol": "NSPK1978",
+      "role": "B",
+      "label": "B4",
+      "claim_type": "Nisynch",
+      "status": "falsified",
+      "failed": 1,
+      "count": 2,
+      "states": 57,
+      "complete": false
+    }
+  ],
+  "stderr_head": "claim\tNSPK1978,A\tSecret_A1\tNA\tOk\t[proof of correctness]\r\nclaim\tNSPK1978,A\tSecret_A2\tNB\tOk\t[proof of correctness]\r\nclaim\tNSPK1978,A\tNiagree_A3\t-\tOk\t[proof of correctness]\r\nclaim\tNSPK1978,A\tNisynch_A4\t-\tOk\t[proof of correctness]\r\nclaim\tNSPK1978,B\tSecret_B1\tNA\tFail\t[at least 1 attack]\r\nclaim\tNSPK1978,B\tSecret_B2\tNB\tFail\t[at least 1 attack]\r\nclaim\tNSPK1978,B\tNiagree_B3\t-\tFail\t[at least 1 attack]\r\nclaim\tNSPK1978,B\tNisynch_B4\t-\tFail\t[at least 1 attack]\r\n",
+  "timestamp": "2026-09-04T03:05:22.365679+00:00"
+}

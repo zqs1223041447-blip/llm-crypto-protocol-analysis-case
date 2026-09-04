@@ -1,0 +1,8 @@
+claim	iso9798-2-3,A	Alive_A1	-	Ok	[proof of correctness]
+claim	iso9798-2-3,A	Weakagree_A2	-	Ok	[proof of correctness]
+claim	iso9798-2-3,A	Niagree_A3	-	Fail	[at least 5 attacks]
+claim	iso9798-2-3,A	Nisynch_A4	-	Fail	[at least 5 attacks]
+claim	iso9798-2-3,B	Alive_B1	-	Ok	[proof of correctness]
+claim	iso9798-2-3,B	Weakagree_B2	-	Ok	[proof of correctness]
+claim	iso9798-2-3,B	Niagree_B3	-	Fail	[at least 3 attacks]
+claim	iso9798-2-3,B	Nisynch_B4	-	Fail	[at least 3 attacks]

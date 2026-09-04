@@ -1,0 +1,36 @@
+usertype Text;
+
+protocol iso9798-2-3(A, B)
+{
+    role A
+    {
+        fresh TNA: Nonce;
+        var   TNB: Nonce;
+        const Text1, Text2: Text;
+        var   Text3, Text4: Text;
+
+        send_1(A, B, TNA, Text2, { TNA, B, Text1 }k(A,B));
+        recv_2(B, A, TNB, Text4, { TNB, A, Text3 }k(A,B));
+
+        claim_A_alive(A, Alive);
+        claim_A_wagr(A, Weakagree);
+        claim_A_niag(A, Niagree);
+        claim_A_nisy(A, Nisynch);
+    }
+
+    role B
+    {
+        fresh TNB: Nonce;
+        var   TNA: Nonce;
+        var   Text1, Text2: Text;
+        const Text3, Text4: Text;
+
+        recv_1(A, B, TNA, Text2, { TNA, B, Text1 }k(A,B));
+        send_2(B, A, TNB, Text4, { TNB, A, Text3 }k(A,B));
+
+        claim_B_alive(B, Alive);
+        claim_B_wagr(B, Weakagree);
+        claim_B_niag(B, Niagree);
+        claim_B_nisy(B, Nisynch);
+    }
+}

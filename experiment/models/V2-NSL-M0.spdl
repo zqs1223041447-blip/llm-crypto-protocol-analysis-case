@@ -1,0 +1,32 @@
+protocol NSL(I, R)
+{
+    role I
+    {
+        fresh ni: Nonce;
+        var   nr: Nonce;
+
+        send_1(I, R, { ni, I }pk(R));
+        recv_2(R, I, { ni, nr, R }pk(I));
+        send_3(I, R, { nr }pk(R));
+
+        claim_I_se_ni(I, Secret, ni);
+        claim_I_se_nr(I, Secret, nr);
+        claim_I_niagree(I, Niagree);
+        claim_I_nisynch(I, Nisynch);
+    }
+
+    role R
+    {
+        fresh nr: Nonce;
+        var   ni: Nonce;
+
+        recv_1(I, R, { ni, I }pk(R));
+        send_2(R, I, { ni, nr, R }pk(I));
+        recv_3(I, R, { nr }pk(R));
+
+        claim_R_se_ni(R, Secret, ni);
+        claim_R_se_nr(R, Secret, nr);
+        claim_R_niagree(R, Niagree);
+        claim_R_nisynch(R, Nisynch);
+    }
+}

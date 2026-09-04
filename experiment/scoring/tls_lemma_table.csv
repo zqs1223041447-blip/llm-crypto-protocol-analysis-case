@@ -1,0 +1,4 @@
+lemma,model,tamarin,status,summary
+handshake_secret,injective_auth.spthy (rev21 proofs),1.12.0,crash,shapeTerm: the term (t.9) does not have enough pairs in F_State_C1
+secret_session_keys,same,1.12.0,crash,same class of abort (rc=1, no lemma summary)
+injective_mutual_entity_authentication,same,1.12.0,crash,same

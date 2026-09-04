@@ -1,0 +1,111 @@
+{
+  "model": "D:\\grokSpace\\workspace\\AI优秀案例项目\\experiment_v2\\runs\\_nsl\\V2-NSL-M2.spdl",
+  "model_sha256": "f37c58e444c99e30517d8c9034131c99dc7e0d0fbcb59a12b0de80f05ddea738",
+  "executable": "D:\\scyther-w32-v1.3.0\\Scyther\\scyther-w32.exe",
+  "executable_sha256": "6ab49729c73d3f0691ac2c58f893149fd739af17908ab0be8774751662f019ad",
+  "exit_code": 3,
+  "timed_out": false,
+  "command": [
+    "D:\\scyther-w32-v1.3.0\\Scyther\\scyther-w32.exe",
+    "--xml-output",
+    "--plain",
+    "--unbounded",
+    "D:\\grokSpace\\workspace\\AI优秀案例项目\\experiment_v2\\runs\\_nsl\\V2-NSL-M2.spdl"
+  ],
+  "runtime_seconds": 0.035,
+  "parse_success": true,
+  "parse_error": null,
+  "n_claims": 8,
+  "claims": [
+    {
+      "protocol": "NSL",
+      "role": "A",
+      "label": "A1",
+      "claim_type": "Secret",
+      "status": "verified",
+      "failed": 0,
+      "count": 1,
+      "states": 22,
+      "complete": true
+    },
+    {
+      "protocol": "NSL",
+      "role": "A",
+      "label": "A2",
+      "claim_type": "Secret",
+      "status": "verified",
+      "failed": 0,
+      "count": 1,
+      "states": 24,
+      "complete": true
+    },
+    {
+      "protocol": "NSL",
+      "role": "A",
+      "label": "A3",
+      "claim_type": "Niagree",
+      "status": "verified",
+      "failed": 0,
+      "count": 1,
+      "states": 8,
+      "complete": true
+    },
+    {
+      "protocol": "NSL",
+      "role": "A",
+      "label": "A4",
+      "claim_type": "Nisynch",
+      "status": "verified",
+      "failed": 0,
+      "count": 1,
+      "states": 8,
+      "complete": true
+    },
+    {
+      "protocol": "NSL",
+      "role": "B",
+      "label": "B1",
+      "claim_type": "Secret",
+      "status": "verified",
+      "failed": 0,
+      "count": 1,
+      "states": 65,
+      "complete": true
+    },
+    {
+      "protocol": "NSL",
+      "role": "B",
+      "label": "B2",
+      "claim_type": "Secret",
+      "status": "verified",
+      "failed": 0,
+      "count": 1,
+      "states": 62,
+      "complete": true
+    },
+    {
+      "protocol": "NSL",
+      "role": "B",
+      "label": "B3",
+      "claim_type": "Niagree",
+      "status": "verified",
+      "failed": 0,
+      "count": 2,
+      "states": 41,
+      "complete": true
+    },
+    {
+      "protocol": "NSL",
+      "role": "B",
+      "label": "B4",
+      "claim_type": "Nisynch",
+      "status": "verified",
+      "failed": 0,
+      "count": 1,
+      "states": 48,
+      "complete": true
+    }
+  ],
+  "stderr_head": "claim\tNSL,A\tSecret_A1\tNa\tOk\t[proof of correctness]\r\nclaim\tNSL,A\tSecret_A2\tNb\tOk\t[proof of correctness]\r\nclaim\tNSL,A\tNiagree_A3\t-\tOk\t[proof of correctness]\r\nclaim\tNSL,A\tNisynch_A4\t-\tOk\t[proof of correctness]\r\nclaim\tNSL,B\tSecret_B1\tNa\tOk\t[proof of correctness]\r\nclaim\tNSL,B\tSecret_B2\tNb\tOk\t[proof of correctness]\r\nclaim\tNSL,B\tNiagree_B3\t-\tOk\t[proof of correctness]\r\nclaim\tNSL,B\tNisynch_B4\t-\tOk\t[proof of correctness]\r\n",
+  "timestamp": "2026-09-04T03:05:38.255783+00:00"
+}

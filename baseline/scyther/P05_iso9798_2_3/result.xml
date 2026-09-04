@@ -1,0 +1,4497 @@
+<scyther>
+  <state tracelength="4" id="1">
+    <broken>
+      <claim><const>Commit</const></claim>
+      <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>A2</const></op2></tuple></label>
+    </broken>
+    <system>
+      <commandline>
+        <arg>D:\scyther-w32-v1.3.0\Scyther\scyther-w32.exe</arg>
+        <arg>--xml-output</arg>
+        <arg>--plain</arg>
+        <arg>--max-runs=5</arg>
+        <arg>D:\grokSpace\workspace\AIÓÅÐã°¸ÀýÏîÄ¿\models_track_r_rest\P05_iso9798_2_3.spdl</arg>
+      </commandline>
+      <match>0</match>
+      <initialknowledge>
+        <termlist>
+          <const>pk</const>
+          <const>Alice</const>
+          <const>Bob</const>
+          <const>Charlie</const>
+          <const>Dave</const>
+          <const>Eve</const>
+          <const>Simon</const>
+          <const>Pete</const>
+          <apply><function><const>sk</const></function><arg><const>Eve</const></arg></apply>
+          <apply><function><const>k</const></function><arg><tuple><op1><const>Alice</const></op1><op2><const>Eve</const></op2></tuple></arg></apply>
+          <apply><function><const>k</const></function><arg><tuple><op1><const>Bob</const></op1><op2><const>Eve</const></op2></tuple></arg></apply>
+          <apply><function><const>k</const></function><arg><tuple><op1><const>Charlie</const></op1><op2><const>Eve</const></op2></tuple></arg></apply>
+          <apply><function><const>k</const></function><arg><tuple><op1><const>Eve</const></op1><op2><const>Alice</const></op2></tuple></arg></apply>
+        </termlist>
+      </initialknowledge>
+      <inversekeys>
+      </inversekeys>
+      <inversekeyfunctions>
+        <keypair>
+          <const>sk</const>
+          <const>pk</const>
+        </keypair>
+      </inversekeyfunctions>
+      <protocol>
+        <name><const>isoiec-9798-2-3</const></name>
+        <role>
+          <rolename>B</rolename>
+          <eventlist>
+            <event type="recv" index="0">
+              <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>1</const></op2></tuple></label>
+              <from><var name="A" free="true" /></from>
+              <to><var name="B" free="true" /></to>
+              <message><tuple><op1><var name="Text2" free="true" /></op1><op2><encrypt><op><tuple><op1><var name="TNA" free="true" /></op1><op2><tuple><op1><var name="B" free="true" /></op1><op2><var name="Text1" free="true" /></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><var name="A" free="true" /></op1><op2><var name="B" free="true" /></op2></tuple></arg></apply></key></encrypt></op2></tuple></message>
+            </event>
+            <event type="claim" index="1">
+              <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>B1</const></op2></tuple></label>
+              <role><var name="B" free="true" /></role>
+              <type><const>Running</const></type>
+              <argument><tuple><op1><var name="A" free="true" /></op1><op2><tuple><op1><var name="TNB" free="true" /></op1><op2><var name="Text3" free="true" /></op2></tuple></op2></tuple></argument>
+            </event>
+            <event type="send" index="2">
+              <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>2</const></op2></tuple></label>
+              <from><var name="B" free="true" /></from>
+              <to><var name="A" free="true" /></to>
+              <message><tuple><op1><var name="Text4" free="true" /></op1><op2><encrypt><op><tuple><op1><var name="TNB" free="true" /></op1><op2><tuple><op1><var name="A" free="true" /></op1><op2><var name="Text3" free="true" /></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><var name="A" free="true" /></op1><op2><var name="B" free="true" /></op2></tuple></arg></apply></key></encrypt></op2></tuple></message>
+            </event>
+            <event type="claim" index="3">
+              <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>B2</const></op2></tuple></label>
+              <role><var name="B" free="true" /></role>
+              <type><const>Commit</const></type>
+              <argument><tuple><op1><var name="A" free="true" /></op1><op2><tuple><op1><var name="TNA" free="true" /></op1><op2><var name="Text1" free="true" /></op2></tuple></op2></tuple></argument>
+            </event>
+            <event type="claim" index="4">
+              <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>B3</const></op2></tuple></label>
+              <role><var name="B" free="true" /></role>
+              <type><const>Alive</const></type>
+            </event>
+            <event type="claim" index="5">
+              <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>B4</const></op2></tuple></label>
+              <role><var name="B" free="true" /></role>
+              <type><const>Weakagree</const></type>
+            </event>
+          </eventlist>
+        </role>
+        <role>
+          <rolename>A</rolename>
+          <eventlist>
+            <event type="claim" index="0">
+              <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>A1</const></op2></tuple></label>
+              <role><var name="A" free="true" /></role>
+              <type><const>Running</const></type>
+              <argument><tuple><op1><var name="B" free="true" /></op1><op2><tuple><op1><var name="TNA" free="true" /></op1><op2><var name="Text1" free="true" /></op2></tuple></op2></tuple></argument>
+            </event>
+            <event type="send" index="1">
+              <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>1</const></op2></tuple></label>
+              <from><var name="A" free="true" /></from>
+              <to><var name="B" free="true" /></to>
+              <message><tuple><op1><var name="Text2" free="true" /></op1><op2><encrypt><op><tuple><op1><var name="TNA" free="true" /></op1><op2><tuple><op1><var name="B" free="true" /></op1><op2><var name="Text1" free="true" /></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><var name="A" free="true" /></op1><op2><var name="B" free="true" /></op2></tuple></arg></apply></key></encrypt></op2></tuple></message>
+            </event>
+            <event type="recv" index="2">
+              <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>2</const></op2></tuple></label>
+              <from><var name="B" free="true" /></from>
+              <to><var name="A" free="true" /></to>
+              <message><tuple><op1><var name="Text4" free="true" /></op1><op2><encrypt><op><tuple><op1><var name="TNB" free="true" /></op1><op2><tuple><op1><var name="A" free="true" /></op1><op2><var name="Text3" free="true" /></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><var name="A" free="true" /></op1><op2><var name="B" free="true" /></op2></tuple></arg></apply></key></encrypt></op2></tuple></message>
+            </event>
+            <event type="claim" index="3">
+              <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>A2</const></op2></tuple></label>
+              <role><var name="A" free="true" /></role>
+              <type><const>Commit</const></type>
+              <argument><tuple><op1><var name="B" free="true" /></op1><op2><tuple><op1><var name="TNB" free="true" /></op1><op2><var name="Text3" free="true" /></op2></tuple></op2></tuple></argument>
+            </event>
+            <event type="claim" index="4">
+              <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>A3</const></op2></tuple></label>
+              <role><var name="A" free="true" /></role>
+              <type><const>Alive</const></type>
+            </event>
+            <event type="claim" index="5">
+              <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>A4</const></op2></tuple></label>
+              <role><var name="A" free="true" /></role>
+              <type><const>Weakagree</const></type>
+            </event>
+          </eventlist>
+        </role>
+      </protocol>
+      <untrusted>
+        <termlist>
+          <const>Eve</const>
+        </termlist>
+      </untrusted>
+    </system>
+    <variables>
+      <variable typeflaw="false" run="0">
+        <name>
+          <term>
+            <var name="TNBV#0" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Nonce</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>TNA#0</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Nonce</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="0">
+        <name>
+          <term>
+            <var name="Text3V#0" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Ticket</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Text1#0</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Ticket</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="0">
+        <name>
+          <term>
+            <var name="Text4V#0" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Ticket</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Ticket#2</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Ticket</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="0">
+        <name>
+          <term>
+            <var name="BV#0" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Alice</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="0">
+        <name>
+          <term>
+            <var name="AV#0" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Alice</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+    </variables>
+    <semitrace>
+      <run>
+        <runid>0</runid>
+        <protocol><const>isoiec-9798-2-3</const></protocol>
+        <rolename>A</rolename>
+        <roleagents>
+          <role>
+            <rolename>A</rolename>
+            <agent><const>Alice</const></agent>
+          </role>
+          <role>
+            <rolename>B</rolename>
+            <agent><const>Alice</const></agent>
+          </role>
+        </roleagents>
+        <variables>
+          <variable typeflaw="false" run="0">
+            <name>
+              <term>
+                <var name="Text4V#0" free="true" />
+              </term>
+              <type>
+                <termlist>
+                  <const>Ticket</const>
+                </termlist>
+              </type>
+            </name>
+            <substitution>
+              <term>
+                <const>Ticket#2</const>
+              </term>
+              <type>
+                <termlist>
+                  <const>Ticket</const>
+                </termlist>
+              </type>
+            </substitution>
+          </variable>
+          <variable typeflaw="false" run="0">
+            <name>
+              <term>
+                <var name="Text3V#0" free="true" />
+              </term>
+              <type>
+                <termlist>
+                  <const>Ticket</const>
+                </termlist>
+              </type>
+            </name>
+            <substitution>
+              <term>
+                <const>Text1#0</const>
+              </term>
+              <type>
+                <termlist>
+                  <const>Ticket</const>
+                </termlist>
+              </type>
+            </substitution>
+          </variable>
+          <variable typeflaw="false" run="0">
+            <name>
+              <term>
+                <var name="TNBV#0" free="true" />
+              </term>
+              <type>
+                <termlist>
+                  <const>Nonce</const>
+                </termlist>
+              </type>
+            </name>
+            <substitution>
+              <term>
+                <const>TNA#0</const>
+              </term>
+              <type>
+                <termlist>
+                  <const>Nonce</const>
+                </termlist>
+              </type>
+            </substitution>
+          </variable>
+        </variables>
+        <eventlist>
+          <event type="claim" index="0">
+            <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>A1</const></op2></tuple></label>
+            <role><const>Alice</const></role>
+            <type><const>Running</const></type>
+            <argument><tuple><op1><const>Alice</const></op1><op2><tuple><op1><const>TNA#0</const></op1><op2><const>Text1#0</const></op2></tuple></op2></tuple></argument>
+          </event>
+          <event type="send" index="1">
+            <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>1</const></op2></tuple></label>
+            <from><const>Alice</const></from>
+            <to><const>Alice</const></to>
+            <message><tuple><op1><const>Text2#0</const></op1><op2><encrypt><op><tuple><op1><const>TNA#0</const></op1><op2><tuple><op1><const>Alice</const></op1><op2><const>Text1#0</const></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><const>Alice</const></op1><op2><const>Alice</const></op2></tuple></arg></apply></key></encrypt></op2></tuple></message>
+          </event>
+          <event type="recv" index="2">
+            <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>2</const></op2></tuple></label>
+            <from><const>Alice</const></from>
+            <to><const>Alice</const></to>
+            <message><tuple><op1><const>Ticket#2</const></op1><op2><encrypt><op><tuple><op1><const>TNA#0</const></op1><op2><tuple><op1><const>Alice</const></op1><op2><const>Text1#0</const></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><const>Alice</const></op1><op2><const>Alice</const></op2></tuple></arg></apply></key></encrypt></op2></tuple></message>
+              <follows>
+                <after run="0" index="1" />
+                <encrypt><op><tuple><op1><const>TNA#0</const></op1><op2><tuple><op1><const>Alice</const></op1><op2><const>Text1#0</const></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><const>Alice</const></op1><op2><const>Alice</const></op2></tuple></arg></apply></key></encrypt>
+              </follows>
+              <follows>
+                <unbound />
+                <const>Ticket#2</const>
+              </follows>
+          </event>
+          <event type="claim" index="3">
+            <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>A2</const></op2></tuple></label>
+            <role><const>Alice</const></role>
+            <type><const>Commit</const></type>
+            <argument><tuple><op1><const>Alice</const></op1><op2><tuple><op1><const>TNA#0</const></op1><op2><const>Text1#0</const></op2></tuple></op2></tuple></argument>
+          </event>
+        </eventlist>
+      </run>
+      <run>
+        <runid>1</runid>
+        <protocol intruder="true"><const> INTRUDER </const></protocol>
+        <rolename>I_M: Atomic message</rolename>
+        <roleagents>
+        </roleagents>
+        <variables>
+        </variables>
+        <eventlist>
+          <event type="send" index="0">
+            <message><tuple><op1><tuple><op1><tuple><op1><const>Charlie</const></op1><op2><tuple><op1><const>Eve</const></op1><op2><const>Dave</const></op2></tuple></op2></tuple></op1><op2><tuple><op1><const>pk</const></op1><op2><tuple><op1><const>Bob</const></op1><op2><const>Alice</const></op2></tuple></op2></tuple></op2></tuple></op1><op2><tuple><op1><tuple><op1><apply><function><const>k</const></function><arg><tuple><op1><const>Bob</const></op1><op2><const>Eve</const></op2></tuple></arg></apply></op1><op2><tuple><op1><apply><function><const>k</const></function><arg><tuple><op1><const>Eve</const></op1><op2><const>Alice</const></op2></tuple></arg></apply></op1><op2><apply><function><const>k</const></function><arg><tuple><op1><const>Charlie</const></op1><op2><const>Eve</const></op2></tuple></arg></apply></op2></tuple></op2></tuple></op1><op2><tuple><op1><tuple><op1><const>Pete</const></op1><op2><const>Simon</const></op2></tuple></op1><op2><tuple><op1><apply><function><const>k</const></function><arg><tuple><op1><const>Alice</const></op1><op2><const>Eve</const></op2></tuple></arg></apply></op1><op2><apply><function><const>sk</const></function><arg><const>Eve</const></arg></apply></op2></tuple></op2></tuple></op2></tuple></op2></tuple></message>
+          </event>
+        </eventlist>
+      </run>
+    </semitrace>
+  </state>
+  <claimstatus>
+    <claimtype><const>Commit</const></claimtype>
+    <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>A2</const></op2></tuple></label>
+    <protocol><const>isoiec-9798-2-3</const></protocol>
+    <role><var name="A" free="true" /></role>
+    <parameter><tuple><op1><var name="B" free="true" /></op1><op2><tuple><op1><var name="TNB" free="true" /></op1><op2><var name="Text3" free="true" /></op2></tuple></op2></tuple></parameter>
+    <failed>1</failed>
+    <count>2</count>
+    <states>3</states>
+  </claimstatus>
+  <claimstatus>
+    <claimtype><const>Alive</const></claimtype>
+    <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>A3</const></op2></tuple></label>
+    <protocol><const>isoiec-9798-2-3</const></protocol>
+    <role><var name="A" free="true" /></role>
+    <failed>0</failed>
+    <count>4</count>
+    <states>22</states>
+  </claimstatus>
+  <claimstatus>
+    <claimtype><const>Weakagree</const></claimtype>
+    <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>A4</const></op2></tuple></label>
+    <protocol><const>isoiec-9798-2-3</const></protocol>
+    <role><var name="A" free="true" /></role>
+    <failed>0</failed>
+    <count>4</count>
+    <states>22</states>
+  </claimstatus>
+  <state tracelength="15" id="2">
+    <broken>
+      <claim><const>Commit</const></claim>
+      <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>B2</const></op2></tuple></label>
+    </broken>
+    <system>
+      <commandline>
+        <arg>D:\scyther-w32-v1.3.0\Scyther\scyther-w32.exe</arg>
+        <arg>--xml-output</arg>
+        <arg>--plain</arg>
+        <arg>--max-runs=5</arg>
+        <arg>D:\grokSpace\workspace\AIÓÅÐã°¸ÀýÏîÄ¿\models_track_r_rest\P05_iso9798_2_3.spdl</arg>
+      </commandline>
+      <match>0</match>
+      <initialknowledge>
+        <termlist>
+          <const>pk</const>
+          <const>Alice</const>
+          <const>Bob</const>
+          <const>Charlie</const>
+          <const>Dave</const>
+          <const>Eve</const>
+          <const>Simon</const>
+          <const>Pete</const>
+          <apply><function><const>sk</const></function><arg><const>Eve</const></arg></apply>
+          <apply><function><const>k</const></function><arg><tuple><op1><const>Alice</const></op1><op2><const>Eve</const></op2></tuple></arg></apply>
+          <apply><function><const>k</const></function><arg><tuple><op1><const>Bob</const></op1><op2><const>Eve</const></op2></tuple></arg></apply>
+          <apply><function><const>k</const></function><arg><tuple><op1><const>Charlie</const></op1><op2><const>Eve</const></op2></tuple></arg></apply>
+          <apply><function><const>k</const></function><arg><tuple><op1><const>Eve</const></op1><op2><const>Alice</const></op2></tuple></arg></apply>
+        </termlist>
+      </initialknowledge>
+      <inversekeys>
+      </inversekeys>
+      <inversekeyfunctions>
+        <keypair>
+          <const>sk</const>
+          <const>pk</const>
+        </keypair>
+      </inversekeyfunctions>
+      <protocol>
+        <name><const>isoiec-9798-2-3</const></name>
+        <role>
+          <rolename>B</rolename>
+          <eventlist>
+            <event type="recv" index="0">
+              <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>1</const></op2></tuple></label>
+              <from><var name="A" free="true" /></from>
+              <to><var name="B" free="true" /></to>
+              <message><tuple><op1><var name="Text2" free="true" /></op1><op2><encrypt><op><tuple><op1><var name="TNA" free="true" /></op1><op2><tuple><op1><var name="B" free="true" /></op1><op2><var name="Text1" free="true" /></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><var name="A" free="true" /></op1><op2><var name="B" free="true" /></op2></tuple></arg></apply></key></encrypt></op2></tuple></message>
+            </event>
+            <event type="claim" index="1">
+              <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>B1</const></op2></tuple></label>
+              <role><var name="B" free="true" /></role>
+              <type><const>Running</const></type>
+              <argument><tuple><op1><var name="A" free="true" /></op1><op2><tuple><op1><var name="TNB" free="true" /></op1><op2><var name="Text3" free="true" /></op2></tuple></op2></tuple></argument>
+            </event>
+            <event type="send" index="2">
+              <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>2</const></op2></tuple></label>
+              <from><var name="B" free="true" /></from>
+              <to><var name="A" free="true" /></to>
+              <message><tuple><op1><var name="Text4" free="true" /></op1><op2><encrypt><op><tuple><op1><var name="TNB" free="true" /></op1><op2><tuple><op1><var name="A" free="true" /></op1><op2><var name="Text3" free="true" /></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><var name="A" free="true" /></op1><op2><var name="B" free="true" /></op2></tuple></arg></apply></key></encrypt></op2></tuple></message>
+            </event>
+            <event type="claim" index="3">
+              <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>B2</const></op2></tuple></label>
+              <role><var name="B" free="true" /></role>
+              <type><const>Commit</const></type>
+              <argument><tuple><op1><var name="A" free="true" /></op1><op2><tuple><op1><var name="TNA" free="true" /></op1><op2><var name="Text1" free="true" /></op2></tuple></op2></tuple></argument>
+            </event>
+            <event type="claim" index="4">
+              <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>B3</const></op2></tuple></label>
+              <role><var name="B" free="true" /></role>
+              <type><const>Alive</const></type>
+            </event>
+            <event type="claim" index="5">
+              <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>B4</const></op2></tuple></label>
+              <role><var name="B" free="true" /></role>
+              <type><const>Weakagree</const></type>
+            </event>
+          </eventlist>
+        </role>
+        <role>
+          <rolename>A</rolename>
+          <eventlist>
+            <event type="claim" index="0">
+              <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>A1</const></op2></tuple></label>
+              <role><var name="A" free="true" /></role>
+              <type><const>Running</const></type>
+              <argument><tuple><op1><var name="B" free="true" /></op1><op2><tuple><op1><var name="TNA" free="true" /></op1><op2><var name="Text1" free="true" /></op2></tuple></op2></tuple></argument>
+            </event>
+            <event type="send" index="1">
+              <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>1</const></op2></tuple></label>
+              <from><var name="A" free="true" /></from>
+              <to><var name="B" free="true" /></to>
+              <message><tuple><op1><var name="Text2" free="true" /></op1><op2><encrypt><op><tuple><op1><var name="TNA" free="true" /></op1><op2><tuple><op1><var name="B" free="true" /></op1><op2><var name="Text1" free="true" /></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><var name="A" free="true" /></op1><op2><var name="B" free="true" /></op2></tuple></arg></apply></key></encrypt></op2></tuple></message>
+            </event>
+            <event type="recv" index="2">
+              <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>2</const></op2></tuple></label>
+              <from><var name="B" free="true" /></from>
+              <to><var name="A" free="true" /></to>
+              <message><tuple><op1><var name="Text4" free="true" /></op1><op2><encrypt><op><tuple><op1><var name="TNB" free="true" /></op1><op2><tuple><op1><var name="A" free="true" /></op1><op2><var name="Text3" free="true" /></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><var name="A" free="true" /></op1><op2><var name="B" free="true" /></op2></tuple></arg></apply></key></encrypt></op2></tuple></message>
+            </event>
+            <event type="claim" index="3">
+              <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>A2</const></op2></tuple></label>
+              <role><var name="A" free="true" /></role>
+              <type><const>Commit</const></type>
+              <argument><tuple><op1><var name="B" free="true" /></op1><op2><tuple><op1><var name="TNB" free="true" /></op1><op2><var name="Text3" free="true" /></op2></tuple></op2></tuple></argument>
+            </event>
+            <event type="claim" index="4">
+              <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>A3</const></op2></tuple></label>
+              <role><var name="A" free="true" /></role>
+              <type><const>Alive</const></type>
+            </event>
+            <event type="claim" index="5">
+              <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>A4</const></op2></tuple></label>
+              <role><var name="A" free="true" /></role>
+              <type><const>Weakagree</const></type>
+            </event>
+          </eventlist>
+        </role>
+      </protocol>
+      <untrusted>
+        <termlist>
+          <const>Eve</const>
+        </termlist>
+      </untrusted>
+    </system>
+    <variables>
+      <variable typeflaw="false" run="0">
+        <name>
+          <term>
+            <var name="TNAV#0" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Nonce</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>TNB#2</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Nonce</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="0">
+        <name>
+          <term>
+            <var name="Text1V#0" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Ticket</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Text3#2</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Ticket</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="0">
+        <name>
+          <term>
+            <var name="Text2V#0" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Ticket</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Ticket#6</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Ticket</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="0">
+        <name>
+          <term>
+            <var name="BV#0" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Alice</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="0">
+        <name>
+          <term>
+            <var name="AV#0" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Alice</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="2">
+        <name>
+          <term>
+            <var name="TNAV#2" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Nonce</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>TNB#3</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Nonce</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="2">
+        <name>
+          <term>
+            <var name="Text1V#2" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Ticket</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Text3#3</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Ticket</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="2">
+        <name>
+          <term>
+            <var name="Text2V#2" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Ticket</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Ticket#7</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Ticket</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="2">
+        <name>
+          <term>
+            <var name="BV#2" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Alice</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="2">
+        <name>
+          <term>
+            <var name="AV#2" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Alice</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="3">
+        <name>
+          <term>
+            <var name="TNAV#3" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Nonce</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>TNB#4</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Nonce</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="3">
+        <name>
+          <term>
+            <var name="Text1V#3" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Ticket</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Text3#4</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Ticket</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="3">
+        <name>
+          <term>
+            <var name="Text2V#3" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Ticket</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Ticket#8</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Ticket</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="3">
+        <name>
+          <term>
+            <var name="BV#3" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Alice</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="3">
+        <name>
+          <term>
+            <var name="AV#3" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Alice</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="4">
+        <name>
+          <term>
+            <var name="TNAV#4" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Nonce</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>TNA#5</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Nonce</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="4">
+        <name>
+          <term>
+            <var name="Text1V#4" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Ticket</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Text1#5</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Ticket</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="4">
+        <name>
+          <term>
+            <var name="Text2V#4" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Ticket</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Ticket#9</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Ticket</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="4">
+        <name>
+          <term>
+            <var name="BV#4" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Alice</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="4">
+        <name>
+          <term>
+            <var name="AV#4" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Alice</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="5">
+        <name>
+          <term>
+            <var name="TNBV#5" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Nonce</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Nonce#6</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Nonce</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="5">
+        <name>
+          <term>
+            <var name="Text3V#5" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Ticket</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Ticket#11</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Ticket</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="5">
+        <name>
+          <term>
+            <var name="Text4V#5" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Ticket</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Ticket#10</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Ticket</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="5">
+        <name>
+          <term>
+            <var name="BV#5" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Alice</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="5">
+        <name>
+          <term>
+            <var name="AV#5" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Alice</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+    </variables>
+    <semitrace>
+      <run>
+        <runid>0</runid>
+        <protocol><const>isoiec-9798-2-3</const></protocol>
+        <rolename>B</rolename>
+        <roleagents>
+          <role>
+            <rolename>A</rolename>
+            <agent><const>Alice</const></agent>
+          </role>
+          <role>
+            <rolename>B</rolename>
+            <agent><const>Alice</const></agent>
+          </role>
+        </roleagents>
+        <variables>
+          <variable typeflaw="false" run="0">
+            <name>
+              <term>
+                <var name="Text2V#0" free="true" />
+              </term>
+              <type>
+                <termlist>
+                  <const>Ticket</const>
+                </termlist>
+              </type>
+            </name>
+            <substitution>
+              <term>
+                <const>Ticket#6</const>
+              </term>
+              <type>
+                <termlist>
+                  <const>Ticket</const>
+                </termlist>
+              </type>
+            </substitution>
+          </variable>
+          <variable typeflaw="false" run="0">
+            <name>
+              <term>
+                <var name="Text1V#0" free="true" />
+              </term>
+              <type>
+                <termlist>
+                  <const>Ticket</const>
+                </termlist>
+              </type>
+            </name>
+            <substitution>
+              <term>
+                <const>Text3#2</const>
+              </term>
+              <type>
+                <termlist>
+                  <const>Ticket</const>
+                </termlist>
+              </type>
+            </substitution>
+          </variable>
+          <variable typeflaw="false" run="0">
+            <name>
+              <term>
+                <var name="TNAV#0" free="true" />
+              </term>
+              <type>
+                <termlist>
+                  <const>Nonce</const>
+                </termlist>
+              </type>
+            </name>
+            <substitution>
+              <term>
+                <const>TNB#2</const>
+              </term>
+              <type>
+                <termlist>
+                  <const>Nonce</const>
+                </termlist>
+              </type>
+            </substitution>
+          </variable>
+        </variables>
+        <eventlist>
+          <event type="recv" index="0">
+            <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>1</const></op2></tuple></label>
+            <from><const>Alice</const></from>
+            <to><const>Alice</const></to>
+            <message><tuple><op1><const>Ticket#6</const></op1><op2><encrypt><op><tuple><op1><const>TNB#2</const></op1><op2><tuple><op1><const>Alice</const></op1><op2><const>Text3#2</const></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><const>Alice</const></op1><op2><const>Alice</const></op2></tuple></arg></apply></key></encrypt></op2></tuple></message>
+              <follows>
+                <after run="2" index="2" />
+                <encrypt><op><tuple><op1><const>TNB#2</const></op1><op2><tuple><op1><const>Alice</const></op1><op2><const>Text3#2</const></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><const>Alice</const></op1><op2><const>Alice</const></op2></tuple></arg></apply></key></encrypt>
+              </follows>
+              <follows>
+                <unbound />
+                <const>Ticket#6</const>
+              </follows>
+          </event>
+          <event type="claim" index="1">
+            <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>B1</const></op2></tuple></label>
+            <role><const>Alice</const></role>
+            <type><const>Running</const></type>
+            <argument><tuple><op1><const>Alice</const></op1><op2><tuple><op1><const>TNB#0</const></op1><op2><const>Text3#0</const></op2></tuple></op2></tuple></argument>
+          </event>
+          <event type="send" index="2">
+            <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>2</const></op2></tuple></label>
+            <from><const>Alice</const></from>
+            <to><const>Alice</const></to>
+            <message><tuple><op1><const>Text4#0</const></op1><op2><encrypt><op><tuple><op1><const>TNB#0</const></op1><op2><tuple><op1><const>Alice</const></op1><op2><const>Text3#0</const></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><const>Alice</const></op1><op2><const>Alice</const></op2></tuple></arg></apply></key></encrypt></op2></tuple></message>
+          </event>
+          <event type="claim" index="3">
+            <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>B2</const></op2></tuple></label>
+            <role><const>Alice</const></role>
+            <type><const>Commit</const></type>
+            <argument><tuple><op1><const>Alice</const></op1><op2><tuple><op1><const>TNB#2</const></op1><op2><const>Text3#2</const></op2></tuple></op2></tuple></argument>
+          </event>
+        </eventlist>
+      </run>
+      <run>
+        <runid>1</runid>
+        <protocol intruder="true"><const> INTRUDER </const></protocol>
+        <rolename>I_M: Atomic message</rolename>
+        <roleagents>
+        </roleagents>
+        <variables>
+        </variables>
+        <eventlist>
+          <event type="send" index="0">
+            <message><tuple><op1><tuple><op1><tuple><op1><const>Charlie</const></op1><op2><tuple><op1><const>Eve</const></op1><op2><const>Dave</const></op2></tuple></op2></tuple></op1><op2><tuple><op1><const>pk</const></op1><op2><tuple><op1><const>Bob</const></op1><op2><const>Alice</const></op2></tuple></op2></tuple></op2></tuple></op1><op2><tuple><op1><tuple><op1><apply><function><const>k</const></function><arg><tuple><op1><const>Bob</const></op1><op2><const>Eve</const></op2></tuple></arg></apply></op1><op2><tuple><op1><apply><function><const>k</const></function><arg><tuple><op1><const>Eve</const></op1><op2><const>Alice</const></op2></tuple></arg></apply></op1><op2><apply><function><const>k</const></function><arg><tuple><op1><const>Charlie</const></op1><op2><const>Eve</const></op2></tuple></arg></apply></op2></tuple></op2></tuple></op1><op2><tuple><op1><tuple><op1><const>Pete</const></op1><op2><const>Simon</const></op2></tuple></op1><op2><tuple><op1><apply><function><const>k</const></function><arg><tuple><op1><const>Alice</const></op1><op2><const>Eve</const></op2></tuple></arg></apply></op1><op2><apply><function><const>sk</const></function><arg><const>Eve</const></arg></apply></op2></tuple></op2></tuple></op2></tuple></op2></tuple></message>
+          </event>
+        </eventlist>
+      </run>
+      <run>
+        <runid>2</runid>
+        <protocol><const>isoiec-9798-2-3</const></protocol>
+        <rolename>B</rolename>
+        <roleagents>
+          <role>
+            <rolename>A</rolename>
+            <agent><const>Alice</const></agent>
+          </role>
+          <role>
+            <rolename>B</rolename>
+            <agent><const>Alice</const></agent>
+          </role>
+        </roleagents>
+        <variables>
+          <variable typeflaw="false" run="2">
+            <name>
+              <term>
+                <var name="Text2V#2" free="true" />
+              </term>
+              <type>
+                <termlist>
+                  <const>Ticket</const>
+                </termlist>
+              </type>
+            </name>
+            <substitution>
+              <term>
+                <const>Ticket#7</const>
+              </term>
+              <type>
+                <termlist>
+                  <const>Ticket</const>
+                </termlist>
+              </type>
+            </substitution>
+          </variable>
+          <variable typeflaw="false" run="2">
+            <name>
+              <term>
+                <var name="Text1V#2" free="true" />
+              </term>
+              <type>
+                <termlist>
+                  <const>Ticket</const>
+                </termlist>
+              </type>
+            </name>
+            <substitution>
+              <term>
+                <const>Text3#3</const>
+              </term>
+              <type>
+                <termlist>
+                  <const>Ticket</const>
+                </termlist>
+              </type>
+            </substitution>
+          </variable>
+          <variable typeflaw="false" run="2">
+            <name>
+              <term>
+                <var name="TNAV#2" free="true" />
+              </term>
+              <type>
+                <termlist>
+                  <const>Nonce</const>
+                </termlist>
+              </type>
+            </name>
+            <substitution>
+              <term>
+                <const>TNB#3</const>
+              </term>
+              <type>
+                <termlist>
+                  <const>Nonce</const>
+                </termlist>
+              </type>
+            </substitution>
+          </variable>
+        </variables>
+        <eventlist>
+          <event type="recv" index="0">
+            <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>1</const></op2></tuple></label>
+            <from><const>Alice</const></from>
+            <to><const>Alice</const></to>
+            <message><tuple><op1><const>Ticket#7</const></op1><op2><encrypt><op><tuple><op1><const>TNB#3</const></op1><op2><tuple><op1><const>Alice</const></op1><op2><const>Text3#3</const></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><const>Alice</const></op1><op2><const>Alice</const></op2></tuple></arg></apply></key></encrypt></op2></tuple></message>
+              <follows>
+                <after run="3" index="2" />
+                <encrypt><op><tuple><op1><const>TNB#3</const></op1><op2><tuple><op1><const>Alice</const></op1><op2><const>Text3#3</const></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><const>Alice</const></op1><op2><const>Alice</const></op2></tuple></arg></apply></key></encrypt>
+              </follows>
+              <follows>
+                <unbound />
+                <const>Ticket#7</const>
+              </follows>
+          </event>
+          <event type="claim" index="1">
+            <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>B1</const></op2></tuple></label>
+            <role><const>Alice</const></role>
+            <type><const>Running</const></type>
+            <argument><tuple><op1><const>Alice</const></op1><op2><tuple><op1><const>TNB#2</const></op1><op2><const>Text3#2</const></op2></tuple></op2></tuple></argument>
+          </event>
+          <event type="send" index="2">
+            <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>2</const></op2></tuple></label>
+            <from><const>Alice</const></from>
+            <to><const>Alice</const></to>
+            <message><tuple><op1><const>Text4#2</const></op1><op2><encrypt><op><tuple><op1><const>TNB#2</const></op1><op2><tuple><op1><const>Alice</const></op1><op2><const>Text3#2</const></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><const>Alice</const></op1><op2><const>Alice</const></op2></tuple></arg></apply></key></encrypt></op2></tuple></message>
+          </event>
+        </eventlist>
+      </run>
+      <run>
+        <runid>3</runid>
+        <protocol><const>isoiec-9798-2-3</const></protocol>
+        <rolename>B</rolename>
+        <roleagents>
+          <role>
+            <rolename>A</rolename>
+            <agent><const>Alice</const></agent>
+          </role>
+          <role>
+            <rolename>B</rolename>
+            <agent><const>Alice</const></agent>
+          </role>
+        </roleagents>
+        <variables>
+          <variable typeflaw="false" run="3">
+            <name>
+              <term>
+                <var name="Text2V#3" free="true" />
+              </term>
+              <type>
+                <termlist>
+                  <const>Ticket</const>
+                </termlist>
+              </type>
+            </name>
+            <substitution>
+              <term>
+                <const>Ticket#8</const>
+              </term>
+              <type>
+                <termlist>
+                  <const>Ticket</const>
+                </termlist>
+              </type>
+            </substitution>
+          </variable>
+          <variable typeflaw="false" run="3">
+            <name>
+              <term>
+                <var name="Text1V#3" free="true" />
+              </term>
+              <type>
+                <termlist>
+                  <const>Ticket</const>
+                </termlist>
+              </type>
+            </name>
+            <substitution>
+              <term>
+                <const>Text3#4</const>
+              </term>
+              <type>
+                <termlist>
+                  <const>Ticket</const>
+                </termlist>
+              </type>
+            </substitution>
+          </variable>
+          <variable typeflaw="false" run="3">
+            <name>
+              <term>
+                <var name="TNAV#3" free="true" />
+              </term>
+              <type>
+                <termlist>
+                  <const>Nonce</const>
+                </termlist>
+              </type>
+            </name>
+            <substitution>
+              <term>
+                <const>TNB#4</const>
+              </term>
+              <type>
+                <termlist>
+                  <const>Nonce</const>
+                </termlist>
+              </type>
+            </substitution>
+          </variable>
+        </variables>
+        <eventlist>
+          <event type="recv" index="0">
+            <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>1</const></op2></tuple></label>
+            <from><const>Alice</const></from>
+            <to><const>Alice</const></to>
+            <message><tuple><op1><const>Ticket#8</const></op1><op2><encrypt><op><tuple><op1><const>TNB#4</const></op1><op2><tuple><op1><const>Alice</const></op1><op2><const>Text3#4</const></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><const>Alice</const></op1><op2><const>Alice</const></op2></tuple></arg></apply></key></encrypt></op2></tuple></message>
+              <follows>
+                <after run="4" index="2" />
+                <encrypt><op><tuple><op1><const>TNB#4</const></op1><op2><tuple><op1><const>Alice</const></op1><op2><const>Text3#4</const></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><const>Alice</const></op1><op2><const>Alice</const></op2></tuple></arg></apply></key></encrypt>
+              </follows>
+              <follows>
+                <unbound />
+                <const>Ticket#8</const>
+              </follows>
+          </event>
+          <event type="claim" index="1">
+            <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>B1</const></op2></tuple></label>
+            <role><const>Alice</const></role>
+            <type><const>Running</const></type>
+            <argument><tuple><op1><const>Alice</const></op1><op2><tuple><op1><const>TNB#3</const></op1><op2><const>Text3#3</const></op2></tuple></op2></tuple></argument>
+          </event>
+          <event type="send" index="2">
+            <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>2</const></op2></tuple></label>
+            <from><const>Alice</const></from>
+            <to><const>Alice</const></to>
+            <message><tuple><op1><const>Text4#3</const></op1><op2><encrypt><op><tuple><op1><const>TNB#3</const></op1><op2><tuple><op1><const>Alice</const></op1><op2><const>Text3#3</const></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><const>Alice</const></op1><op2><const>Alice</const></op2></tuple></arg></apply></key></encrypt></op2></tuple></message>
+          </event>
+        </eventlist>
+      </run>
+      <run>
+        <runid>4</runid>
+        <protocol><const>isoiec-9798-2-3</const></protocol>
+        <rolename>B</rolename>
+        <roleagents>
+          <role>
+            <rolename>A</rolename>
+            <agent><const>Alice</const></agent>
+          </role>
+          <role>
+            <rolename>B</rolename>
+            <agent><const>Alice</const></agent>
+          </role>
+        </roleagents>
+        <variables>
+          <variable typeflaw="false" run="4">
+            <name>
+              <term>
+                <var name="Text2V#4" free="true" />
+              </term>
+              <type>
+                <termlist>
+                  <const>Ticket</const>
+                </termlist>
+              </type>
+            </name>
+            <substitution>
+              <term>
+                <const>Ticket#9</const>
+              </term>
+              <type>
+                <termlist>
+                  <const>Ticket</const>
+                </termlist>
+              </type>
+            </substitution>
+          </variable>
+          <variable typeflaw="false" run="4">
+            <name>
+              <term>
+                <var name="Text1V#4" free="true" />
+              </term>
+              <type>
+                <termlist>
+                  <const>Ticket</const>
+                </termlist>
+              </type>
+            </name>
+            <substitution>
+              <term>
+                <const>Text1#5</const>
+              </term>
+              <type>
+                <termlist>
+                  <const>Ticket</const>
+                </termlist>
+              </type>
+            </substitution>
+          </variable>
+          <variable typeflaw="false" run="4">
+            <name>
+              <term>
+                <var name="TNAV#4" free="true" />
+              </term>
+              <type>
+                <termlist>
+                  <const>Nonce</const>
+                </termlist>
+              </type>
+            </name>
+            <substitution>
+              <term>
+                <const>TNA#5</const>
+              </term>
+              <type>
+                <termlist>
+                  <const>Nonce</const>
+                </termlist>
+              </type>
+            </substitution>
+          </variable>
+        </variables>
+        <eventlist>
+          <event type="recv" index="0">
+            <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>1</const></op2></tuple></label>
+            <from><const>Alice</const></from>
+            <to><const>Alice</const></to>
+            <message><tuple><op1><const>Ticket#9</const></op1><op2><encrypt><op><tuple><op1><const>TNA#5</const></op1><op2><tuple><op1><const>Alice</const></op1><op2><const>Text1#5</const></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><const>Alice</const></op1><op2><const>Alice</const></op2></tuple></arg></apply></key></encrypt></op2></tuple></message>
+              <follows>
+                <after run="5" index="1" />
+                <encrypt><op><tuple><op1><const>TNA#5</const></op1><op2><tuple><op1><const>Alice</const></op1><op2><const>Text1#5</const></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><const>Alice</const></op1><op2><const>Alice</const></op2></tuple></arg></apply></key></encrypt>
+              </follows>
+              <follows>
+                <unbound />
+                <const>Ticket#9</const>
+              </follows>
+          </event>
+          <event type="claim" index="1">
+            <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>B1</const></op2></tuple></label>
+            <role><const>Alice</const></role>
+            <type><const>Running</const></type>
+            <argument><tuple><op1><const>Alice</const></op1><op2><tuple><op1><const>TNB#4</const></op1><op2><const>Text3#4</const></op2></tuple></op2></tuple></argument>
+          </event>
+          <event type="send" index="2">
+            <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>2</const></op2></tuple></label>
+            <from><const>Alice</const></from>
+            <to><const>Alice</const></to>
+            <message><tuple><op1><const>Text4#4</const></op1><op2><encrypt><op><tuple><op1><const>TNB#4</const></op1><op2><tuple><op1><const>Alice</const></op1><op2><const>Text3#4</const></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><const>Alice</const></op1><op2><const>Alice</const></op2></tuple></arg></apply></key></encrypt></op2></tuple></message>
+          </event>
+        </eventlist>
+      </run>
+      <run>
+        <runid>5</runid>
+        <protocol><const>isoiec-9798-2-3</const></protocol>
+        <rolename>A</rolename>
+        <roleagents>
+          <role>
+            <rolename>A</rolename>
+            <agent><const>Alice</const></agent>
+          </role>
+          <role>
+            <rolename>B</rolename>
+            <agent><const>Alice</const></agent>
+          </role>
+        </roleagents>
+        <variables>
+          <variable typeflaw="false" run="5">
+            <name>
+              <term>
+                <var name="Text4V#5" free="true" />
+              </term>
+              <type>
+                <termlist>
+                  <const>Ticket</const>
+                </termlist>
+              </type>
+            </name>
+            <substitution>
+              <term>
+                <const>Ticket#10</const>
+              </term>
+              <type>
+                <termlist>
+                  <const>Ticket</const>
+                </termlist>
+              </type>
+            </substitution>
+          </variable>
+          <variable typeflaw="false" run="5">
+            <name>
+              <term>
+                <var name="Text3V#5" free="true" />
+              </term>
+              <type>
+                <termlist>
+                  <const>Ticket</const>
+                </termlist>
+              </type>
+            </name>
+            <substitution>
+              <term>
+                <const>Ticket#11</const>
+              </term>
+              <type>
+                <termlist>
+                  <const>Ticket</const>
+                </termlist>
+              </type>
+            </substitution>
+          </variable>
+          <variable typeflaw="false" run="5">
+            <name>
+              <term>
+                <var name="TNBV#5" free="true" />
+              </term>
+              <type>
+                <termlist>
+                  <const>Nonce</const>
+                </termlist>
+              </type>
+            </name>
+            <substitution>
+              <term>
+                <const>Nonce#6</const>
+              </term>
+              <type>
+                <termlist>
+                  <const>Nonce</const>
+                </termlist>
+              </type>
+            </substitution>
+          </variable>
+        </variables>
+        <eventlist>
+          <event type="claim" index="0">
+            <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>A1</const></op2></tuple></label>
+            <role><const>Alice</const></role>
+            <type><const>Running</const></type>
+            <argument><tuple><op1><const>Alice</const></op1><op2><tuple><op1><const>TNA#5</const></op1><op2><const>Text1#5</const></op2></tuple></op2></tuple></argument>
+          </event>
+          <event type="send" index="1">
+            <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>1</const></op2></tuple></label>
+            <from><const>Alice</const></from>
+            <to><const>Alice</const></to>
+            <message><tuple><op1><const>Text2#5</const></op1><op2><encrypt><op><tuple><op1><const>TNA#5</const></op1><op2><tuple><op1><const>Alice</const></op1><op2><const>Text1#5</const></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><const>Alice</const></op1><op2><const>Alice</const></op2></tuple></arg></apply></key></encrypt></op2></tuple></message>
+          </event>
+        </eventlist>
+      </run>
+    </semitrace>
+  </state>
+  <state tracelength="12" id="3">
+    <broken>
+      <claim><const>Commit</const></claim>
+      <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>B2</const></op2></tuple></label>
+    </broken>
+    <system>
+      <commandline>
+        <arg>D:\scyther-w32-v1.3.0\Scyther\scyther-w32.exe</arg>
+        <arg>--xml-output</arg>
+        <arg>--plain</arg>
+        <arg>--max-runs=5</arg>
+        <arg>D:\grokSpace\workspace\AIÓÅÐã°¸ÀýÏîÄ¿\models_track_r_rest\P05_iso9798_2_3.spdl</arg>
+      </commandline>
+      <match>0</match>
+      <initialknowledge>
+        <termlist>
+          <const>pk</const>
+          <const>Alice</const>
+          <const>Bob</const>
+          <const>Charlie</const>
+          <const>Dave</const>
+          <const>Eve</const>
+          <const>Simon</const>
+          <const>Pete</const>
+          <apply><function><const>sk</const></function><arg><const>Eve</const></arg></apply>
+          <apply><function><const>k</const></function><arg><tuple><op1><const>Alice</const></op1><op2><const>Eve</const></op2></tuple></arg></apply>
+          <apply><function><const>k</const></function><arg><tuple><op1><const>Bob</const></op1><op2><const>Eve</const></op2></tuple></arg></apply>
+          <apply><function><const>k</const></function><arg><tuple><op1><const>Charlie</const></op1><op2><const>Eve</const></op2></tuple></arg></apply>
+          <apply><function><const>k</const></function><arg><tuple><op1><const>Eve</const></op1><op2><const>Alice</const></op2></tuple></arg></apply>
+        </termlist>
+      </initialknowledge>
+      <inversekeys>
+      </inversekeys>
+      <inversekeyfunctions>
+        <keypair>
+          <const>sk</const>
+          <const>pk</const>
+        </keypair>
+      </inversekeyfunctions>
+      <protocol>
+        <name><const>isoiec-9798-2-3</const></name>
+        <role>
+          <rolename>B</rolename>
+          <eventlist>
+            <event type="recv" index="0">
+              <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>1</const></op2></tuple></label>
+              <from><var name="A" free="true" /></from>
+              <to><var name="B" free="true" /></to>
+              <message><tuple><op1><var name="Text2" free="true" /></op1><op2><encrypt><op><tuple><op1><var name="TNA" free="true" /></op1><op2><tuple><op1><var name="B" free="true" /></op1><op2><var name="Text1" free="true" /></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><var name="A" free="true" /></op1><op2><var name="B" free="true" /></op2></tuple></arg></apply></key></encrypt></op2></tuple></message>
+            </event>
+            <event type="claim" index="1">
+              <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>B1</const></op2></tuple></label>
+              <role><var name="B" free="true" /></role>
+              <type><const>Running</const></type>
+              <argument><tuple><op1><var name="A" free="true" /></op1><op2><tuple><op1><var name="TNB" free="true" /></op1><op2><var name="Text3" free="true" /></op2></tuple></op2></tuple></argument>
+            </event>
+            <event type="send" index="2">
+              <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>2</const></op2></tuple></label>
+              <from><var name="B" free="true" /></from>
+              <to><var name="A" free="true" /></to>
+              <message><tuple><op1><var name="Text4" free="true" /></op1><op2><encrypt><op><tuple><op1><var name="TNB" free="true" /></op1><op2><tuple><op1><var name="A" free="true" /></op1><op2><var name="Text3" free="true" /></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><var name="A" free="true" /></op1><op2><var name="B" free="true" /></op2></tuple></arg></apply></key></encrypt></op2></tuple></message>
+            </event>
+            <event type="claim" index="3">
+              <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>B2</const></op2></tuple></label>
+              <role><var name="B" free="true" /></role>
+              <type><const>Commit</const></type>
+              <argument><tuple><op1><var name="A" free="true" /></op1><op2><tuple><op1><var name="TNA" free="true" /></op1><op2><var name="Text1" free="true" /></op2></tuple></op2></tuple></argument>
+            </event>
+            <event type="claim" index="4">
+              <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>B3</const></op2></tuple></label>
+              <role><var name="B" free="true" /></role>
+              <type><const>Alive</const></type>
+            </event>
+            <event type="claim" index="5">
+              <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>B4</const></op2></tuple></label>
+              <role><var name="B" free="true" /></role>
+              <type><const>Weakagree</const></type>
+            </event>
+          </eventlist>
+        </role>
+        <role>
+          <rolename>A</rolename>
+          <eventlist>
+            <event type="claim" index="0">
+              <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>A1</const></op2></tuple></label>
+              <role><var name="A" free="true" /></role>
+              <type><const>Running</const></type>
+              <argument><tuple><op1><var name="B" free="true" /></op1><op2><tuple><op1><var name="TNA" free="true" /></op1><op2><var name="Text1" free="true" /></op2></tuple></op2></tuple></argument>
+            </event>
+            <event type="send" index="1">
+              <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>1</const></op2></tuple></label>
+              <from><var name="A" free="true" /></from>
+              <to><var name="B" free="true" /></to>
+              <message><tuple><op1><var name="Text2" free="true" /></op1><op2><encrypt><op><tuple><op1><var name="TNA" free="true" /></op1><op2><tuple><op1><var name="B" free="true" /></op1><op2><var name="Text1" free="true" /></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><var name="A" free="true" /></op1><op2><var name="B" free="true" /></op2></tuple></arg></apply></key></encrypt></op2></tuple></message>
+            </event>
+            <event type="recv" index="2">
+              <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>2</const></op2></tuple></label>
+              <from><var name="B" free="true" /></from>
+              <to><var name="A" free="true" /></to>
+              <message><tuple><op1><var name="Text4" free="true" /></op1><op2><encrypt><op><tuple><op1><var name="TNB" free="true" /></op1><op2><tuple><op1><var name="A" free="true" /></op1><op2><var name="Text3" free="true" /></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><var name="A" free="true" /></op1><op2><var name="B" free="true" /></op2></tuple></arg></apply></key></encrypt></op2></tuple></message>
+            </event>
+            <event type="claim" index="3">
+              <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>A2</const></op2></tuple></label>
+              <role><var name="A" free="true" /></role>
+              <type><const>Commit</const></type>
+              <argument><tuple><op1><var name="B" free="true" /></op1><op2><tuple><op1><var name="TNB" free="true" /></op1><op2><var name="Text3" free="true" /></op2></tuple></op2></tuple></argument>
+            </event>
+            <event type="claim" index="4">
+              <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>A3</const></op2></tuple></label>
+              <role><var name="A" free="true" /></role>
+              <type><const>Alive</const></type>
+            </event>
+            <event type="claim" index="5">
+              <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>A4</const></op2></tuple></label>
+              <role><var name="A" free="true" /></role>
+              <type><const>Weakagree</const></type>
+            </event>
+          </eventlist>
+        </role>
+      </protocol>
+      <untrusted>
+        <termlist>
+          <const>Eve</const>
+        </termlist>
+      </untrusted>
+    </system>
+    <variables>
+      <variable typeflaw="false" run="0">
+        <name>
+          <term>
+            <var name="TNAV#0" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Nonce</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>TNB#2</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Nonce</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="0">
+        <name>
+          <term>
+            <var name="Text1V#0" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Ticket</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Text3#2</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Ticket</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="0">
+        <name>
+          <term>
+            <var name="Text2V#0" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Ticket</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Ticket#5</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Ticket</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="0">
+        <name>
+          <term>
+            <var name="BV#0" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Alice</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="0">
+        <name>
+          <term>
+            <var name="AV#0" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Alice</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="2">
+        <name>
+          <term>
+            <var name="TNAV#2" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Nonce</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>TNB#3</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Nonce</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="2">
+        <name>
+          <term>
+            <var name="Text1V#2" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Ticket</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Text3#3</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Ticket</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="2">
+        <name>
+          <term>
+            <var name="Text2V#2" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Ticket</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Ticket#6</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Ticket</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="2">
+        <name>
+          <term>
+            <var name="BV#2" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Alice</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="2">
+        <name>
+          <term>
+            <var name="AV#2" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Alice</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="3">
+        <name>
+          <term>
+            <var name="TNAV#3" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Nonce</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>TNA#4</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Nonce</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="3">
+        <name>
+          <term>
+            <var name="Text1V#3" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Ticket</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Text1#4</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Ticket</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="3">
+        <name>
+          <term>
+            <var name="Text2V#3" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Ticket</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Ticket#7</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Ticket</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="3">
+        <name>
+          <term>
+            <var name="BV#3" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Alice</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="3">
+        <name>
+          <term>
+            <var name="AV#3" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Alice</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="4">
+        <name>
+          <term>
+            <var name="TNBV#4" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Nonce</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Nonce#5</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Nonce</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="4">
+        <name>
+          <term>
+            <var name="Text3V#4" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Ticket</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Ticket#9</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Ticket</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="4">
+        <name>
+          <term>
+            <var name="Text4V#4" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Ticket</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Ticket#8</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Ticket</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="4">
+        <name>
+          <term>
+            <var name="BV#4" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Alice</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="4">
+        <name>
+          <term>
+            <var name="AV#4" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Alice</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+    </variables>
+    <semitrace>
+      <run>
+        <runid>0</runid>
+        <protocol><const>isoiec-9798-2-3</const></protocol>
+        <rolename>B</rolename>
+        <roleagents>
+          <role>
+            <rolename>A</rolename>
+            <agent><const>Alice</const></agent>
+          </role>
+          <role>
+            <rolename>B</rolename>
+            <agent><const>Alice</const></agent>
+          </role>
+        </roleagents>
+        <variables>
+          <variable typeflaw="false" run="0">
+            <name>
+              <term>
+                <var name="Text2V#0" free="true" />
+              </term>
+              <type>
+                <termlist>
+                  <const>Ticket</const>
+                </termlist>
+              </type>
+            </name>
+            <substitution>
+              <term>
+                <const>Ticket#5</const>
+              </term>
+              <type>
+                <termlist>
+                  <const>Ticket</const>
+                </termlist>
+              </type>
+            </substitution>
+          </variable>
+          <variable typeflaw="false" run="0">
+            <name>
+              <term>
+                <var name="Text1V#0" free="true" />
+              </term>
+              <type>
+                <termlist>
+                  <const>Ticket</const>
+                </termlist>
+              </type>
+            </name>
+            <substitution>
+              <term>
+                <const>Text3#2</const>
+              </term>
+              <type>
+                <termlist>
+                  <const>Ticket</const>
+                </termlist>
+              </type>
+            </substitution>
+          </variable>
+          <variable typeflaw="false" run="0">
+            <name>
+              <term>
+                <var name="TNAV#0" free="true" />
+              </term>
+              <type>
+                <termlist>
+                  <const>Nonce</const>
+                </termlist>
+              </type>
+            </name>
+            <substitution>
+              <term>
+                <const>TNB#2</const>
+              </term>
+              <type>
+                <termlist>
+                  <const>Nonce</const>
+                </termlist>
+              </type>
+            </substitution>
+          </variable>
+        </variables>
+        <eventlist>
+          <event type="recv" index="0">
+            <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>1</const></op2></tuple></label>
+            <from><const>Alice</const></from>
+            <to><const>Alice</const></to>
+            <message><tuple><op1><const>Ticket#5</const></op1><op2><encrypt><op><tuple><op1><const>TNB#2</const></op1><op2><tuple><op1><const>Alice</const></op1><op2><const>Text3#2</const></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><const>Alice</const></op1><op2><const>Alice</const></op2></tuple></arg></apply></key></encrypt></op2></tuple></message>
+              <follows>
+                <after run="2" index="2" />
+                <encrypt><op><tuple><op1><const>TNB#2</const></op1><op2><tuple><op1><const>Alice</const></op1><op2><const>Text3#2</const></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><const>Alice</const></op1><op2><const>Alice</const></op2></tuple></arg></apply></key></encrypt>
+              </follows>
+              <follows>
+                <unbound />
+                <const>Ticket#5</const>
+              </follows>
+          </event>
+          <event type="claim" index="1">
+            <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>B1</const></op2></tuple></label>
+            <role><const>Alice</const></role>
+            <type><const>Running</const></type>
+            <argument><tuple><op1><const>Alice</const></op1><op2><tuple><op1><const>TNB#0</const></op1><op2><const>Text3#0</const></op2></tuple></op2></tuple></argument>
+          </event>
+          <event type="send" index="2">
+            <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>2</const></op2></tuple></label>
+            <from><const>Alice</const></from>
+            <to><const>Alice</const></to>
+            <message><tuple><op1><const>Text4#0</const></op1><op2><encrypt><op><tuple><op1><const>TNB#0</const></op1><op2><tuple><op1><const>Alice</const></op1><op2><const>Text3#0</const></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><const>Alice</const></op1><op2><const>Alice</const></op2></tuple></arg></apply></key></encrypt></op2></tuple></message>
+          </event>
+          <event type="claim" index="3">
+            <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>B2</const></op2></tuple></label>
+            <role><const>Alice</const></role>
+            <type><const>Commit</const></type>
+            <argument><tuple><op1><const>Alice</const></op1><op2><tuple><op1><const>TNB#2</const></op1><op2><const>Text3#2</const></op2></tuple></op2></tuple></argument>
+          </event>
+        </eventlist>
+      </run>
+      <run>
+        <runid>1</runid>
+        <protocol intruder="true"><const> INTRUDER </const></protocol>
+        <rolename>I_M: Atomic message</rolename>
+        <roleagents>
+        </roleagents>
+        <variables>
+        </variables>
+        <eventlist>
+          <event type="send" index="0">
+            <message><tuple><op1><tuple><op1><tuple><op1><const>Charlie</const></op1><op2><tuple><op1><const>Eve</const></op1><op2><const>Dave</const></op2></tuple></op2></tuple></op1><op2><tuple><op1><const>pk</const></op1><op2><tuple><op1><const>Bob</const></op1><op2><const>Alice</const></op2></tuple></op2></tuple></op2></tuple></op1><op2><tuple><op1><tuple><op1><apply><function><const>k</const></function><arg><tuple><op1><const>Bob</const></op1><op2><const>Eve</const></op2></tuple></arg></apply></op1><op2><tuple><op1><apply><function><const>k</const></function><arg><tuple><op1><const>Eve</const></op1><op2><const>Alice</const></op2></tuple></arg></apply></op1><op2><apply><function><const>k</const></function><arg><tuple><op1><const>Charlie</const></op1><op2><const>Eve</const></op2></tuple></arg></apply></op2></tuple></op2></tuple></op1><op2><tuple><op1><tuple><op1><const>Pete</const></op1><op2><const>Simon</const></op2></tuple></op1><op2><tuple><op1><apply><function><const>k</const></function><arg><tuple><op1><const>Alice</const></op1><op2><const>Eve</const></op2></tuple></arg></apply></op1><op2><apply><function><const>sk</const></function><arg><const>Eve</const></arg></apply></op2></tuple></op2></tuple></op2></tuple></op2></tuple></message>
+          </event>
+        </eventlist>
+      </run>
+      <run>
+        <runid>2</runid>
+        <protocol><const>isoiec-9798-2-3</const></protocol>
+        <rolename>B</rolename>
+        <roleagents>
+          <role>
+            <rolename>A</rolename>
+            <agent><const>Alice</const></agent>
+          </role>
+          <role>
+            <rolename>B</rolename>
+            <agent><const>Alice</const></agent>
+          </role>
+        </roleagents>
+        <variables>
+          <variable typeflaw="false" run="2">
+            <name>
+              <term>
+                <var name="Text2V#2" free="true" />
+              </term>
+              <type>
+                <termlist>
+                  <const>Ticket</const>
+                </termlist>
+              </type>
+            </name>
+            <substitution>
+              <term>
+                <const>Ticket#6</const>
+              </term>
+              <type>
+                <termlist>
+                  <const>Ticket</const>
+                </termlist>
+              </type>
+            </substitution>
+          </variable>
+          <variable typeflaw="false" run="2">
+            <name>
+              <term>
+                <var name="Text1V#2" free="true" />
+              </term>
+              <type>
+                <termlist>
+                  <const>Ticket</const>
+                </termlist>
+              </type>
+            </name>
+            <substitution>
+              <term>
+                <const>Text3#3</const>
+              </term>
+              <type>
+                <termlist>
+                  <const>Ticket</const>
+                </termlist>
+              </type>
+            </substitution>
+          </variable>
+          <variable typeflaw="false" run="2">
+            <name>
+              <term>
+                <var name="TNAV#2" free="true" />
+              </term>
+              <type>
+                <termlist>
+                  <const>Nonce</const>
+                </termlist>
+              </type>
+            </name>
+            <substitution>
+              <term>
+                <const>TNB#3</const>
+              </term>
+              <type>
+                <termlist>
+                  <const>Nonce</const>
+                </termlist>
+              </type>
+            </substitution>
+          </variable>
+        </variables>
+        <eventlist>
+          <event type="recv" index="0">
+            <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>1</const></op2></tuple></label>
+            <from><const>Alice</const></from>
+            <to><const>Alice</const></to>
+            <message><tuple><op1><const>Ticket#6</const></op1><op2><encrypt><op><tuple><op1><const>TNB#3</const></op1><op2><tuple><op1><const>Alice</const></op1><op2><const>Text3#3</const></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><const>Alice</const></op1><op2><const>Alice</const></op2></tuple></arg></apply></key></encrypt></op2></tuple></message>
+              <follows>
+                <after run="3" index="2" />
+                <encrypt><op><tuple><op1><const>TNB#3</const></op1><op2><tuple><op1><const>Alice</const></op1><op2><const>Text3#3</const></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><const>Alice</const></op1><op2><const>Alice</const></op2></tuple></arg></apply></key></encrypt>
+              </follows>
+              <follows>
+                <unbound />
+                <const>Ticket#6</const>
+              </follows>
+          </event>
+          <event type="claim" index="1">
+            <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>B1</const></op2></tuple></label>
+            <role><const>Alice</const></role>
+            <type><const>Running</const></type>
+            <argument><tuple><op1><const>Alice</const></op1><op2><tuple><op1><const>TNB#2</const></op1><op2><const>Text3#2</const></op2></tuple></op2></tuple></argument>
+          </event>
+          <event type="send" index="2">
+            <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>2</const></op2></tuple></label>
+            <from><const>Alice</const></from>
+            <to><const>Alice</const></to>
+            <message><tuple><op1><const>Text4#2</const></op1><op2><encrypt><op><tuple><op1><const>TNB#2</const></op1><op2><tuple><op1><const>Alice</const></op1><op2><const>Text3#2</const></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><const>Alice</const></op1><op2><const>Alice</const></op2></tuple></arg></apply></key></encrypt></op2></tuple></message>
+          </event>
+        </eventlist>
+      </run>
+      <run>
+        <runid>3</runid>
+        <protocol><const>isoiec-9798-2-3</const></protocol>
+        <rolename>B</rolename>
+        <roleagents>
+          <role>
+            <rolename>A</rolename>
+            <agent><const>Alice</const></agent>
+          </role>
+          <role>
+            <rolename>B</rolename>
+            <agent><const>Alice</const></agent>
+          </role>
+        </roleagents>
+        <variables>
+          <variable typeflaw="false" run="3">
+            <name>
+              <term>
+                <var name="Text2V#3" free="true" />
+              </term>
+              <type>
+                <termlist>
+                  <const>Ticket</const>
+                </termlist>
+              </type>
+            </name>
+            <substitution>
+              <term>
+                <const>Ticket#7</const>
+              </term>
+              <type>
+                <termlist>
+                  <const>Ticket</const>
+                </termlist>
+              </type>
+            </substitution>
+          </variable>
+          <variable typeflaw="false" run="3">
+            <name>
+              <term>
+                <var name="Text1V#3" free="true" />
+              </term>
+              <type>
+                <termlist>
+                  <const>Ticket</const>
+                </termlist>
+              </type>
+            </name>
+            <substitution>
+              <term>
+                <const>Text1#4</const>
+              </term>
+              <type>
+                <termlist>
+                  <const>Ticket</const>
+                </termlist>
+              </type>
+            </substitution>
+          </variable>
+          <variable typeflaw="false" run="3">
+            <name>
+              <term>
+                <var name="TNAV#3" free="true" />
+              </term>
+              <type>
+                <termlist>
+                  <const>Nonce</const>
+                </termlist>
+              </type>
+            </name>
+            <substitution>
+              <term>
+                <const>TNA#4</const>
+              </term>
+              <type>
+                <termlist>
+                  <const>Nonce</const>
+                </termlist>
+              </type>
+            </substitution>
+          </variable>
+        </variables>
+        <eventlist>
+          <event type="recv" index="0">
+            <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>1</const></op2></tuple></label>
+            <from><const>Alice</const></from>
+            <to><const>Alice</const></to>
+            <message><tuple><op1><const>Ticket#7</const></op1><op2><encrypt><op><tuple><op1><const>TNA#4</const></op1><op2><tuple><op1><const>Alice</const></op1><op2><const>Text1#4</const></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><const>Alice</const></op1><op2><const>Alice</const></op2></tuple></arg></apply></key></encrypt></op2></tuple></message>
+              <follows>
+                <after run="4" index="1" />
+                <encrypt><op><tuple><op1><const>TNA#4</const></op1><op2><tuple><op1><const>Alice</const></op1><op2><const>Text1#4</const></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><const>Alice</const></op1><op2><const>Alice</const></op2></tuple></arg></apply></key></encrypt>
+              </follows>
+              <follows>
+                <unbound />
+                <const>Ticket#7</const>
+              </follows>
+          </event>
+          <event type="claim" index="1">
+            <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>B1</const></op2></tuple></label>
+            <role><const>Alice</const></role>
+            <type><const>Running</const></type>
+            <argument><tuple><op1><const>Alice</const></op1><op2><tuple><op1><const>TNB#3</const></op1><op2><const>Text3#3</const></op2></tuple></op2></tuple></argument>
+          </event>
+          <event type="send" index="2">
+            <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>2</const></op2></tuple></label>
+            <from><const>Alice</const></from>
+            <to><const>Alice</const></to>
+            <message><tuple><op1><const>Text4#3</const></op1><op2><encrypt><op><tuple><op1><const>TNB#3</const></op1><op2><tuple><op1><const>Alice</const></op1><op2><const>Text3#3</const></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><const>Alice</const></op1><op2><const>Alice</const></op2></tuple></arg></apply></key></encrypt></op2></tuple></message>
+          </event>
+        </eventlist>
+      </run>
+      <run>
+        <runid>4</runid>
+        <protocol><const>isoiec-9798-2-3</const></protocol>
+        <rolename>A</rolename>
+        <roleagents>
+          <role>
+            <rolename>A</rolename>
+            <agent><const>Alice</const></agent>
+          </role>
+          <role>
+            <rolename>B</rolename>
+            <agent><const>Alice</const></agent>
+          </role>
+        </roleagents>
+        <variables>
+          <variable typeflaw="false" run="4">
+            <name>
+              <term>
+                <var name="Text4V#4" free="true" />
+              </term>
+              <type>
+                <termlist>
+                  <const>Ticket</const>
+                </termlist>
+              </type>
+            </name>
+            <substitution>
+              <term>
+                <const>Ticket#8</const>
+              </term>
+              <type>
+                <termlist>
+                  <const>Ticket</const>
+                </termlist>
+              </type>
+            </substitution>
+          </variable>
+          <variable typeflaw="false" run="4">
+            <name>
+              <term>
+                <var name="Text3V#4" free="true" />
+              </term>
+              <type>
+                <termlist>
+                  <const>Ticket</const>
+                </termlist>
+              </type>
+            </name>
+            <substitution>
+              <term>
+                <const>Ticket#9</const>
+              </term>
+              <type>
+                <termlist>
+                  <const>Ticket</const>
+                </termlist>
+              </type>
+            </substitution>
+          </variable>
+          <variable typeflaw="false" run="4">
+            <name>
+              <term>
+                <var name="TNBV#4" free="true" />
+              </term>
+              <type>
+                <termlist>
+                  <const>Nonce</const>
+                </termlist>
+              </type>
+            </name>
+            <substitution>
+              <term>
+                <const>Nonce#5</const>
+              </term>
+              <type>
+                <termlist>
+                  <const>Nonce</const>
+                </termlist>
+              </type>
+            </substitution>
+          </variable>
+        </variables>
+        <eventlist>
+          <event type="claim" index="0">
+            <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>A1</const></op2></tuple></label>
+            <role><const>Alice</const></role>
+            <type><const>Running</const></type>
+            <argument><tuple><op1><const>Alice</const></op1><op2><tuple><op1><const>TNA#4</const></op1><op2><const>Text1#4</const></op2></tuple></op2></tuple></argument>
+          </event>
+          <event type="send" index="1">
+            <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>1</const></op2></tuple></label>
+            <from><const>Alice</const></from>
+            <to><const>Alice</const></to>
+            <message><tuple><op1><const>Text2#4</const></op1><op2><encrypt><op><tuple><op1><const>TNA#4</const></op1><op2><tuple><op1><const>Alice</const></op1><op2><const>Text1#4</const></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><const>Alice</const></op1><op2><const>Alice</const></op2></tuple></arg></apply></key></encrypt></op2></tuple></message>
+          </event>
+        </eventlist>
+      </run>
+    </semitrace>
+  </state>
+  <state tracelength="9" id="4">
+    <broken>
+      <claim><const>Commit</const></claim>
+      <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>B2</const></op2></tuple></label>
+    </broken>
+    <system>
+      <commandline>
+        <arg>D:\scyther-w32-v1.3.0\Scyther\scyther-w32.exe</arg>
+        <arg>--xml-output</arg>
+        <arg>--plain</arg>
+        <arg>--max-runs=5</arg>
+        <arg>D:\grokSpace\workspace\AIÓÅÐã°¸ÀýÏîÄ¿\models_track_r_rest\P05_iso9798_2_3.spdl</arg>
+      </commandline>
+      <match>0</match>
+      <initialknowledge>
+        <termlist>
+          <const>pk</const>
+          <const>Alice</const>
+          <const>Bob</const>
+          <const>Charlie</const>
+          <const>Dave</const>
+          <const>Eve</const>
+          <const>Simon</const>
+          <const>Pete</const>
+          <apply><function><const>sk</const></function><arg><const>Eve</const></arg></apply>
+          <apply><function><const>k</const></function><arg><tuple><op1><const>Alice</const></op1><op2><const>Eve</const></op2></tuple></arg></apply>
+          <apply><function><const>k</const></function><arg><tuple><op1><const>Bob</const></op1><op2><const>Eve</const></op2></tuple></arg></apply>
+          <apply><function><const>k</const></function><arg><tuple><op1><const>Charlie</const></op1><op2><const>Eve</const></op2></tuple></arg></apply>
+          <apply><function><const>k</const></function><arg><tuple><op1><const>Eve</const></op1><op2><const>Alice</const></op2></tuple></arg></apply>
+        </termlist>
+      </initialknowledge>
+      <inversekeys>
+      </inversekeys>
+      <inversekeyfunctions>
+        <keypair>
+          <const>sk</const>
+          <const>pk</const>
+        </keypair>
+      </inversekeyfunctions>
+      <protocol>
+        <name><const>isoiec-9798-2-3</const></name>
+        <role>
+          <rolename>B</rolename>
+          <eventlist>
+            <event type="recv" index="0">
+              <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>1</const></op2></tuple></label>
+              <from><var name="A" free="true" /></from>
+              <to><var name="B" free="true" /></to>
+              <message><tuple><op1><var name="Text2" free="true" /></op1><op2><encrypt><op><tuple><op1><var name="TNA" free="true" /></op1><op2><tuple><op1><var name="B" free="true" /></op1><op2><var name="Text1" free="true" /></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><var name="A" free="true" /></op1><op2><var name="B" free="true" /></op2></tuple></arg></apply></key></encrypt></op2></tuple></message>
+            </event>
+            <event type="claim" index="1">
+              <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>B1</const></op2></tuple></label>
+              <role><var name="B" free="true" /></role>
+              <type><const>Running</const></type>
+              <argument><tuple><op1><var name="A" free="true" /></op1><op2><tuple><op1><var name="TNB" free="true" /></op1><op2><var name="Text3" free="true" /></op2></tuple></op2></tuple></argument>
+            </event>
+            <event type="send" index="2">
+              <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>2</const></op2></tuple></label>
+              <from><var name="B" free="true" /></from>
+              <to><var name="A" free="true" /></to>
+              <message><tuple><op1><var name="Text4" free="true" /></op1><op2><encrypt><op><tuple><op1><var name="TNB" free="true" /></op1><op2><tuple><op1><var name="A" free="true" /></op1><op2><var name="Text3" free="true" /></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><var name="A" free="true" /></op1><op2><var name="B" free="true" /></op2></tuple></arg></apply></key></encrypt></op2></tuple></message>
+            </event>
+            <event type="claim" index="3">
+              <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>B2</const></op2></tuple></label>
+              <role><var name="B" free="true" /></role>
+              <type><const>Commit</const></type>
+              <argument><tuple><op1><var name="A" free="true" /></op1><op2><tuple><op1><var name="TNA" free="true" /></op1><op2><var name="Text1" free="true" /></op2></tuple></op2></tuple></argument>
+            </event>
+            <event type="claim" index="4">
+              <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>B3</const></op2></tuple></label>
+              <role><var name="B" free="true" /></role>
+              <type><const>Alive</const></type>
+            </event>
+            <event type="claim" index="5">
+              <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>B4</const></op2></tuple></label>
+              <role><var name="B" free="true" /></role>
+              <type><const>Weakagree</const></type>
+            </event>
+          </eventlist>
+        </role>
+        <role>
+          <rolename>A</rolename>
+          <eventlist>
+            <event type="claim" index="0">
+              <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>A1</const></op2></tuple></label>
+              <role><var name="A" free="true" /></role>
+              <type><const>Running</const></type>
+              <argument><tuple><op1><var name="B" free="true" /></op1><op2><tuple><op1><var name="TNA" free="true" /></op1><op2><var name="Text1" free="true" /></op2></tuple></op2></tuple></argument>
+            </event>
+            <event type="send" index="1">
+              <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>1</const></op2></tuple></label>
+              <from><var name="A" free="true" /></from>
+              <to><var name="B" free="true" /></to>
+              <message><tuple><op1><var name="Text2" free="true" /></op1><op2><encrypt><op><tuple><op1><var name="TNA" free="true" /></op1><op2><tuple><op1><var name="B" free="true" /></op1><op2><var name="Text1" free="true" /></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><var name="A" free="true" /></op1><op2><var name="B" free="true" /></op2></tuple></arg></apply></key></encrypt></op2></tuple></message>
+            </event>
+            <event type="recv" index="2">
+              <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>2</const></op2></tuple></label>
+              <from><var name="B" free="true" /></from>
+              <to><var name="A" free="true" /></to>
+              <message><tuple><op1><var name="Text4" free="true" /></op1><op2><encrypt><op><tuple><op1><var name="TNB" free="true" /></op1><op2><tuple><op1><var name="A" free="true" /></op1><op2><var name="Text3" free="true" /></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><var name="A" free="true" /></op1><op2><var name="B" free="true" /></op2></tuple></arg></apply></key></encrypt></op2></tuple></message>
+            </event>
+            <event type="claim" index="3">
+              <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>A2</const></op2></tuple></label>
+              <role><var name="A" free="true" /></role>
+              <type><const>Commit</const></type>
+              <argument><tuple><op1><var name="B" free="true" /></op1><op2><tuple><op1><var name="TNB" free="true" /></op1><op2><var name="Text3" free="true" /></op2></tuple></op2></tuple></argument>
+            </event>
+            <event type="claim" index="4">
+              <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>A3</const></op2></tuple></label>
+              <role><var name="A" free="true" /></role>
+              <type><const>Alive</const></type>
+            </event>
+            <event type="claim" index="5">
+              <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>A4</const></op2></tuple></label>
+              <role><var name="A" free="true" /></role>
+              <type><const>Weakagree</const></type>
+            </event>
+          </eventlist>
+        </role>
+      </protocol>
+      <untrusted>
+        <termlist>
+          <const>Eve</const>
+        </termlist>
+      </untrusted>
+    </system>
+    <variables>
+      <variable typeflaw="false" run="0">
+        <name>
+          <term>
+            <var name="TNAV#0" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Nonce</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>TNB#2</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Nonce</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="0">
+        <name>
+          <term>
+            <var name="Text1V#0" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Ticket</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Text3#2</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Ticket</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="0">
+        <name>
+          <term>
+            <var name="Text2V#0" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Ticket</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Ticket#4</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Ticket</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="0">
+        <name>
+          <term>
+            <var name="BV#0" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Alice</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="0">
+        <name>
+          <term>
+            <var name="AV#0" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Alice</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="2">
+        <name>
+          <term>
+            <var name="TNAV#2" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Nonce</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>TNA#3</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Nonce</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="2">
+        <name>
+          <term>
+            <var name="Text1V#2" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Ticket</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Text1#3</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Ticket</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="2">
+        <name>
+          <term>
+            <var name="Text2V#2" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Ticket</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Ticket#5</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Ticket</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="2">
+        <name>
+          <term>
+            <var name="BV#2" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Alice</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="2">
+        <name>
+          <term>
+            <var name="AV#2" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Alice</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="3">
+        <name>
+          <term>
+            <var name="TNBV#3" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Nonce</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Nonce#4</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Nonce</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="3">
+        <name>
+          <term>
+            <var name="Text3V#3" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Ticket</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Ticket#7</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Ticket</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="3">
+        <name>
+          <term>
+            <var name="Text4V#3" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Ticket</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Ticket#6</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Ticket</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="3">
+        <name>
+          <term>
+            <var name="BV#3" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Alice</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="3">
+        <name>
+          <term>
+            <var name="AV#3" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Alice</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+    </variables>
+    <semitrace>
+      <run>
+        <runid>0</runid>
+        <protocol><const>isoiec-9798-2-3</const></protocol>
+        <rolename>B</rolename>
+        <roleagents>
+          <role>
+            <rolename>A</rolename>
+            <agent><const>Alice</const></agent>
+          </role>
+          <role>
+            <rolename>B</rolename>
+            <agent><const>Alice</const></agent>
+          </role>
+        </roleagents>
+        <variables>
+          <variable typeflaw="false" run="0">
+            <name>
+              <term>
+                <var name="Text2V#0" free="true" />
+              </term>
+              <type>
+                <termlist>
+                  <const>Ticket</const>
+                </termlist>
+              </type>
+            </name>
+            <substitution>
+              <term>
+                <const>Ticket#4</const>
+              </term>
+              <type>
+                <termlist>
+                  <const>Ticket</const>
+                </termlist>
+              </type>
+            </substitution>
+          </variable>
+          <variable typeflaw="false" run="0">
+            <name>
+              <term>
+                <var name="Text1V#0" free="true" />
+              </term>
+              <type>
+                <termlist>
+                  <const>Ticket</const>
+                </termlist>
+              </type>
+            </name>
+            <substitution>
+              <term>
+                <const>Text3#2</const>
+              </term>
+              <type>
+                <termlist>
+                  <const>Ticket</const>
+                </termlist>
+              </type>
+            </substitution>
+          </variable>
+          <variable typeflaw="false" run="0">
+            <name>
+              <term>
+                <var name="TNAV#0" free="true" />
+              </term>
+              <type>
+                <termlist>
+                  <const>Nonce</const>
+                </termlist>
+              </type>
+            </name>
+            <substitution>
+              <term>
+                <const>TNB#2</const>
+              </term>
+              <type>
+                <termlist>
+                  <const>Nonce</const>
+                </termlist>
+              </type>
+            </substitution>
+          </variable>
+        </variables>
+        <eventlist>
+          <event type="recv" index="0">
+            <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>1</const></op2></tuple></label>
+            <from><const>Alice</const></from>
+            <to><const>Alice</const></to>
+            <message><tuple><op1><const>Ticket#4</const></op1><op2><encrypt><op><tuple><op1><const>TNB#2</const></op1><op2><tuple><op1><const>Alice</const></op1><op2><const>Text3#2</const></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><const>Alice</const></op1><op2><const>Alice</const></op2></tuple></arg></apply></key></encrypt></op2></tuple></message>
+              <follows>
+                <after run="2" index="2" />
+                <encrypt><op><tuple><op1><const>TNB#2</const></op1><op2><tuple><op1><const>Alice</const></op1><op2><const>Text3#2</const></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><const>Alice</const></op1><op2><const>Alice</const></op2></tuple></arg></apply></key></encrypt>
+              </follows>
+              <follows>
+                <unbound />
+                <const>Ticket#4</const>
+              </follows>
+          </event>
+          <event type="claim" index="1">
+            <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>B1</const></op2></tuple></label>
+            <role><const>Alice</const></role>
+            <type><const>Running</const></type>
+            <argument><tuple><op1><const>Alice</const></op1><op2><tuple><op1><const>TNB#0</const></op1><op2><const>Text3#0</const></op2></tuple></op2></tuple></argument>
+          </event>
+          <event type="send" index="2">
+            <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>2</const></op2></tuple></label>
+            <from><const>Alice</const></from>
+            <to><const>Alice</const></to>
+            <message><tuple><op1><const>Text4#0</const></op1><op2><encrypt><op><tuple><op1><const>TNB#0</const></op1><op2><tuple><op1><const>Alice</const></op1><op2><const>Text3#0</const></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><const>Alice</const></op1><op2><const>Alice</const></op2></tuple></arg></apply></key></encrypt></op2></tuple></message>
+          </event>
+          <event type="claim" index="3">
+            <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>B2</const></op2></tuple></label>
+            <role><const>Alice</const></role>
+            <type><const>Commit</const></type>
+            <argument><tuple><op1><const>Alice</const></op1><op2><tuple><op1><const>TNB#2</const></op1><op2><const>Text3#2</const></op2></tuple></op2></tuple></argument>
+          </event>
+        </eventlist>
+      </run>
+      <run>
+        <runid>1</runid>
+        <protocol intruder="true"><const> INTRUDER </const></protocol>
+        <rolename>I_M: Atomic message</rolename>
+        <roleagents>
+        </roleagents>
+        <variables>
+        </variables>
+        <eventlist>
+          <event type="send" index="0">
+            <message><tuple><op1><tuple><op1><tuple><op1><const>Charlie</const></op1><op2><tuple><op1><const>Eve</const></op1><op2><const>Dave</const></op2></tuple></op2></tuple></op1><op2><tuple><op1><const>pk</const></op1><op2><tuple><op1><const>Bob</const></op1><op2><const>Alice</const></op2></tuple></op2></tuple></op2></tuple></op1><op2><tuple><op1><tuple><op1><apply><function><const>k</const></function><arg><tuple><op1><const>Bob</const></op1><op2><const>Eve</const></op2></tuple></arg></apply></op1><op2><tuple><op1><apply><function><const>k</const></function><arg><tuple><op1><const>Eve</const></op1><op2><const>Alice</const></op2></tuple></arg></apply></op1><op2><apply><function><const>k</const></function><arg><tuple><op1><const>Charlie</const></op1><op2><const>Eve</const></op2></tuple></arg></apply></op2></tuple></op2></tuple></op1><op2><tuple><op1><tuple><op1><const>Pete</const></op1><op2><const>Simon</const></op2></tuple></op1><op2><tuple><op1><apply><function><const>k</const></function><arg><tuple><op1><const>Alice</const></op1><op2><const>Eve</const></op2></tuple></arg></apply></op1><op2><apply><function><const>sk</const></function><arg><const>Eve</const></arg></apply></op2></tuple></op2></tuple></op2></tuple></op2></tuple></message>
+          </event>
+        </eventlist>
+      </run>
+      <run>
+        <runid>2</runid>
+        <protocol><const>isoiec-9798-2-3</const></protocol>
+        <rolename>B</rolename>
+        <roleagents>
+          <role>
+            <rolename>A</rolename>
+            <agent><const>Alice</const></agent>
+          </role>
+          <role>
+            <rolename>B</rolename>
+            <agent><const>Alice</const></agent>
+          </role>
+        </roleagents>
+        <variables>
+          <variable typeflaw="false" run="2">
+            <name>
+              <term>
+                <var name="Text2V#2" free="true" />
+              </term>
+              <type>
+                <termlist>
+                  <const>Ticket</const>
+                </termlist>
+              </type>
+            </name>
+            <substitution>
+              <term>
+                <const>Ticket#5</const>
+              </term>
+              <type>
+                <termlist>
+                  <const>Ticket</const>
+                </termlist>
+              </type>
+            </substitution>
+          </variable>
+          <variable typeflaw="false" run="2">
+            <name>
+              <term>
+                <var name="Text1V#2" free="true" />
+              </term>
+              <type>
+                <termlist>
+                  <const>Ticket</const>
+                </termlist>
+              </type>
+            </name>
+            <substitution>
+              <term>
+                <const>Text1#3</const>
+              </term>
+              <type>
+                <termlist>
+                  <const>Ticket</const>
+                </termlist>
+              </type>
+            </substitution>
+          </variable>
+          <variable typeflaw="false" run="2">
+            <name>
+              <term>
+                <var name="TNAV#2" free="true" />
+              </term>
+              <type>
+                <termlist>
+                  <const>Nonce</const>
+                </termlist>
+              </type>
+            </name>
+            <substitution>
+              <term>
+                <const>TNA#3</const>
+              </term>
+              <type>
+                <termlist>
+                  <const>Nonce</const>
+                </termlist>
+              </type>
+            </substitution>
+          </variable>
+        </variables>
+        <eventlist>
+          <event type="recv" index="0">
+            <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>1</const></op2></tuple></label>
+            <from><const>Alice</const></from>
+            <to><const>Alice</const></to>
+            <message><tuple><op1><const>Ticket#5</const></op1><op2><encrypt><op><tuple><op1><const>TNA#3</const></op1><op2><tuple><op1><const>Alice</const></op1><op2><const>Text1#3</const></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><const>Alice</const></op1><op2><const>Alice</const></op2></tuple></arg></apply></key></encrypt></op2></tuple></message>
+              <follows>
+                <after run="3" index="1" />
+                <encrypt><op><tuple><op1><const>TNA#3</const></op1><op2><tuple><op1><const>Alice</const></op1><op2><const>Text1#3</const></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><const>Alice</const></op1><op2><const>Alice</const></op2></tuple></arg></apply></key></encrypt>
+              </follows>
+              <follows>
+                <unbound />
+                <const>Ticket#5</const>
+              </follows>
+          </event>
+          <event type="claim" index="1">
+            <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>B1</const></op2></tuple></label>
+            <role><const>Alice</const></role>
+            <type><const>Running</const></type>
+            <argument><tuple><op1><const>Alice</const></op1><op2><tuple><op1><const>TNB#2</const></op1><op2><const>Text3#2</const></op2></tuple></op2></tuple></argument>
+          </event>
+          <event type="send" index="2">
+            <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>2</const></op2></tuple></label>
+            <from><const>Alice</const></from>
+            <to><const>Alice</const></to>
+            <message><tuple><op1><const>Text4#2</const></op1><op2><encrypt><op><tuple><op1><const>TNB#2</const></op1><op2><tuple><op1><const>Alice</const></op1><op2><const>Text3#2</const></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><const>Alice</const></op1><op2><const>Alice</const></op2></tuple></arg></apply></key></encrypt></op2></tuple></message>
+          </event>
+        </eventlist>
+      </run>
+      <run>
+        <runid>3</runid>
+        <protocol><const>isoiec-9798-2-3</const></protocol>
+        <rolename>A</rolename>
+        <roleagents>
+          <role>
+            <rolename>A</rolename>
+            <agent><const>Alice</const></agent>
+          </role>
+          <role>
+            <rolename>B</rolename>
+            <agent><const>Alice</const></agent>
+          </role>
+        </roleagents>
+        <variables>
+          <variable typeflaw="false" run="3">
+            <name>
+              <term>
+                <var name="Text4V#3" free="true" />
+              </term>
+              <type>
+                <termlist>
+                  <const>Ticket</const>
+                </termlist>
+              </type>
+            </name>
+            <substitution>
+              <term>
+                <const>Ticket#6</const>
+              </term>
+              <type>
+                <termlist>
+                  <const>Ticket</const>
+                </termlist>
+              </type>
+            </substitution>
+          </variable>
+          <variable typeflaw="false" run="3">
+            <name>
+              <term>
+                <var name="Text3V#3" free="true" />
+              </term>
+              <type>
+                <termlist>
+                  <const>Ticket</const>
+                </termlist>
+              </type>
+            </name>
+            <substitution>
+              <term>
+                <const>Ticket#7</const>
+              </term>
+              <type>
+                <termlist>
+                  <const>Ticket</const>
+                </termlist>
+              </type>
+            </substitution>
+          </variable>
+          <variable typeflaw="false" run="3">
+            <name>
+              <term>
+                <var name="TNBV#3" free="true" />
+              </term>
+              <type>
+                <termlist>
+                  <const>Nonce</const>
+                </termlist>
+              </type>
+            </name>
+            <substitution>
+              <term>
+                <const>Nonce#4</const>
+              </term>
+              <type>
+                <termlist>
+                  <const>Nonce</const>
+                </termlist>
+              </type>
+            </substitution>
+          </variable>
+        </variables>
+        <eventlist>
+          <event type="claim" index="0">
+            <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>A1</const></op2></tuple></label>
+            <role><const>Alice</const></role>
+            <type><const>Running</const></type>
+            <argument><tuple><op1><const>Alice</const></op1><op2><tuple><op1><const>TNA#3</const></op1><op2><const>Text1#3</const></op2></tuple></op2></tuple></argument>
+          </event>
+          <event type="send" index="1">
+            <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>1</const></op2></tuple></label>
+            <from><const>Alice</const></from>
+            <to><const>Alice</const></to>
+            <message><tuple><op1><const>Text2#3</const></op1><op2><encrypt><op><tuple><op1><const>TNA#3</const></op1><op2><tuple><op1><const>Alice</const></op1><op2><const>Text1#3</const></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><const>Alice</const></op1><op2><const>Alice</const></op2></tuple></arg></apply></key></encrypt></op2></tuple></message>
+          </event>
+        </eventlist>
+      </run>
+    </semitrace>
+  </state>
+  <state tracelength="11" id="5">
+    <broken>
+      <claim><const>Commit</const></claim>
+      <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>B2</const></op2></tuple></label>
+    </broken>
+    <system>
+      <commandline>
+        <arg>D:\scyther-w32-v1.3.0\Scyther\scyther-w32.exe</arg>
+        <arg>--xml-output</arg>
+        <arg>--plain</arg>
+        <arg>--max-runs=5</arg>
+        <arg>D:\grokSpace\workspace\AIÓÅÐã°¸ÀýÏîÄ¿\models_track_r_rest\P05_iso9798_2_3.spdl</arg>
+      </commandline>
+      <match>0</match>
+      <initialknowledge>
+        <termlist>
+          <const>pk</const>
+          <const>Alice</const>
+          <const>Bob</const>
+          <const>Charlie</const>
+          <const>Dave</const>
+          <const>Eve</const>
+          <const>Simon</const>
+          <const>Pete</const>
+          <apply><function><const>sk</const></function><arg><const>Eve</const></arg></apply>
+          <apply><function><const>k</const></function><arg><tuple><op1><const>Alice</const></op1><op2><const>Eve</const></op2></tuple></arg></apply>
+          <apply><function><const>k</const></function><arg><tuple><op1><const>Bob</const></op1><op2><const>Eve</const></op2></tuple></arg></apply>
+          <apply><function><const>k</const></function><arg><tuple><op1><const>Charlie</const></op1><op2><const>Eve</const></op2></tuple></arg></apply>
+          <apply><function><const>k</const></function><arg><tuple><op1><const>Eve</const></op1><op2><const>Alice</const></op2></tuple></arg></apply>
+        </termlist>
+      </initialknowledge>
+      <inversekeys>
+      </inversekeys>
+      <inversekeyfunctions>
+        <keypair>
+          <const>sk</const>
+          <const>pk</const>
+        </keypair>
+      </inversekeyfunctions>
+      <protocol>
+        <name><const>isoiec-9798-2-3</const></name>
+        <role>
+          <rolename>B</rolename>
+          <eventlist>
+            <event type="recv" index="0">
+              <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>1</const></op2></tuple></label>
+              <from><var name="A" free="true" /></from>
+              <to><var name="B" free="true" /></to>
+              <message><tuple><op1><var name="Text2" free="true" /></op1><op2><encrypt><op><tuple><op1><var name="TNA" free="true" /></op1><op2><tuple><op1><var name="B" free="true" /></op1><op2><var name="Text1" free="true" /></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><var name="A" free="true" /></op1><op2><var name="B" free="true" /></op2></tuple></arg></apply></key></encrypt></op2></tuple></message>
+            </event>
+            <event type="claim" index="1">
+              <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>B1</const></op2></tuple></label>
+              <role><var name="B" free="true" /></role>
+              <type><const>Running</const></type>
+              <argument><tuple><op1><var name="A" free="true" /></op1><op2><tuple><op1><var name="TNB" free="true" /></op1><op2><var name="Text3" free="true" /></op2></tuple></op2></tuple></argument>
+            </event>
+            <event type="send" index="2">
+              <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>2</const></op2></tuple></label>
+              <from><var name="B" free="true" /></from>
+              <to><var name="A" free="true" /></to>
+              <message><tuple><op1><var name="Text4" free="true" /></op1><op2><encrypt><op><tuple><op1><var name="TNB" free="true" /></op1><op2><tuple><op1><var name="A" free="true" /></op1><op2><var name="Text3" free="true" /></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><var name="A" free="true" /></op1><op2><var name="B" free="true" /></op2></tuple></arg></apply></key></encrypt></op2></tuple></message>
+            </event>
+            <event type="claim" index="3">
+              <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>B2</const></op2></tuple></label>
+              <role><var name="B" free="true" /></role>
+              <type><const>Commit</const></type>
+              <argument><tuple><op1><var name="A" free="true" /></op1><op2><tuple><op1><var name="TNA" free="true" /></op1><op2><var name="Text1" free="true" /></op2></tuple></op2></tuple></argument>
+            </event>
+            <event type="claim" index="4">
+              <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>B3</const></op2></tuple></label>
+              <role><var name="B" free="true" /></role>
+              <type><const>Alive</const></type>
+            </event>
+            <event type="claim" index="5">
+              <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>B4</const></op2></tuple></label>
+              <role><var name="B" free="true" /></role>
+              <type><const>Weakagree</const></type>
+            </event>
+          </eventlist>
+        </role>
+        <role>
+          <rolename>A</rolename>
+          <eventlist>
+            <event type="claim" index="0">
+              <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>A1</const></op2></tuple></label>
+              <role><var name="A" free="true" /></role>
+              <type><const>Running</const></type>
+              <argument><tuple><op1><var name="B" free="true" /></op1><op2><tuple><op1><var name="TNA" free="true" /></op1><op2><var name="Text1" free="true" /></op2></tuple></op2></tuple></argument>
+            </event>
+            <event type="send" index="1">
+              <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>1</const></op2></tuple></label>
+              <from><var name="A" free="true" /></from>
+              <to><var name="B" free="true" /></to>
+              <message><tuple><op1><var name="Text2" free="true" /></op1><op2><encrypt><op><tuple><op1><var name="TNA" free="true" /></op1><op2><tuple><op1><var name="B" free="true" /></op1><op2><var name="Text1" free="true" /></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><var name="A" free="true" /></op1><op2><var name="B" free="true" /></op2></tuple></arg></apply></key></encrypt></op2></tuple></message>
+            </event>
+            <event type="recv" index="2">
+              <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>2</const></op2></tuple></label>
+              <from><var name="B" free="true" /></from>
+              <to><var name="A" free="true" /></to>
+              <message><tuple><op1><var name="Text4" free="true" /></op1><op2><encrypt><op><tuple><op1><var name="TNB" free="true" /></op1><op2><tuple><op1><var name="A" free="true" /></op1><op2><var name="Text3" free="true" /></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><var name="A" free="true" /></op1><op2><var name="B" free="true" /></op2></tuple></arg></apply></key></encrypt></op2></tuple></message>
+            </event>
+            <event type="claim" index="3">
+              <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>A2</const></op2></tuple></label>
+              <role><var name="A" free="true" /></role>
+              <type><const>Commit</const></type>
+              <argument><tuple><op1><var name="B" free="true" /></op1><op2><tuple><op1><var name="TNB" free="true" /></op1><op2><var name="Text3" free="true" /></op2></tuple></op2></tuple></argument>
+            </event>
+            <event type="claim" index="4">
+              <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>A3</const></op2></tuple></label>
+              <role><var name="A" free="true" /></role>
+              <type><const>Alive</const></type>
+            </event>
+            <event type="claim" index="5">
+              <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>A4</const></op2></tuple></label>
+              <role><var name="A" free="true" /></role>
+              <type><const>Weakagree</const></type>
+            </event>
+          </eventlist>
+        </role>
+      </protocol>
+      <protocol>
+        <name><const>@keysymm-23</const></name>
+        <role>
+          <rolename>B</rolename>
+          <eventlist>
+            <event type="recv" index="0">
+              <label><tuple><op1><const>@keysymm-23</const></op1><op2><const>!3</const></op2></tuple></label>
+              <from><var name="A" free="true" /></from>
+              <to><var name="B" free="true" /></to>
+              <message><encrypt><op><tuple><op1><var name="T" free="true" /></op1><op2><tuple><op1><var name="B" free="true" /></op1><op2><var name="Text" free="true" /></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><var name="A" free="true" /></op1><op2><var name="B" free="true" /></op2></tuple></arg></apply></key></encrypt></message>
+            </event>
+            <event type="send" index="1">
+              <label><tuple><op1><const>@keysymm-23</const></op1><op2><const>!4</const></op2></tuple></label>
+              <from><var name="B" free="true" /></from>
+              <to><var name="A" free="true" /></to>
+              <message><encrypt><op><tuple><op1><var name="T" free="true" /></op1><op2><tuple><op1><var name="B" free="true" /></op1><op2><var name="Text" free="true" /></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><var name="B" free="true" /></op1><op2><var name="A" free="true" /></op2></tuple></arg></apply></key></encrypt></message>
+            </event>
+          </eventlist>
+        </role>
+        <role>
+          <rolename>A</rolename>
+          <eventlist>
+            <event type="recv" index="0">
+              <label><tuple><op1><const>@keysymm-23</const></op1><op2><const>!1</const></op2></tuple></label>
+              <from><var name="B" free="true" /></from>
+              <to><var name="A" free="true" /></to>
+              <message><encrypt><op><tuple><op1><var name="T" free="true" /></op1><op2><tuple><op1><var name="A" free="true" /></op1><op2><var name="Text" free="true" /></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><var name="A" free="true" /></op1><op2><var name="B" free="true" /></op2></tuple></arg></apply></key></encrypt></message>
+            </event>
+            <event type="send" index="1">
+              <label><tuple><op1><const>@keysymm-23</const></op1><op2><const>!2</const></op2></tuple></label>
+              <from><var name="A" free="true" /></from>
+              <to><var name="B" free="true" /></to>
+              <message><encrypt><op><tuple><op1><var name="T" free="true" /></op1><op2><tuple><op1><var name="A" free="true" /></op1><op2><var name="Text" free="true" /></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><var name="B" free="true" /></op1><op2><var name="A" free="true" /></op2></tuple></arg></apply></key></encrypt></message>
+            </event>
+          </eventlist>
+        </role>
+      </protocol>
+      <untrusted>
+        <termlist>
+          <const>Eve</const>
+        </termlist>
+      </untrusted>
+    </system>
+    <variables>
+      <variable typeflaw="false" run="0">
+        <name>
+          <term>
+            <var name="TNAV#0" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Nonce</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>TNB#3</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Nonce</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="0">
+        <name>
+          <term>
+            <var name="Text1V#0" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Ticket</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Text3#3</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Ticket</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="0">
+        <name>
+          <term>
+            <var name="Text2V#0" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Ticket</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Ticket#5</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Ticket</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="0">
+        <name>
+          <term>
+            <var name="BV#0" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Bob</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="0">
+        <name>
+          <term>
+            <var name="AV#0" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Alice</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="2">
+        <name>
+          <term>
+            <var name="TV#2" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Nonce</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>TNB#3</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Nonce</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="2">
+        <name>
+          <term>
+            <var name="TextV#2" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Ticket</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Text3#3</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Ticket</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="2">
+        <name>
+          <term>
+            <var name="BV#2" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Alice</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="2">
+        <name>
+          <term>
+            <var name="AV#2" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Bob</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="3">
+        <name>
+          <term>
+            <var name="TNAV#3" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Nonce</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>TNA#4</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Nonce</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="3">
+        <name>
+          <term>
+            <var name="Text1V#3" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Ticket</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Text1#4</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Ticket</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="3">
+        <name>
+          <term>
+            <var name="Text2V#3" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Ticket</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Ticket#6</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Ticket</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="3">
+        <name>
+          <term>
+            <var name="BV#3" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Alice</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="3">
+        <name>
+          <term>
+            <var name="AV#3" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Bob</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="4">
+        <name>
+          <term>
+            <var name="TNBV#4" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Nonce</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Nonce#5</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Nonce</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="4">
+        <name>
+          <term>
+            <var name="Text3V#4" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Ticket</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Ticket#8</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Ticket</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="4">
+        <name>
+          <term>
+            <var name="Text4V#4" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Ticket</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Ticket#7</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Ticket</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="4">
+        <name>
+          <term>
+            <var name="BV#4" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Alice</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+      <variable typeflaw="false" run="4">
+        <name>
+          <term>
+            <var name="AV#4" free="true" />
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </name>
+        <substitution>
+          <term>
+            <const>Bob</const>
+          </term>
+          <type>
+            <termlist>
+              <const>Agent</const>
+            </termlist>
+          </type>
+        </substitution>
+      </variable>
+    </variables>
+    <semitrace>
+      <run>
+        <runid>0</runid>
+        <protocol><const>isoiec-9798-2-3</const></protocol>
+        <rolename>B</rolename>
+        <roleagents>
+          <role>
+            <rolename>A</rolename>
+            <agent><const>Alice</const></agent>
+          </role>
+          <role>
+            <rolename>B</rolename>
+            <agent><const>Bob</const></agent>
+          </role>
+        </roleagents>
+        <variables>
+          <variable typeflaw="false" run="0">
+            <name>
+              <term>
+                <var name="Text2V#0" free="true" />
+              </term>
+              <type>
+                <termlist>
+                  <const>Ticket</const>
+                </termlist>
+              </type>
+            </name>
+            <substitution>
+              <term>
+                <const>Ticket#5</const>
+              </term>
+              <type>
+                <termlist>
+                  <const>Ticket</const>
+                </termlist>
+              </type>
+            </substitution>
+          </variable>
+          <variable typeflaw="false" run="0">
+            <name>
+              <term>
+                <var name="Text1V#0" free="true" />
+              </term>
+              <type>
+                <termlist>
+                  <const>Ticket</const>
+                </termlist>
+              </type>
+            </name>
+            <substitution>
+              <term>
+                <const>Text3#3</const>
+              </term>
+              <type>
+                <termlist>
+                  <const>Ticket</const>
+                </termlist>
+              </type>
+            </substitution>
+          </variable>
+          <variable typeflaw="false" run="0">
+            <name>
+              <term>
+                <var name="TNAV#0" free="true" />
+              </term>
+              <type>
+                <termlist>
+                  <const>Nonce</const>
+                </termlist>
+              </type>
+            </name>
+            <substitution>
+              <term>
+                <const>TNB#3</const>
+              </term>
+              <type>
+                <termlist>
+                  <const>Nonce</const>
+                </termlist>
+              </type>
+            </substitution>
+          </variable>
+        </variables>
+        <eventlist>
+          <event type="recv" index="0">
+            <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>1</const></op2></tuple></label>
+            <from><const>Alice</const></from>
+            <to><const>Bob</const></to>
+            <message><tuple><op1><const>Ticket#5</const></op1><op2><encrypt><op><tuple><op1><const>TNB#3</const></op1><op2><tuple><op1><const>Bob</const></op1><op2><const>Text3#3</const></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><const>Alice</const></op1><op2><const>Bob</const></op2></tuple></arg></apply></key></encrypt></op2></tuple></message>
+              <follows>
+                <after run="2" index="1" />
+                <encrypt><op><tuple><op1><const>TNB#3</const></op1><op2><tuple><op1><const>Bob</const></op1><op2><const>Text3#3</const></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><const>Alice</const></op1><op2><const>Bob</const></op2></tuple></arg></apply></key></encrypt>
+              </follows>
+              <follows>
+                <unbound />
+                <const>Ticket#5</const>
+              </follows>
+          </event>
+          <event type="claim" index="1">
+            <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>B1</const></op2></tuple></label>
+            <role><const>Bob</const></role>
+            <type><const>Running</const></type>
+            <argument><tuple><op1><const>Alice</const></op1><op2><tuple><op1><const>TNB#0</const></op1><op2><const>Text3#0</const></op2></tuple></op2></tuple></argument>
+          </event>
+          <event type="send" index="2">
+            <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>2</const></op2></tuple></label>
+            <from><const>Bob</const></from>
+            <to><const>Alice</const></to>
+            <message><tuple><op1><const>Text4#0</const></op1><op2><encrypt><op><tuple><op1><const>TNB#0</const></op1><op2><tuple><op1><const>Alice</const></op1><op2><const>Text3#0</const></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><const>Alice</const></op1><op2><const>Bob</const></op2></tuple></arg></apply></key></encrypt></op2></tuple></message>
+          </event>
+          <event type="claim" index="3">
+            <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>B2</const></op2></tuple></label>
+            <role><const>Bob</const></role>
+            <type><const>Commit</const></type>
+            <argument><tuple><op1><const>Alice</const></op1><op2><tuple><op1><const>TNB#3</const></op1><op2><const>Text3#3</const></op2></tuple></op2></tuple></argument>
+          </event>
+        </eventlist>
+      </run>
+      <run>
+        <runid>1</runid>
+        <protocol intruder="true"><const> INTRUDER </const></protocol>
+        <rolename>I_M: Atomic message</rolename>
+        <roleagents>
+        </roleagents>
+        <variables>
+        </variables>
+        <eventlist>
+          <event type="send" index="0">
+            <message><tuple><op1><tuple><op1><tuple><op1><const>Charlie</const></op1><op2><tuple><op1><const>Eve</const></op1><op2><const>Dave</const></op2></tuple></op2></tuple></op1><op2><tuple><op1><const>pk</const></op1><op2><tuple><op1><const>Bob</const></op1><op2><const>Alice</const></op2></tuple></op2></tuple></op2></tuple></op1><op2><tuple><op1><tuple><op1><apply><function><const>k</const></function><arg><tuple><op1><const>Bob</const></op1><op2><const>Eve</const></op2></tuple></arg></apply></op1><op2><tuple><op1><apply><function><const>k</const></function><arg><tuple><op1><const>Eve</const></op1><op2><const>Alice</const></op2></tuple></arg></apply></op1><op2><apply><function><const>k</const></function><arg><tuple><op1><const>Charlie</const></op1><op2><const>Eve</const></op2></tuple></arg></apply></op2></tuple></op2></tuple></op1><op2><tuple><op1><tuple><op1><const>Pete</const></op1><op2><const>Simon</const></op2></tuple></op1><op2><tuple><op1><apply><function><const>k</const></function><arg><tuple><op1><const>Alice</const></op1><op2><const>Eve</const></op2></tuple></arg></apply></op1><op2><apply><function><const>sk</const></function><arg><const>Eve</const></arg></apply></op2></tuple></op2></tuple></op2></tuple></op2></tuple></message>
+          </event>
+        </eventlist>
+      </run>
+      <run>
+        <runid>2</runid>
+        <protocol><const>@keysymm-23</const></protocol>
+        <rolename>A</rolename>
+        <roleagents>
+          <role>
+            <rolename>A</rolename>
+            <agent><const>Bob</const></agent>
+          </role>
+          <role>
+            <rolename>B</rolename>
+            <agent><const>Alice</const></agent>
+          </role>
+        </roleagents>
+        <variables>
+          <variable typeflaw="false" run="2">
+            <name>
+              <term>
+                <var name="TextV#2" free="true" />
+              </term>
+              <type>
+                <termlist>
+                  <const>Ticket</const>
+                </termlist>
+              </type>
+            </name>
+            <substitution>
+              <term>
+                <const>Text3#3</const>
+              </term>
+              <type>
+                <termlist>
+                  <const>Ticket</const>
+                </termlist>
+              </type>
+            </substitution>
+          </variable>
+          <variable typeflaw="false" run="2">
+            <name>
+              <term>
+                <var name="TV#2" free="true" />
+              </term>
+              <type>
+                <termlist>
+                  <const>Nonce</const>
+                </termlist>
+              </type>
+            </name>
+            <substitution>
+              <term>
+                <const>TNB#3</const>
+              </term>
+              <type>
+                <termlist>
+                  <const>Nonce</const>
+                </termlist>
+              </type>
+            </substitution>
+          </variable>
+        </variables>
+        <eventlist>
+          <event type="recv" index="0">
+            <label><tuple><op1><const>@keysymm-23</const></op1><op2><const>!1</const></op2></tuple></label>
+            <from><const>Alice</const></from>
+            <to><const>Bob</const></to>
+            <message><encrypt><op><tuple><op1><const>TNB#3</const></op1><op2><tuple><op1><const>Bob</const></op1><op2><const>Text3#3</const></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><const>Bob</const></op1><op2><const>Alice</const></op2></tuple></arg></apply></key></encrypt></message>
+              <follows>
+                <after run="3" index="2" />
+                <encrypt><op><tuple><op1><const>TNB#3</const></op1><op2><tuple><op1><const>Bob</const></op1><op2><const>Text3#3</const></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><const>Bob</const></op1><op2><const>Alice</const></op2></tuple></arg></apply></key></encrypt>
+              </follows>
+          </event>
+          <event type="send" index="1">
+            <label><tuple><op1><const>@keysymm-23</const></op1><op2><const>!2</const></op2></tuple></label>
+            <from><const>Bob</const></from>
+            <to><const>Alice</const></to>
+            <message><encrypt><op><tuple><op1><const>TNB#3</const></op1><op2><tuple><op1><const>Bob</const></op1><op2><const>Text3#3</const></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><const>Alice</const></op1><op2><const>Bob</const></op2></tuple></arg></apply></key></encrypt></message>
+          </event>
+        </eventlist>
+      </run>
+      <run>
+        <runid>3</runid>
+        <protocol><const>isoiec-9798-2-3</const></protocol>
+        <rolename>B</rolename>
+        <roleagents>
+          <role>
+            <rolename>A</rolename>
+            <agent><const>Bob</const></agent>
+          </role>
+          <role>
+            <rolename>B</rolename>
+            <agent><const>Alice</const></agent>
+          </role>
+        </roleagents>
+        <variables>
+          <variable typeflaw="false" run="3">
+            <name>
+              <term>
+                <var name="Text2V#3" free="true" />
+              </term>
+              <type>
+                <termlist>
+                  <const>Ticket</const>
+                </termlist>
+              </type>
+            </name>
+            <substitution>
+              <term>
+                <const>Ticket#6</const>
+              </term>
+              <type>
+                <termlist>
+                  <const>Ticket</const>
+                </termlist>
+              </type>
+            </substitution>
+          </variable>
+          <variable typeflaw="false" run="3">
+            <name>
+              <term>
+                <var name="Text1V#3" free="true" />
+              </term>
+              <type>
+                <termlist>
+                  <const>Ticket</const>
+                </termlist>
+              </type>
+            </name>
+            <substitution>
+              <term>
+                <const>Text1#4</const>
+              </term>
+              <type>
+                <termlist>
+                  <const>Ticket</const>
+                </termlist>
+              </type>
+            </substitution>
+          </variable>
+          <variable typeflaw="false" run="3">
+            <name>
+              <term>
+                <var name="TNAV#3" free="true" />
+              </term>
+              <type>
+                <termlist>
+                  <const>Nonce</const>
+                </termlist>
+              </type>
+            </name>
+            <substitution>
+              <term>
+                <const>TNA#4</const>
+              </term>
+              <type>
+                <termlist>
+                  <const>Nonce</const>
+                </termlist>
+              </type>
+            </substitution>
+          </variable>
+        </variables>
+        <eventlist>
+          <event type="recv" index="0">
+            <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>1</const></op2></tuple></label>
+            <from><const>Bob</const></from>
+            <to><const>Alice</const></to>
+            <message><tuple><op1><const>Ticket#6</const></op1><op2><encrypt><op><tuple><op1><const>TNA#4</const></op1><op2><tuple><op1><const>Alice</const></op1><op2><const>Text1#4</const></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><const>Bob</const></op1><op2><const>Alice</const></op2></tuple></arg></apply></key></encrypt></op2></tuple></message>
+              <follows>
+                <after run="4" index="1" />
+                <encrypt><op><tuple><op1><const>TNA#4</const></op1><op2><tuple><op1><const>Alice</const></op1><op2><const>Text1#4</const></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><const>Bob</const></op1><op2><const>Alice</const></op2></tuple></arg></apply></key></encrypt>
+              </follows>
+              <follows>
+                <unbound />
+                <const>Ticket#6</const>
+              </follows>
+          </event>
+          <event type="claim" index="1">
+            <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>B1</const></op2></tuple></label>
+            <role><const>Alice</const></role>
+            <type><const>Running</const></type>
+            <argument><tuple><op1><const>Bob</const></op1><op2><tuple><op1><const>TNB#3</const></op1><op2><const>Text3#3</const></op2></tuple></op2></tuple></argument>
+          </event>
+          <event type="send" index="2">
+            <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>2</const></op2></tuple></label>
+            <from><const>Alice</const></from>
+            <to><const>Bob</const></to>
+            <message><tuple><op1><const>Text4#3</const></op1><op2><encrypt><op><tuple><op1><const>TNB#3</const></op1><op2><tuple><op1><const>Bob</const></op1><op2><const>Text3#3</const></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><const>Bob</const></op1><op2><const>Alice</const></op2></tuple></arg></apply></key></encrypt></op2></tuple></message>
+          </event>
+        </eventlist>
+      </run>
+      <run>
+        <runid>4</runid>
+        <protocol><const>isoiec-9798-2-3</const></protocol>
+        <rolename>A</rolename>
+        <roleagents>
+          <role>
+            <rolename>A</rolename>
+            <agent><const>Bob</const></agent>
+          </role>
+          <role>
+            <rolename>B</rolename>
+            <agent><const>Alice</const></agent>
+          </role>
+        </roleagents>
+        <variables>
+          <variable typeflaw="false" run="4">
+            <name>
+              <term>
+                <var name="Text4V#4" free="true" />
+              </term>
+              <type>
+                <termlist>
+                  <const>Ticket</const>
+                </termlist>
+              </type>
+            </name>
+            <substitution>
+              <term>
+                <const>Ticket#7</const>
+              </term>
+              <type>
+                <termlist>
+                  <const>Ticket</const>
+                </termlist>
+              </type>
+            </substitution>
+          </variable>
+          <variable typeflaw="false" run="4">
+            <name>
+              <term>
+                <var name="Text3V#4" free="true" />
+              </term>
+              <type>
+                <termlist>
+                  <const>Ticket</const>
+                </termlist>
+              </type>
+            </name>
+            <substitution>
+              <term>
+                <const>Ticket#8</const>
+              </term>
+              <type>
+                <termlist>
+                  <const>Ticket</const>
+                </termlist>
+              </type>
+            </substitution>
+          </variable>
+          <variable typeflaw="false" run="4">
+            <name>
+              <term>
+                <var name="TNBV#4" free="true" />
+              </term>
+              <type>
+                <termlist>
+                  <const>Nonce</const>
+                </termlist>
+              </type>
+            </name>
+            <substitution>
+              <term>
+                <const>Nonce#5</const>
+              </term>
+              <type>
+                <termlist>
+                  <const>Nonce</const>
+                </termlist>
+              </type>
+            </substitution>
+          </variable>
+        </variables>
+        <eventlist>
+          <event type="claim" index="0">
+            <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>A1</const></op2></tuple></label>
+            <role><const>Bob</const></role>
+            <type><const>Running</const></type>
+            <argument><tuple><op1><const>Alice</const></op1><op2><tuple><op1><const>TNA#4</const></op1><op2><const>Text1#4</const></op2></tuple></op2></tuple></argument>
+          </event>
+          <event type="send" index="1">
+            <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>1</const></op2></tuple></label>
+            <from><const>Bob</const></from>
+            <to><const>Alice</const></to>
+            <message><tuple><op1><const>Text2#4</const></op1><op2><encrypt><op><tuple><op1><const>TNA#4</const></op1><op2><tuple><op1><const>Alice</const></op1><op2><const>Text1#4</const></op2></tuple></op2></tuple></op><key><apply><function><const>k</const></function><arg><tuple><op1><const>Bob</const></op1><op2><const>Alice</const></op2></tuple></arg></apply></key></encrypt></op2></tuple></message>
+          </event>
+        </eventlist>
+      </run>
+    </semitrace>
+  </state>
+  <claimstatus>
+    <claimtype><const>Commit</const></claimtype>
+    <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>B2</const></op2></tuple></label>
+    <protocol><const>isoiec-9798-2-3</const></protocol>
+    <role><var name="B" free="true" /></role>
+    <parameter><tuple><op1><var name="A" free="true" /></op1><op2><tuple><op1><var name="TNA" free="true" /></op1><op2><var name="Text1" free="true" /></op2></tuple></op2></tuple></parameter>
+    <failed>4</failed>
+    <count>5</count>
+    <states>34</states>
+  </claimstatus>
+  <claimstatus>
+    <claimtype><const>Alive</const></claimtype>
+    <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>B3</const></op2></tuple></label>
+    <protocol><const>isoiec-9798-2-3</const></protocol>
+    <role><var name="B" free="true" /></role>
+    <failed>0</failed>
+    <count>3</count>
+    <states>22</states>
+  </claimstatus>
+  <claimstatus>
+    <claimtype><const>Weakagree</const></claimtype>
+    <label><tuple><op1><const>isoiec-9798-2-3</const></op1><op2><const>B4</const></op2></tuple></label>
+    <protocol><const>isoiec-9798-2-3</const></protocol>
+    <role><var name="B" free="true" /></role>
+    <failed>0</failed>
+    <count>3</count>
+    <states>22</states>
+  </claimstatus>
+</scyther>

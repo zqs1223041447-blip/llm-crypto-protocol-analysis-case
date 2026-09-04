@@ -1,0 +1,16 @@
+{
+  "n_models": 1,
+  "n_parse_ok": 1,
+  "n_exit0": 0,
+  "reports": [
+    {
+      "model": "D:\\grokSpace\\workspace\\AI优秀案例项目\\experiment_v2\\runs\\_nsl_m3r2\\V2-NSL-M3.spdl",
+      "exit_code": 3,
+      "parse_success": true,
+      "n_claims": 8,
+      "statuses": [
+        "verified"
+      ]
+    }
+  ]
+}
